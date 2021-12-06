@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %} {# this is a filter #}
+
+{% block title %}
+Case Studies List
+{% endblock %}
+
+{% block content %}
+
+
+    <!-- Page Heading -->
+    <div class=" d-sm-flex align-items-center justify-content-between mb-4"> 
+        <h1 class="h3 mb-0 text-gray-800">BRIDGE BS Case Studies</h1>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Content Column -->
+        <div class="col-lg-5 mb-4">
+                <!-- Case Studies -->
+            {% for cs in object_list %}
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">{{ cs.title }}</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                src="/static/img/undraw_posting_photo.svg" alt="">
+                        </div>
+                        <p> {{ cs.description |richtext | truncatechars:300}}</p>
+                        <a target="_blank" rel="nofollow" href="https://undraw.co/">qui ci mettiamo un bel link alla pagina con le analisi &rarr;</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-7 mb-4">
+            <!-- Map -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Una Mappa Embed di tutta l'area</h6>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 70rem;"
+                            src="http://127.0.0.1:8000/media/images/area.original.png" alt="">
+                    </div>
+                    <p>descrizione dell'area di studio ecc  <a
+                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
+                        constantly updated collection of beautiful svg images that you can use
+                        completely free and without attribution! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo cumque eligendi placeat quam rem consequuntur, voluptates exercitationem id praesentium quas assumenda vitae laudantium architecto necessitatibus repudiandae, perspiciatis quis consectetur debitis Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aut, nesciunt provident quidem maiores dicta doloribus excepturi nulla optio commodi illum! Officia natus amet nam modi voluptatem dolorem cum quidem..</p>
+                    <div class="text-center">
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 70rem;"
+                            src="http://127.0.0.1:8000/media/images/area.original.png" alt="">
+                    </div>
+                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Link alla mappa grande &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
