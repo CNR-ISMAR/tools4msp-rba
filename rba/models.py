@@ -16,6 +16,18 @@ class CS(models.Model):
     )
     map_embed_url = models.URLField(max_length=600,blank=True, null=True)
 
+    
+
+    #phase1 
+    study_area = RichTextField( null=True, blank=True, 
+        verbose_name= "1.1 Define the Study Area")
+
+    policy_objectives = RichTextField( null=True, blank=True, 
+        verbose_name= "1.2 Define Policy objectives")
+
+    ecosystem_services = RichTextField( null=True, blank=True, 
+        verbose_name= "1.3 Define core Ecosystem Services")
+
     MONITORING_PROGRAM = "Monitoring program"
     PORTAL = "Portal"
     MAP = "Map"
@@ -37,6 +49,17 @@ class CS(models.Model):
         null=True,
         blank=True,
     )
+
+    future_scenarios = RichTextField( null=True, blank=True, 
+        verbose_name= "1.4 Define future scenarios")
+
+    #phase2
+
+    
+
+    #phase3
+
+    #phase4
 
 
   

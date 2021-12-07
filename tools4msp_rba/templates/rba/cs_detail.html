@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %} {# this is a filter #}
+{% load verbose_names %}
 
 {% block title %}
 RBA Case Study
@@ -126,10 +127,10 @@ RBA Case Study
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">qui foto</h6>
+                    <h6 class="m-0 font-weight-bold text-primary"> {% get_verbose_field_name object "study_area" %} qui foto</h6>
                     <div class="text-center">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-                            src="http://127.0.0.1:8000/media/images/area.original.png" alt="">
+                            src="{{ object.image }}" alt="">
                     </div>
                 </div>
             </div>

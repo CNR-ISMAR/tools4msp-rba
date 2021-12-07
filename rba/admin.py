@@ -24,5 +24,6 @@ class CSAdmin(ModelAdmin):
     ImageChooserPanel("image"),
     FieldPanel("map_embed_url"),
     FieldPanel("es_type"),
+    FieldPanel("study_area"),
     ] 
 modeladmin_register(CSAdmin)
