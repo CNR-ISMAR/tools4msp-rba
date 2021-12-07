@@ -29,7 +29,7 @@ Case Studies List
                                 src="/static/img/undraw_posting_photo.svg" alt="">
                         </div>
                         <p> {{ cs.description |richtext | truncatechars:300}}</p>
-                        <a target="_blank" rel="nofollow" href="https://undraw.co/">qui ci mettiamo un bel link alla pagina con le analisi &rarr;</a>
+                        <a target="_blank" rel="nofollow" href="{% url 'cs-view' cs.id %}">qui ci mettiamo un bel link alla pagina con le analisi &rarr;</a>
                     </div>
                 </div>
             {% endfor %}

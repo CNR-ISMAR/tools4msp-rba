@@ -3,10 +3,6 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from multiselectfield import MultiSelectField
 
-
-
-
-
 # case study model
 class CS(models.Model): 
     title = models.CharField(max_length=400, blank=True, null=False)
