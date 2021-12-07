@@ -1,7 +1,7 @@
 from django.conf.urls.static import static
 from django.urls import include, path
 from django.contrib import admin
-from RBA.settings import base, dev
+from tools4msp_rba.settings import base, dev
 from app import views
 
 from wagtail.admin import urls as wagtailadmin_urls
@@ -10,16 +10,12 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from rba.views import CsList, CSDetailView
 
-
-from search import views as search_views
-
 urlpatterns = [  
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
     path('rba/list/', CsList.as_view()),
     path('rba/cs/<slug:slug>/', CSDetailView.as_view(), name='cs-view'),
-    path('search/', search_views.search, name='search'),
     path('<filename>.html', views.html),
     path('', views.index),
     ] + static(base.STATIC_URL, document_root=base.STATIC_ROOT)
