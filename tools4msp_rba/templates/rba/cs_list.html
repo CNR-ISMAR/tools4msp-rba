@@ -27,8 +27,10 @@ Case Studies List
                         </div>
                         <div class="card-body">
                             <div class="text-center">
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                    src="/media/{{ object.image }}" alt="">
+                            
+                                <div class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;">
+                                    {% image cs.image width-550%}
+                                </div>
                             </div>
                         </a>
                             <p> {{ cs.description |richtext | truncatechars:100}}</p>
