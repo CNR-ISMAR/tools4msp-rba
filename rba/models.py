@@ -52,11 +52,11 @@ class CS(models.Model):
 
     future_scenarios = RichTextField( null=True, blank=True, 
         verbose_name= "1.4 Define future scenarios")
-    
-    #phase2 = models.ForeignKey(CS_phase2, on_delete=models.CASCADE)
+
+
 
 #phase2
-class CS_phase2(models.Model):
+class CSphase2(models.Model):
     description = RichTextField( null=True, blank=True)
 
     PRESENT_CONDITION ="Present Condition"
@@ -88,8 +88,6 @@ class CS_phase2(models.Model):
         verbose_name= "2.5 Describe main environmental responses")
 
 #2.6 Source / Pressure / Pathway / Receptor Relationships
-
-
 
 
 
