@@ -52,14 +52,47 @@ class CS(models.Model):
 
     future_scenarios = RichTextField( null=True, blank=True, 
         verbose_name= "1.4 Define future scenarios")
-
-    #phase2
-
     
+    #phase2 = models.ForeignKey(CS_phase2, on_delete=models.CASCADE)
 
-    #phase3
+#phase2
+class CS_phase2(models.Model):
+    description = RichTextField( null=True, blank=True)
 
-    #phase4
+    PRESENT_CONDITION ="Present Condition"
+    FUTURE_CONDITION="Future Condition"
+    MANAGEMENT_MEASURES="Management Measures"
+    
+    CONDITION_TYPE_CHOICES = [
+        (PRESENT_CONDITION, "Present Condition"),
+        (FUTURE_CONDITION, "Future Condition"),
+        (MANAGEMENT_MEASURES, "Management Measures")
+    ]
+    
+    condition_type = MultiSelectField(choices= CONDITION_TYPE_CHOICES,
+        max_choices=2,
+        null=True,
+        blank=True,
+    )
+
+    main_pressures_effects = RichTextField( null=True, blank=True, 
+        verbose_name= "2.3 Define main pressures / effects")
+
+    main_source_effects = RichTextField( null=True, blank=True, 
+        verbose_name= "2.4 Describe main sources of pressures / effects")
+    
+    main_environmental_responses = RichTextField( null=True, blank=True, 
+        verbose_name= "2.5 Describe main environmental responses")
+
+    main_environmental_responses = RichTextField( null=True, blank=True, 
+        verbose_name= "2.5 Describe main environmental responses")
+
+#2.6 Source / Pressure / Pathway / Receptor Relationships
 
 
-  
+
+
+
+
+#phase3
+#phase4
