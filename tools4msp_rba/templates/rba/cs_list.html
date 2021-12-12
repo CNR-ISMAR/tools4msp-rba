@@ -17,21 +17,24 @@ Case Studies List
     <div class="row">
         <!-- Content Column -->
         <div class="col-lg-5 mb-4">
-                <!-- Case Studies -->
+            <!-- Case Studies -->
             {% for cs in object_list %}
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">{{ cs.title }}</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="text-center">
-                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                src="/static/img/undraw_posting_photo.svg" alt="">
+                <a style="display:block" target="_blank" rel="nofollow" href="{% url 'cs-view' cs.id %}">
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">{{ cs.title }}</h6>
                         </div>
-                        <p> {{ cs.description |richtext | truncatechars:300}}</p>
-                        <a target="_blank" rel="nofollow" href="{% url 'cs-view' cs.id %}">qui ci mettiamo un bel link alla pagina con le analisi &rarr;</a>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                    src="/media/{{ object.image }}" alt="">
+                            </div>
+                        </a>
+                            <p> {{ cs.description |richtext | truncatechars:100}}</p>
+                        </div>
                     </div>
-                </div>
+                
             {% endfor %}
         </div>
         <div class="col-lg-7 mb-4">
