@@ -3,6 +3,7 @@ from django.db.models.fields.related import ManyToManyField
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from multiselectfield import MultiSelectField
+#from rba import enumerations
 
 
 #phase2
@@ -10,21 +11,12 @@ class CSphase2(models.Model):
     title = models.CharField(max_length=400, blank=True, null=False)
     description = RichTextField( null=True, blank=True)
 
-    PRESENT_CONDITION ="Present Condition"
-    FUTURE_CONDITION="Future Condition"
-    MANAGEMENT_MEASURES="Management Measures"
-    
-    CONDITION_TYPE_CHOICES = [
-        (PRESENT_CONDITION, "Present Condition"),
-        (FUTURE_CONDITION, "Future Condition"),
-        (MANAGEMENT_MEASURES, "Management Measures")
-    ]
-    
-    condition_type = MultiSelectField(choices= CONDITION_TYPE_CHOICES,
-        max_choices=2,
-        null=True,
-        blank=True,
-    )
+    # condition_type = models.CharField(
+    #     choices=enumerations.CONDITION_CHIOICE,
+    #     max_choices=2,
+    #     null=True,
+    #     blank=True,
+    # )
 
     main_pressures_effects = RichTextField( null=True, blank=True, 
         verbose_name= "2.3 Define main pressures / effects")
