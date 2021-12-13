@@ -38,13 +38,10 @@ class baseDetailView(DetailView):
         return context
 
 
-
-
-
 def index(request):
     if request.user.is_anonymous:
-        return redirect("/rba/list")
-    return html(request, "index")
+        return redirect("/login.html")
+    return redirect( "/rba/list")
 
 
 def html(request, filename):
