@@ -7,6 +7,7 @@ from multiselectfield import MultiSelectField
 
 #phase2
 class CSphase2(models.Model):
+    title = models.CharField(max_length=400, blank=True, null=False)
     description = RichTextField( null=True, blank=True)
 
     PRESENT_CONDITION ="Present Condition"
