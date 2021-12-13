@@ -4,10 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.db.models import ObjectDoesNotExist
 
 
-def index(request):
-    if request.user.is_anonymous:
-        return redirect("/login.html")
-    return html(request, "index")
+
 
 
 def html(request, filename):
