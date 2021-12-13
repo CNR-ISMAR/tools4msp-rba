@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'app',
     'rba',
     'multiselectfield',
+    'tools4msp',
 ]
 
 MIDDLEWARE = [

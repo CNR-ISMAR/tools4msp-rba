@@ -28,6 +28,11 @@ class CSphase2(models.Model):
 
     main_pressures_effects = RichTextField( null=True, blank=True, 
         verbose_name= "2.3 Define main pressures / effects")
+        
+        #tabella marine strategy #tabella pressioni
+        #description marine strategy + link 
+        #layer tools4msp
+
 
     main_source_effects = RichTextField( null=True, blank=True, 
         verbose_name= "2.4 Describe main sources of pressures / effects")
@@ -35,9 +40,9 @@ class CSphase2(models.Model):
     main_environmental_responses = RichTextField( null=True, blank=True, 
         verbose_name= "2.5 Describe main environmental responses")
 
-    main_environmental_responses = RichTextField( null=True, blank=True, 
-        verbose_name= "2.5 Describe main environmental responses")
-    #2.6 Source / Pressure / Pathway / Receptor Relationships4
+    impact_chain = RichTextField( null=True, blank=True, 
+        verbose_name= "2.6 Source / Pressure / Pathway / Receptor Relationships")
+    
     def __str__(self):
         return self.title
 
