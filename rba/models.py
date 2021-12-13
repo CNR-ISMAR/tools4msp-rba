@@ -25,7 +25,6 @@ class CSphase2(models.Model):
         #description marine strategy + link 
         #layer tools4msp
 
-
     main_source_effects = RichTextField( null=True, blank=True, 
         verbose_name= "2.4 Describe main sources of pressures / effects")
     
