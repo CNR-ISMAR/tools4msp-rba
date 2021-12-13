@@ -37,8 +37,9 @@ class CSphase2(models.Model):
 
     main_environmental_responses = RichTextField( null=True, blank=True, 
         verbose_name= "2.5 Describe main environmental responses")
-
-#2.6 Source / Pressure / Pathway / Receptor Relationships
+    #2.6 Source / Pressure / Pathway / Receptor Relationships4
+    def __str__(self):
+        return self.title
 
 # case study model and Phase 1
 class CS(models.Model): 
