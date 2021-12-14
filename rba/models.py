@@ -24,7 +24,7 @@ class CSphase2(models.Model):
     pressure_list = models.ManyToManyField(Pressure, through='Phase2Pressures', blank=True)
     
     pressure_description = RichTextField( null=True, blank=True, 
-        verbose_name= "Describe the pressures and linkage with Marine Strategy")
+        verbose_name= "Description")
     
     layer = models.URLField(max_length=600,blank=True, null=True)
 
