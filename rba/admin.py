@@ -3,6 +3,7 @@ from wagtail.contrib.modeladmin.options import (
     ModelAdmin,
     modeladmin_register,
 )
+from django import forms
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from .models import (CS, CSphase2,
@@ -28,7 +29,7 @@ class CSAdmin(ModelAdmin):
     FieldPanel("policy_objectives"),
     FieldPanel("ecosystem_services"),
     FieldPanel("future_scenarios"),
-    FieldPanel("phase2"),
+    FieldPanel("phase2", widget=forms.CheckboxSelectMultiple),
     ] 
 modeladmin_register(CSAdmin)
 
@@ -47,7 +48,7 @@ class CSphase2Admin(ModelAdmin):
     FieldPanel("description"),
     FieldPanel("condition_type"),
     FieldPanel("main_pressures_effects"),
-    FieldPanel("pressure_list"),
+    FieldPanel("pressure_list", widget=forms.CheckboxSelectMultiple),
     FieldPanel("main_source_effects"),
     FieldPanel("main_environmental_responses"),
     ] 

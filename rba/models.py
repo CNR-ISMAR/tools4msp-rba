@@ -22,9 +22,17 @@ class CSphase2(models.Model):
         verbose_name= "2.3 Define main pressures / effects")
     pressure_list = models.ManyToManyField(Pressure, through='Phase2Pressures', blank=True)
         
-        #tabella marine strategy #tabella pressioni
-        #description marine strategy + link 
-        #layer tools4msp
+    # pressure_choice = MultiSelectField(
+    #     choices= pressure_list,
+    #     max_choices=50,
+    #     null=True,
+    #     blank=True,
+    #     max_length= 500,
+    # )   
+    
+    #tabella marine strategy #tabella pressioni
+    #description marine strategy + link 
+    #layer tools4msp
 
     main_source_effects = RichTextField( null=True, blank=True, 
         verbose_name= "2.4 Describe main sources of pressures / effects")
