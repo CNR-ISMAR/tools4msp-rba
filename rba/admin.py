@@ -47,6 +47,7 @@ class CSphase2Admin(ModelAdmin):
     FieldPanel("description"),
     FieldPanel("condition_type"),
     FieldPanel("main_pressures_effects"),
+    FieldPanel("pressure_list"),
     FieldPanel("main_source_effects"),
     FieldPanel("main_environmental_responses"),
     ] 
