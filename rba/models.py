@@ -4,7 +4,7 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from multiselectfield import MultiSelectField
 from rba import enumerations
-
+from tools4msp.models import Pressure
 
 #phase2
 class CSphase2(models.Model):
@@ -20,6 +20,7 @@ class CSphase2(models.Model):
 
     main_pressures_effects = RichTextField( null=True, blank=True, 
         verbose_name= "2.3 Define main pressures / effects")
+    pressure_list = models.ManyToManyField(Pressure, through='Phase2Pressures', blank=True)
         
         #tabella marine strategy #tabella pressioni
         #description marine strategy + link 
@@ -96,3 +97,7 @@ class CS(models.Model):
 class M2MPhase2(models.Model): 
     phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
     phase_1 = models.ForeignKey(CS, on_delete=models.CASCADE) 
+
+class Phase2Pressures(models.Model): 
+    phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
+    pressure_list = models.ForeignKey(Pressure, on_delete=models.CASCADE)
