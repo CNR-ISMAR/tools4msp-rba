@@ -40,8 +40,8 @@ class CSphase2Admin(ModelAdmin):
     menu_order = 800
     add_to_settings_menu = False 
     exclude_from_explorer = False
-    list_display = ("title",)
-    search_field = ("title",)
+    list_display = ("title", "condition_type")
+    search_field = ("title", "condition_type")
 
     panels =[
     FieldPanel("title"),
@@ -49,6 +49,8 @@ class CSphase2Admin(ModelAdmin):
     FieldPanel("condition_type"),
     FieldPanel("main_pressures_effects"),
     FieldPanel("pressure_list", widget=forms.CheckboxSelectMultiple),
+    FieldPanel("pressure_description"),
+    FieldPanel("layer"),
     FieldPanel("main_source_effects"),
     FieldPanel("main_environmental_responses"),
     ] 
