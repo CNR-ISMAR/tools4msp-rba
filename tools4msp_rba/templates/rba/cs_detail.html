@@ -250,6 +250,35 @@ RBA Case Study
                             <div class="card-body">
                                 <p>{{ i.main_pressures_effects | richtext }} </p>
                             </div>
+                            <div class="card-body">
+                                <h6 class="m-0 font-weight-medium text-primary">Main Pressures</h6>
+
+                                {% for t in i.pressure_list.all %}
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            <div class="fw-bold">
+                                                <span id="twistie_sncbclimtempinchigh" onclick="myFunction()" class="fa fa-plus-square"></span>
+                                                <i class="fa fa-plus-circle"></i>
+                                                {{ t.label }}
+                                            </div>
+                                            <div>
+                                                {{ t.description|slice:":100" }}
+                                            </div>  
+                                        </div>
+                                        <span class="badge bg-light">{{ t.code }}</span>
+                                        </li>
+                                    </ol>
+                                {% endfor %}
+                            </div>
+                            <div class="card-body">
+                                <h6 class="m-0 font-weight-medium text-primary">Pressures Description</h6>
+                                <p>{{ i.pressure_description | richtext }} </p>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="m-0 font-weight-medium text-primary">Layer</h6>
+                                <p>{{ i.layer | richtext }} </p>
+                            </div>
                         </div>
                         <!-- 2.4 -->
                         <div class="card shadow mb-4">
@@ -282,7 +311,7 @@ RBA Case Study
                                     <h6 class="m-0 font-weight-bold text-primary">Description of th Future Conditions or Scenarios</h6>
                                 </div>
                                 <div class="card-body">
-                                    <p>{{ i.description | richtext }}</p>
+                                    <p>{{ i.description }}</p>
                                 </div>
                             </div>
                             <!-- 2.3 -->
@@ -292,6 +321,35 @@ RBA Case Study
                                 </div>
                                 <div class="card-body">
                                     <p>{{ i.main_pressures_effects | richtext }} </p>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Main Pressures</h6>
+    
+                                    {% for t in i.pressure_list.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">
+                                                    <span id="twistie_sncbclimtempinchigh" onclick="myFunction()" class="fa fa-plus-square"></span>
+                                                    <i class="fa fa-plus-circle"></i>
+                                                    {{ t.label }}
+                                                </div>
+                                                <div>
+                                                    {{ t.description|slice:":100" }}
+                                                </div>  
+                                            </div>
+                                            <span class="badge bg-light">{{ t.code }}</span>
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Pressures Description</h6>
+                                    <p>{{ i.pressure_description | richtext }} </p>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Layer</h6>
+                                    <p>{{ i.layer | richtext }} </p>
                                 </div>
                             </div>
                             <!-- 2.4 -->
