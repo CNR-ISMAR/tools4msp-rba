@@ -21,7 +21,8 @@ class CSphase2(models.Model):
     main_pressures_effects = RichTextField( null=True, blank=True, 
         verbose_name= "2.3 Define main pressures / effects")
     
-    pressure_list = models.ManyToManyField(Pressure, through='Phase2Pressures', blank=True)
+    pressure_list = models.ManyToManyField(Pressure, through='Phase2Pressures', blank=True,
+        verbose_name= "Presures")
     
     pressure_description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")
