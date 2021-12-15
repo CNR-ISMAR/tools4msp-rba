@@ -24,10 +24,6 @@ class CSphase2(models.Model):
     pressure_list = models.ManyToManyField(Pressure, through='Phase2Pressures', blank=True,
         verbose_name= "Presures")
     
-    pressure_description = RichTextField( null=True, blank=True, 
-        verbose_name= "Description")
-    
-    layer = models.URLField(max_length=600,blank=True, null=True)
 
     main_source_effects = RichTextField( null=True, blank=True, 
         verbose_name= "2.4 Describe main sources of pressures / effects")
@@ -104,3 +100,10 @@ class M2MPhase2(models.Model):
 class Phase2Pressures(models.Model): 
     phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
     pressure_list = models.ForeignKey(Pressure, on_delete=models.CASCADE)
+    pressure_description = RichTextField( null=True, blank=True, 
+        verbose_name= "Description")
+    layer = models.URLField(max_length=600,blank=True, null=True)
+
+    def __str__(self):
+        return self.phase_2.title
+    
