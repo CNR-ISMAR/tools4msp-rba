@@ -252,9 +252,7 @@ RBA Case Study
                             </div>
                             <div class="card-body">
                                 <h6 class="m-0 font-weight-medium text-primary">Main Pressures</h6>
-                                
                                 {% for t in i.pressure_list.all %}
-
                                     <ol class="list-group list-group-numbered">
                                         <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="ms-2 me-auto">
@@ -264,7 +262,6 @@ RBA Case Study
                                                     <i class="fa fa-plus-square"></i>
                                                     <span>{{ t.label }}</span>
                                                 </a>
-                                            
                                             </div>
                                             <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                                 <div class="bg-black py-2 collapse-inner rounded">
@@ -277,14 +274,14 @@ RBA Case Study
                                     </ol>
                                 {% endfor %}
                             </div>
-                            <div class="card-body">
+                            <!-- <div class="card-body">
                                 <h6 class="m-0 font-weight-medium text-primary">Pressures Description</h6>
                                 <p>{{ i.pressure_description | richtext }} </p>
                             </div>
                             <div class="card-body">
                                 <h6 class="m-0 font-weight-medium text-primary">Layer</h6>
                                 <p>{{ i.layer | richtext }} </p>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- 2.4 -->
                         <div class="card shadow mb-4">

@@ -4,7 +4,7 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from multiselectfield import MultiSelectField
 from rba import enumerations
-from tools4msp.models import Pressure
+from tools4msp.models import Pressure, Use
 
 #phase2
 class CSphase2(models.Model):
@@ -22,11 +22,14 @@ class CSphase2(models.Model):
         verbose_name= "2.3 Define main pressures / effects")
     
     pressure_list = models.ManyToManyField(Pressure, through='Phase2Pressures', blank=True,
-        verbose_name= "Presures")
+        verbose_name= "Pressures")
     
 
     main_source_effects = RichTextField( null=True, blank=True, 
         verbose_name= "2.4 Describe main sources of pressures / effects")
+    
+    use_list = models.ManyToManyField(Use, through='Phase2uses', blank=True,
+        verbose_name= "Uses")
     
     main_environmental_responses = RichTextField( null=True, blank=True, 
         verbose_name= "2.5 Describe main environmental responses")
@@ -105,5 +108,10 @@ class Phase2Pressures(models.Model):
     layer = models.URLField(max_length=600,blank=True, null=True)
 
     def __str__(self):
-        return self.phase_2.title
+        #return self.phase_2.title
+        return self.pressure_list.label
+
     
+class Phase2uses(models.Model): 
+    phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
+    use_list = models.ForeignKey(Use, on_delete=models.CASCADE)
