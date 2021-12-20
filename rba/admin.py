@@ -62,7 +62,7 @@ class Phase2PressuresAdmin(ModelAdmin):
     menu_order = 900
     add_to_settings_menu = False 
     exclude_from_explorer = False
-    list_display = ("phase_2",)
+    list_display = ("pressure_list", "phase_2",)
     search_field = ("phase_2",)
 
     panels =[
