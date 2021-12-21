@@ -50,6 +50,7 @@ class CSphase2Admin(ModelAdmin):
     FieldPanel("main_pressures_effects"),
     FieldPanel("pressure_list", widget=forms.CheckboxSelectMultiple),
     FieldPanel("main_source_effects"),
+    FieldPanel("use_list", widget=forms.CheckboxSelectMultiple),
     FieldPanel("main_environmental_responses"),
     ] 
 modeladmin_register(CSphase2Admin)
