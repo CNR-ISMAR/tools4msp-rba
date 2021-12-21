@@ -49,7 +49,7 @@ class CSphase2(ClusterableModel):
 # case study model and Phase 1
 class CS(models.Model): 
     title = models.CharField(max_length=400, blank=True, null=False)
-    description = RichTextField( null=True, blank=True)
+    description = models.TextField ( null=True, blank=True)
     image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,

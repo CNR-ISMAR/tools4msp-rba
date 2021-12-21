@@ -134,11 +134,13 @@ RBA Case Study
             <h6 class="m-0 font-weight-bold text-primary">Descrizione Generale del CS</h6>
         </div>
         <div class="card-body">
-
-            {{ object.description|richtext|slice:":200" }}<span id="dots">...</span><span id="more">{{ object.description|richtext|slice:"201:"}} </span>
-                <button id="btn1" onclick="myFunction()" >Read more</button>
-
+            {{ object.description |slice:":400" }}
+            <span id="dots">...</span>
+            <span id="more">{{ object.description |slice:"400:"}}</span>
+            <button id="btn1" onclick="myFunction()"><i class="fas fa-chevron-right"></i></button>
         </div>
+
+
     </div>
     <!-- Content Row -->
     

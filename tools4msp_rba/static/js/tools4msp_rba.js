@@ -5,11 +5,11 @@ function myFunction() {
 
     if (dots.style.display === "none") {
         dots.style.display = "inline";
-        btnText.innerHTML = "Read more";
+        btnText.innerHTML = "<i class='fas fa-chevron-right'></i>";
         moreText.style.display = "none";
     } else {
         dots.style.display = "none";
-        btnText.innerHTML = "Read less";
+        btnText.innerHTML = "<i class='fas fa-chevron-left'></i>";
         moreText.style.display = "inline";
     }
 }
