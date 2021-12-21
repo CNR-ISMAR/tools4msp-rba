@@ -1,13 +1,16 @@
 from django.db import models
 from django.db.models.fields.related import ManyToManyField
 from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core.models import Orderable
+from modelcluster.fields import ParentalKey
+from modelcluster.models import ClusterableModel
 from wagtail.core.fields import RichTextField
 from multiselectfield import MultiSelectField
 from rba import enumerations
 from tools4msp.models import Pressure, Use, Env
 
 #phase2
-class CSphase2(models.Model):
+class CSphase2(ClusterableModel):
     title = models.CharField(max_length=400, blank=True, null=False)
     description = RichTextField( null=True, blank=True)
 
@@ -103,8 +106,8 @@ class M2MPhase2(models.Model):
     phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
     phase_1 = models.ForeignKey(CS, on_delete=models.CASCADE) 
 
-class Phase2Pressures(models.Model): 
-    phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
+class Phase2Pressures(Orderable): 
+    phase_2 = ParentalKey(CSphase2, related_name='phase2pressures_objects')
     pressure_list = models.ForeignKey(Pressure, on_delete=models.CASCADE)
     pressure_description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")

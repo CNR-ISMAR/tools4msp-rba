@@ -4,7 +4,7 @@ from wagtail.contrib.modeladmin.options import (
     modeladmin_register,
 )
 from django import forms
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from .models import (CS, CSphase2, Phase2Pressures
 )
@@ -44,31 +44,15 @@ class CSphase2Admin(ModelAdmin):
     search_field = ("title", "condition_type")
 
     panels =[
+    FieldPanel("condition_type"),
     FieldPanel("title"),
     FieldPanel("description"),
-    FieldPanel("condition_type"),
     FieldPanel("main_pressures_effects"),
-    FieldPanel("pressure_list", widget=forms.CheckboxSelectMultiple),
+    # FieldPanel("pressure_list", widget=forms.CheckboxSelectMultiple),
+    InlinePanel("phase2pressures_objects"),
     FieldPanel("main_source_effects"),
     FieldPanel("use_list", widget=forms.CheckboxSelectMultiple),
     FieldPanel("main_environmental_responses"),
     FieldPanel("env_list", widget=forms.CheckboxSelectMultiple),
     ] 
 modeladmin_register(CSphase2Admin)
-
-
-class Phase2PressuresAdmin(ModelAdmin):
-    model = Phase2Pressures
-    menu_label = "Pressures"
-    menu_icon = "tick"
-    menu_order = 900
-    add_to_settings_menu = False 
-    exclude_from_explorer = False
-    list_display = ("pressure_list", "phase_2",)
-    search_field = ("phase_2",)
-
-    panels =[
-    FieldPanel("pressure_description"),
-    FieldPanel("layer"),
-    ] 
-modeladmin_register(Phase2PressuresAdmin)
