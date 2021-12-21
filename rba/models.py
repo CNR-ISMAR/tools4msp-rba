@@ -4,7 +4,7 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from multiselectfield import MultiSelectField
 from rba import enumerations
-from tools4msp.models import Pressure, Use
+from tools4msp.models import Pressure, Use, Env
 
 #phase2
 class CSphase2(models.Model):
@@ -33,6 +33,9 @@ class CSphase2(models.Model):
     
     main_environmental_responses = RichTextField( null=True, blank=True, 
         verbose_name= "2.5 Describe main environmental responses")
+    
+    env_list = models.ManyToManyField(Env, through='Phase2envs', blank=True,
+        verbose_name= "Environmental Components")
 
     impact_chain = RichTextField( null=True, blank=True, 
         verbose_name= "2.6 Source / Pressure / Pathway / Receptor Relationships")
@@ -115,3 +118,7 @@ class Phase2Pressures(models.Model):
 class Phase2uses(models.Model): 
     phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
     use_list = models.ForeignKey(Use, on_delete=models.CASCADE)
+
+class Phase2envs(models.Model): 
+    phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
+    env_list = models.ForeignKey(Env, on_delete=models.CASCADE)
