@@ -178,7 +178,7 @@ RBA Case Study
                             <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "policy_objectives" %}</h6>
                         </div>
                         <div class="card-body"> 
-                            {{ object.ecosystem_services | richtext  |slice:":380" }}
+                            {{ object.policy_objectives | richtext  |slice:":380" }}
                             <span id="dots3">...</span>
                             <span id="more3">{{ object.policy_objectives | richtext |slice:"380:"}}</span>
                             <button id="btn3" onclick="myFunction3()"><i class="fas fa-chevron-right"></i></button>
