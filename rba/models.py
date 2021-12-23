@@ -59,7 +59,7 @@ class CS(models.Model):
     )
     
 
-    map_embed_url = models.URLField(max_length=600,blank=True, null=True)
+    map_embed_url = models.CharField(max_length=600,blank=True, null=True)
 
     #phase1 
     study_area = models.TextField( null=True, blank=True, 
