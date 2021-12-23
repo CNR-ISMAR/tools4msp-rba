@@ -33,3 +33,27 @@
     text-decoration: none;
     display: inline-block;
 }
+
+#more4 {
+    display: none;
+}
+#btn4 {
+    background-color: white;
+    border: none;
+    color: #4e73df ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#more5 {
+    display: none;
+}
+#btn5 {
+    background-color: white;
+    border: none;
+    color: #4e73df ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
