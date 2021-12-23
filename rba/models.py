@@ -125,8 +125,8 @@ class Phase2Pressures(Orderable):
         return self.pressure_list.label
 
     
-class Phase2uses(models.Model): 
-    phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
+class Phase2uses(Orderable): 
+    phase_2 = ParentalKey(CSphase2, related_name='phase2uses_objects')
     use_list = models.ForeignKey(Use, on_delete=models.CASCADE)
 
 class Phase2envs(models.Model): 
