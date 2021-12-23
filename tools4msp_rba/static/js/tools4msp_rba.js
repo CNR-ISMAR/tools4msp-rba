@@ -62,18 +62,18 @@ function myFunction4() {
     }
 }
 
-function myFunction5() {
-    var dots5 = document.getElementById("dots5");
-    var moreText5 = document.getElementById("more5");
-    var btnText5 = document.getElementById("btn5");
+function myFunction6() {
+    var dots6 = document.getElementById("dots6");
+    var moreText6 = document.getElementById("more6");
+    var btnText6 = document.getElementById("btn6");
 
-    if (dots5.style.display === "none") {
-        dots5.style.display = "inline";
-        btnText5.innerHTML = "<i class='fas fa-chevron-right'></i>";
-        moreText5.style.display = "none";
+    if (dots6.style.display === "none") {
+        dots6.style.display = "inline";
+        btnText6.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText6.style.display = "none";
     } else {
-        dots5.style.display = "none";
-        btnText5.innerHTML = "<i class='fas fa-chevron-left'></i>";
-        moreText5.style.display = "inline";
+        dots6.style.display = "none";
+        btnText6.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText6.style.display = "inline";
     }
 }

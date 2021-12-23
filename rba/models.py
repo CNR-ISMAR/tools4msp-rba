@@ -12,7 +12,7 @@ from tools4msp.models import Pressure, Use, Env
 #phase2
 class CSphase2(ClusterableModel):
     title = models.CharField(max_length=400, blank=True, null=False)
-    description = RichTextField( null=True, blank=True)
+    description = models.TextField( null=True, blank=True)
 
     condition_type = MultiSelectField(
         choices= enumerations.CONDITION_CHIOICE,
@@ -21,14 +21,14 @@ class CSphase2(ClusterableModel):
         blank=True,
     )
 
-    main_pressures_effects = RichTextField( null=True, blank=True, 
+    main_pressures_effects = models.TextField( null=True, blank=True, 
         verbose_name= "2.3 Define main pressures / effects")
     
     pressure_list = models.ManyToManyField(Pressure, through='Phase2Pressures', blank=True,
         verbose_name= "Pressures")
     
 
-    main_source_effects = RichTextField( null=True, blank=True, 
+    main_source_effects = models.TextField( null=True, blank=True, 
         verbose_name= "2.4 Describe main sources of pressures / effects")
     
     use_list = models.ManyToManyField(Use, through='Phase2uses', blank=True,
@@ -62,13 +62,13 @@ class CS(models.Model):
     map_embed_url = models.URLField(max_length=600,blank=True, null=True)
 
     #phase1 
-    study_area = RichTextField( null=True, blank=True, 
+    study_area = models.TextField( null=True, blank=True, 
         verbose_name= "1.1 Define the Study Area")
 
-    policy_objectives = RichTextField( null=True, blank=True, 
+    policy_objectives = models.TextField( null=True, blank=True, 
         verbose_name= "1.2 Define Policy objectives")
 
-    ecosystem_services = RichTextField( null=True, blank=True, 
+    ecosystem_services = models.TextField( null=True, blank=True, 
         verbose_name= "1.3 Define core Ecosystem Services")
 
     MONITORING_PROGRAM = "Monitoring program"
@@ -93,7 +93,7 @@ class CS(models.Model):
         blank=True,
     )
 
-    future_scenarios = RichTextField( null=True, blank=True, 
+    future_scenarios = models.TextField( null=True, blank=True, 
         verbose_name= "1.4 Define future scenarios")
     
     phase2 = models.ManyToManyField(CSphase2, through='M2MPhase2', blank=True)
