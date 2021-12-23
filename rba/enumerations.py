@@ -5,3 +5,8 @@ CONDITION_CHIOICE = (
     ('Future Condition', _('Future Condition')),
     ('Management Measures',_('Management Measures')),
 )
+
+PRESSURE_TYPE_CHOICE = (
+    ('main', _('Main Pressure')),
+    ('bg', _('Background Pressure')),
+)
