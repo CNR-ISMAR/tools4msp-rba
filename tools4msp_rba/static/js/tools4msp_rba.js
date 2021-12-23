@@ -45,3 +45,35 @@ function myFunction3() {
         moreText3.style.display = "inline";
     }
 }
+
+function myFunction4() {
+    var dots4 = document.getElementById("dots4");
+    var moreText4 = document.getElementById("more4");
+    var btnText4 = document.getElementById("btn4");
+
+    if (dots4.style.display === "none") {
+        dots4.style.display = "inline";
+        btnText4.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText4.style.display = "none";
+    } else {
+        dots4.style.display = "none";
+        btnText4.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText4.style.display = "inline";
+    }
+}
+
+function myFunction5() {
+    var dots5 = document.getElementById("dots5");
+    var moreText5 = document.getElementById("more5");
+    var btnText5 = document.getElementById("btn5");
+
+    if (dots5.style.display === "none") {
+        dots5.style.display = "inline";
+        btnText5.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText5.style.display = "none";
+    } else {
+        dots5.style.display = "none";
+        btnText5.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText5.style.display = "inline";
+    }
+}

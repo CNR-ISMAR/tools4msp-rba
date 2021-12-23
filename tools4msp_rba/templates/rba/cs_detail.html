@@ -248,8 +248,11 @@ RBA Case Study
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Description of th Present Conditions</h6>
                             </div>
-                            <div class="card-body">
-                                <p>{{ i.description | richtext }}</p>
+                            <div class="card-body"> 
+                                {{ i.description | richtext  |slice:":380" }}
+                                <span id="dots4">...</span>
+                                <span id="more4">{{ i.description| richtext |slice:"380:"}}</span>
+                                <button id="btn4" onclick="myFunction4()"><i class="fas fa-chevron-right"></i></button>
                             </div>
                         </div>
                         <!-- 2.3 -->
@@ -257,12 +260,15 @@ RBA Case Study
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">2.3 Define main pressures / effects</h6>
                             </div>
-                            <div class="card-body">
-                                <p>{{ i.main_pressures_effects | richtext }} </p>
+                            <div class="card-body"> 
+                                {{ i.main_pressures_effects | richtext  |slice:":380" }}
+                                <span id="dots5">...</span>
+                                <span id="more5">{{ i.main_pressures_effects| richtext |slice:"380:"}}</span>
+                                <button id="btn5" onclick="myFunction5()"><i class="fas fa-chevron-right"></i></button>
                             </div>
                             <div class="card-body">
                                 <h6 class="m-0 font-weight-medium text-primary">Main Pressures</h6>
-                                {% for t in i.pressure_list.all %}
+                                {% for t in i.phase2pressures_objects.all %}
                                     <ol class="list-group list-group-numbered">
                                         <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="ms-2 me-auto">
@@ -270,12 +276,13 @@ RBA Case Study
                                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                                                     aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
                                                     <i class="fa fa-plus-square"></i>
-                                                    <span>{{ t.label }}</span>
+                                                    <span>{{ t.pressure_list.label }}</span>
                                                 </a>
                                             </div>
                                             <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                                 <div class="bg-black py-2 collapse-inner rounded">
-                                                    <p class="collapse-item ">{{ t.description }}</p>
+                                                    <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>
+                                                    <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
                                                 </div>
                                             </div>
                                         </div>
