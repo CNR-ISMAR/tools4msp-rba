@@ -109,9 +109,16 @@ class M2MPhase2(models.Model):
 class Phase2Pressures(Orderable): 
     phase_2 = ParentalKey(CSphase2, related_name='phase2pressures_objects')
     pressure_list = models.ForeignKey(Pressure, on_delete=models.CASCADE)
+    pressure_type = MultiSelectField(
+        choices= enumerations.PRESSURE_TYPE_CHOICE,
+        max_choices=1,
+        null=True,
+        blank=True,
+    )
     pressure_description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")
     layer = models.URLField(max_length=600,blank=True, null=True)
+   
 
     def __str__(self):
         #return self.phase_2.title
