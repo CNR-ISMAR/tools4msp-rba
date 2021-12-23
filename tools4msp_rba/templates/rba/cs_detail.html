@@ -96,7 +96,7 @@ RBA Case Study
 
     <div class="row">
 
-        <!-- Area Chart -->
+        <!-- Map -->
         <div class="col-xl-7 col-lg-7">
             <div class="card shadow mb-4" style="height: 30rem">
                 <!-- Mappa - Dropdown -->
@@ -166,9 +166,9 @@ RBA Case Study
                             <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "study_area" %}</h6>
                         </div>
                         <div class="card-body"> 
-                            {{ object.study_area | richtext  |slice:":380" }}
+                            {{ object.study_area |slice:":380" }}
                             <span id="dots2">...</span>
-                            <span id="more2">{{ object.study_area | richtext |slice:"380:"}}</span>
+                            <span id="more2">{{ object.study_area |slice:"380:"}}</span>
                             <button id="btn2" onclick="myFunction2()"><i class="fas fa-chevron-right"></i></button>
                         </div>
                     </div>
@@ -178,9 +178,9 @@ RBA Case Study
                             <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "policy_objectives" %}</h6>
                         </div>
                         <div class="card-body"> 
-                            {{ object.policy_objectives | richtext  |slice:":380" }}
+                            {{ object.policy_objectives  |slice:":380" }}
                             <span id="dots3">...</span>
-                            <span id="more3">{{ object.policy_objectives | richtext |slice:"380:"}}</span>
+                            <span id="more3">{{ object.policy_objectives |slice:"380:"}}</span>
                             <button id="btn3" onclick="myFunction3()"><i class="fas fa-chevron-right"></i></button>
                         </div>
                     </div>
@@ -190,7 +190,7 @@ RBA Case Study
                             <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "ecosystem_services" %}</h6>
                         </div>
                         <div class="card-body">
-                            <p>{{object.ecosystem_services| richtext }}</p>
+                            <p>{{object.ecosystem_services }}</p>
                         </div>
                     </div> 
                     <!-- 1.4 -->
@@ -198,8 +198,11 @@ RBA Case Study
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "future_scenarios" %}</h6>
                         </div>
-                        <div class="card-body">
-                            <p>{{ future_scenarios | richtext }} </p>
+                        <div class="card-body"> 
+                            {{ object.future_scenarios |slice:":380" }}
+                            <span id="dots6">...</span>
+                            <span id="more6">{{ object.future_scenarios |slice:"380:"}}</span>
+                            <button id="btn6" onclick="myFunction3()"><i class="fas fa-chevron-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -249,9 +252,9 @@ RBA Case Study
                                 <h6 class="m-0 font-weight-bold text-primary">Description of th Present Conditions</h6>
                             </div>
                             <div class="card-body"> 
-                                {{ i.description | richtext  |slice:":380" }}
+                                {{ i.description  |slice:":380" }}
                                 <span id="dots4">...</span>
-                                <span id="more4">{{ i.description| richtext |slice:"380:"}}</span>
+                                <span id="more4">{{ i.description |slice:"380:"}}</span>
                                 <button id="btn4" onclick="myFunction4()"><i class="fas fa-chevron-right"></i></button>
                             </div>
                         </div>
@@ -261,9 +264,9 @@ RBA Case Study
                                 <h6 class="m-0 font-weight-bold text-primary">2.3 Define main pressures / effects</h6>
                             </div>
                             <div class="card-body"> 
-                                {{ i.main_pressures_effects | richtext  |slice:":380" }}
+                                {{ i.main_pressures_effects |slice:":380" }}
                                 <span id="dots5">...</span>
-                                <span id="more5">{{ i.main_pressures_effects| richtext |slice:"380:"}}</span>
+                                <span id="more5">{{ i.main_pressures_effects |slice:"380:"}}</span>
                                 <button id="btn5" onclick="myFunction5()"><i class="fas fa-chevron-right"></i></button>
                             </div>
                             <div class="card-body">
@@ -306,7 +309,7 @@ RBA Case Study
                                 <h6 class="m-0 font-weight-bold text-primary">2.4 Describe main sources of pressures / effects</h6>
                             </div>
                             <div class="card-body">
-                                <p>{{i.main_source_effects | richtext }}</p>
+                                <p>{{i.main_source_effects }}</p>
                             </div>
                             <div class="card-body">
                                 <h6 class="m-0 font-weight-medium text-primary">Uses</h6>

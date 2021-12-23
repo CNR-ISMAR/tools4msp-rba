@@ -57,3 +57,15 @@
     text-decoration: none;
     display: inline-block;
 }
+
+#more6 {
+    display: none;
+}
+#btn6 {
+    background-color: white;
+    border: none;
+    color: #4e73df ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
