@@ -62,6 +62,22 @@ function myFunction4() {
     }
 }
 
+function myFunction5() {
+    var dots5 = document.getElementById("dots5");
+    var moreText5 = document.getElementById("more5");
+    var btnText5 = document.getElementById("btn5");
+
+    if (dots5.style.display === "none") {
+        dots5.style.display = "inline";
+        btnText5.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText5.style.display = "none";
+    } else {
+        dots5.style.display = "none";
+        btnText5.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText5.style.display = "inline";
+    }
+}
+
 function myFunction6() {
     var dots6 = document.getElementById("dots6");
     var moreText6 = document.getElementById("more6");
@@ -75,5 +91,21 @@ function myFunction6() {
         dots6.style.display = "none";
         btnText6.innerHTML = "<i class='fas fa-chevron-left'></i>";
         moreText6.style.display = "inline";
+    }
+}
+
+function myFunction7() {
+    var dots7 = document.getElementById("dots7");
+    var moreText7 = document.getElementById("more7");
+    var btnText7 = document.getElementById("btn7");
+
+    if (dots7.style.display === "none") {
+        dots7.style.display = "inline";
+        btnText7.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText7.style.display = "none";
+    } else {
+        dots7.style.display = "none";
+        btnText7.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText7.style.display = "inline";
     }
 }
