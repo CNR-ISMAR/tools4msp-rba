@@ -27,6 +27,7 @@ class CSAdmin(ModelAdmin):
     FieldPanel("es_type"),
     FieldPanel("study_area"),
     FieldPanel("policy_objectives"),
+    InlinePanel("polobj_objects"),
     FieldPanel("ecosystem_services"),
     FieldPanel("future_scenarios"),
     FieldPanel("phase2", widget=forms.CheckboxSelectMultiple),

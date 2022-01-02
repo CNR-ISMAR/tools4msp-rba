@@ -47,7 +47,7 @@ class CSphase2(ClusterableModel):
         return self.title
 
 # case study model and Phase 1
-class CS(models.Model): 
+class CS(ClusterableModel): 
     title = models.CharField(max_length=400, blank=True, null=False)
     description = models.TextField ( null=True, blank=True)
     image = models.ForeignKey(
@@ -67,6 +67,7 @@ class CS(models.Model):
 
     policy_objectives = models.TextField( null=True, blank=True, 
         verbose_name= "1.2 Define Policy objectives")
+    
 
     ecosystem_services = models.TextField( null=True, blank=True, 
         verbose_name= "1.3 Define core Ecosystem Services")
@@ -123,8 +124,7 @@ class Phase2Pressures(Orderable):
     def __str__(self):
         #return self.phase_2.title
         return self.pressure_list.label
-
-    
+  
 class Phase2uses(Orderable): 
     phase_2 = ParentalKey(CSphase2, related_name='phase2uses_objects')
     use_list = models.ForeignKey(Use, on_delete=models.CASCADE)
@@ -132,3 +132,8 @@ class Phase2uses(Orderable):
 class Phase2envs(models.Model): 
     phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
     env_list = models.ForeignKey(Env, on_delete=models.CASCADE)
+
+class PolicyObjectives(Orderable):
+    phase_1 = ParentalKey(CS, related_name='polobj_objects')
+    polobj = models.TextField ( null=True, blank=True,
+        verbose_name= "Policy Objective")
