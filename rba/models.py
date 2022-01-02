@@ -128,6 +128,16 @@ class Phase2Pressures(Orderable):
 class Phase2uses(Orderable): 
     phase_2 = ParentalKey(CSphase2, related_name='phase2uses_objects')
     use_list = models.ForeignKey(Use, on_delete=models.CASCADE)
+    use_type = MultiSelectField(
+        choices= enumerations.USE_TYPE_CHOICE,
+        max_choices=1,
+        null=True,
+        blank=True,
+    )
+    use_description = RichTextField( null=True, blank=True, 
+        verbose_name= "Description")
+    layer = models.URLField(max_length=600,blank=True, null=True)
+
 
 class Phase2envs(models.Model): 
     phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
