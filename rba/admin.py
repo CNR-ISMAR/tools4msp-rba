@@ -30,6 +30,7 @@ class CSAdmin(ModelAdmin):
     InlinePanel("polobj_objects"),
     FieldPanel("ecosystem_services"),
     FieldPanel("future_scenarios"),
+    InlinePanel("futscen_objects"),
     FieldPanel("phase2", widget=forms.CheckboxSelectMultiple),
     ] 
 modeladmin_register(CSAdmin)

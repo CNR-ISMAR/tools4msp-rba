@@ -183,7 +183,6 @@ RBA Case Study
                             <span id="more3">{{ object.policy_objectives |slice:"380:"}}</span>
                             <button id="btn3" onclick="myFunction3()"><i class="fas fa-chevron-right"></i></button>
                         </div>
-                        
                         <div class="card-body">
                             <h6 class="m-0 font-weight-medium text-primary">Policy Objectives</h6>
                             {% for i in object.polobj_objects.all %}
@@ -210,6 +209,7 @@ RBA Case Study
                             {% endfor %}
                         </div>
                         
+                        
                     </div>
                     <!-- 1.3 -->
                     <div class="card shadow mb-4">
@@ -229,7 +229,32 @@ RBA Case Study
                             {{ object.future_scenarios |slice:":380" }}
                             <span id="dots6">...</span>
                             <span id="more6">{{ object.future_scenarios |slice:"380:"}}</span>
-                            <button id="btn6" onclick="myFunction3()"><i class="fas fa-chevron-right"></i></button>
+                            <button id="btn6" onclick="myFunction6()"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="m-0 font-weight-medium text-primary">Future Scenarios</h6>
+                            {% for i in object.futscen_objects.all %}
+                                <ol class="list-group list-group-numbered">
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">
+                                            <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                                                aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                                <i class="fa fa-plus-square"></i> -->
+                                                <span>{{ i.future_scen }}</span>
+                                            <!-- </a> -->
+                                        </div>
+                                        <!-- <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                            <div class="bg-black py-2 collapse-inner rounded">
+                                                <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>
+                                                <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
+                                    </li>
+                                </ol>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -335,8 +360,11 @@ RBA Case Study
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">2.4 Describe main sources of pressures / effects</h6>
                             </div>
-                            <div class="card-body">
-                                <p>{{i.main_source_effects }}</p>
+                            <div class="card-body"> 
+                                {{ i.main_source_effects |slice:":380" }}
+                                <span id="dots7">...</span>
+                                <span id="more7">{{ i.main_source_effects |slice:"380:"}}</span>
+                                <button id="btn7" onclick="myFunction7()"><i class="fas fa-chevron-right"></i></button>
                             </div>
                             <div class="card-body">
                                 <h6 class="m-0 font-weight-medium text-primary">Uses</h6>
