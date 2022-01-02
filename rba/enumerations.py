@@ -10,3 +10,8 @@ PRESSURE_TYPE_CHOICE = (
     ('main', _('Main Pressure')),
     ('bg', _('Background Pressure')),
 )
+
+USE_TYPE_CHOICE = (
+    ('main', _('Main Use')),
+    ('sec', _('Secondary Use')),
+)
