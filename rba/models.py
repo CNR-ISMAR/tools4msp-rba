@@ -147,6 +147,8 @@ class PolicyObjectives(Orderable):
     phase_1 = ParentalKey(CS, related_name='polobj_objects')
     polobj = models.TextField ( null=True, blank=True,
         verbose_name= "Policy Objective")
+    polobj_desc = models.TextField ( null=True, blank=True,
+        verbose_name= "Policy Objective Description")
 
 class FutureScenarios(Orderable):
     phase_1 = ParentalKey(CS, related_name='futscen_objects')
