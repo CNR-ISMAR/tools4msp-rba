@@ -152,3 +152,5 @@ class FutureScenarios(Orderable):
     phase_1 = ParentalKey(CS, related_name='futscen_objects')
     future_scen = models.TextField ( null=True, blank=True,
         verbose_name= "Future Scenarios")
+    future_scen_desc = models.TextField ( null=True, blank=True,
+        verbose_name= "Scenario Description")
