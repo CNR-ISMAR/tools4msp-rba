@@ -4,7 +4,7 @@ from wagtail.contrib.modeladmin.options import (
     modeladmin_register,
 )
 from django import forms
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, FieldRowPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from .models import (CS, CSphase2, Phase2Pressures
 )
@@ -58,5 +58,8 @@ class CSphase2Admin(ModelAdmin):
     FieldPanel("main_environmental_responses"),
     InlinePanel("phase2env_objects"),
     #FieldPanel("env_list", widget=forms.CheckboxSelectMultiple),
-    ] 
+    FieldPanel("impact_chain"),
+    InlinePanel("path_objects"),
+    ]
+    
 modeladmin_register(CSphase2Admin)
