@@ -56,6 +56,7 @@ class CSphase2Admin(ModelAdmin):
     InlinePanel("phase2uses_objects"),
     #FieldPanel("use_list", widget=forms.CheckboxSelectMultiple),
     FieldPanel("main_environmental_responses"),
-    FieldPanel("env_list", widget=forms.CheckboxSelectMultiple),
+    InlinePanel("phase2env_objects"),
+    #FieldPanel("env_list", widget=forms.CheckboxSelectMultiple),
     ] 
 modeladmin_register(CSphase2Admin)

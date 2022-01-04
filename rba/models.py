@@ -139,9 +139,11 @@ class Phase2uses(Orderable):
     layer = models.URLField(max_length=600,blank=True, null=True)
 
 
-class Phase2envs(models.Model): 
-    phase_2 = models.ForeignKey(CSphase2, on_delete=models.CASCADE)
+class Phase2envs(Orderable): 
+    phase_2 = ParentalKey(CSphase2, related_name='phase2env_objects')
     env_list = models.ForeignKey(Env, on_delete=models.CASCADE)
+    env_description = RichTextField( null=True, blank=True, 
+        verbose_name= "Description")
 
 class PolicyObjectives(Orderable):
     phase_1 = ParentalKey(CS, related_name='polobj_objects')
