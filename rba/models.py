@@ -40,7 +40,7 @@ class CSphase2(ClusterableModel):
     env_list = models.ManyToManyField(Env, through='Phase2envs', blank=True,
         verbose_name= "Environmental Components")
 
-    impact_chain = RichTextField( null=True, blank=True, 
+    impact_chain = models.TextField( null=True, blank=True, 
         verbose_name= "2.6 Source / Pressure / Pathway / Receptor Relationships")
     
     def __str__(self):
