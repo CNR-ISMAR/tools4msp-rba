@@ -125,3 +125,19 @@ function myFunction8() {
         moreText8.style.display = "inline";
     }
 }
+
+function myFunction8() {
+    var dots9 = document.getElementById("dots9");
+    var moreText9 = document.getElementById("more9");
+    var btnText9 = document.getElementById("btn9");
+
+    if (dots9.style.display === "none") {
+        dots9.style.display = "inline";
+        btnText9.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText9.style.display = "none";
+    } else {
+        dots9.style.display = "none";
+        btnText9.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText9.style.display = "inline";
+    }
+}

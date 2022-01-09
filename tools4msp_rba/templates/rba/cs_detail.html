@@ -97,16 +97,16 @@ RBA Case Study
     <div class="row">
 
         <!-- Map -->
-        <div class="col-xl-7 col-lg-7">
-            <div class="card shadow mb-4" style="height: 30rem">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card shadow mb-4" >
                 <!-- Mappa - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Map of the area</h6>   
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
+                <div class="card-body" style="padding: 0rem !important; height: 33rem;">
                     <div class="chart-area">
-                        <iframe class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:70rem; height: 23rem; border:0ch"  src="{{ object.map_embed_url}}"></iframe>
+                        <iframe class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:inherit; height: 33rem; border:0ch; margin: 0rem !important; padding: 0rem !important"  src="{{ object.map_embed_url}}"></iframe>
                     </div>
                 </div>
             </div>
@@ -114,7 +114,8 @@ RBA Case Study
 
         </div>
         
-        <div class="col-xl-5 col-lg-3">
+        <!-- Pilot Site -->
+        <!-- <div class="col-xl-5 col-lg-3">
 
             <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -125,7 +126,7 @@ RBA Case Study
                     </div>
             </div>
             
-        </div>
+        </div> -->
         
 
     </div>
@@ -429,7 +430,44 @@ RBA Case Study
                                 {% endfor %}
                             </div>
                         </div>
-                        
+
+                        <!-- 2.6 -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">2.6 Source / Pressure / Pathway / Receptor Relationships</h6>
+                            </div>
+                            <div class="card-body"> 
+                                {{ i.impact_chain |slice:":380" }}
+                                <span id="dots9">...</span>
+                                <span id="more9">{{ i.impact_chain |slice:"380:"}}</span>
+                                <button id="btn9" onclick="myFunction9()"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <!-- <div class="card-body">
+                                <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
+                                {% for t in i.phase2env_objects.all %}
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            <div class="fw-bold">
+                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                                                    aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                                    <i class="fa fa-plus-square"></i>
+                                                    <span>{{ t.env_list.label }}</span>
+                                                </a>
+                                            </div>
+                                            <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                <div class="bg-black py-2 collapse-inner rounded">
+                                                    <p class="collapse-item ">{{ t.env_description | richtext }}</p>
+                                                    <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="badge bg-light">{{ t.use_type }}</span>
+                                        </li>
+                                    </ol>
+                                {% endfor %}
+                            </div> -->
+                        </div>
 
 
 

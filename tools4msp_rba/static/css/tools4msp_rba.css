@@ -93,3 +93,15 @@
     text-decoration: none;
     display: inline-block;
 }
+
+#more9 {
+    display: none;
+}
+#btn9 {
+    background-color: white;
+    border: none;
+    color: #4e73df ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
