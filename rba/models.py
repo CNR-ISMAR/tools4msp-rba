@@ -34,7 +34,7 @@ class CSphase2(ClusterableModel):
     use_list = models.ManyToManyField(Use, through='Phase2uses', blank=True,
         verbose_name= "Uses")
     
-    main_environmental_responses = RichTextField( null=True, blank=True, 
+    main_environmental_responses = models.TextField( null=True, blank=True, 
         verbose_name= "2.5 Describe main environmental responses")
     
     env_list = models.ManyToManyField(Env, through='Phase2envs', blank=True,

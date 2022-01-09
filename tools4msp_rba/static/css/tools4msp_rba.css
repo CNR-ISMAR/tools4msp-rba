@@ -81,3 +81,15 @@
     text-decoration: none;
     display: inline-block;
 }
+
+#more8 {
+    display: none;
+}
+#btn8 {
+    background-color: white;
+    border: none;
+    color: #4e73df ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}

@@ -109,3 +109,19 @@ function myFunction7() {
         moreText7.style.display = "inline";
     }
 }
+
+function myFunction8() {
+    var dots8 = document.getElementById("dots8");
+    var moreText8 = document.getElementById("more8");
+    var btnText8 = document.getElementById("btn8");
+
+    if (dots8.style.display === "none") {
+        dots8.style.display = "inline";
+        btnText8.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText8.style.display = "none";
+    } else {
+        dots8.style.display = "none";
+        btnText8.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText8.style.display = "inline";
+    }
+}
