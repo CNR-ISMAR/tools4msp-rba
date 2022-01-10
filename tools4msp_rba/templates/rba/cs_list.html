@@ -14,53 +14,32 @@ Case Studies List
     </div>
 
     <!-- Content Row -->
-    <div class="row">
-        <!-- Content Column -->
-        <div class="col-lg-5 mb-4">
+    <div class="row" >
+        <div class="col-12 container">
+            
             <!-- Case Studies -->
-            {% for cs in object_list %}
-                <a style="display:block" target="_blank" rel="nofollow" href="{% url 'cs-view' cs.id %}">
-                    
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">{{ cs.title }}</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="text-center">
-                            
-                                <div class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;">
-                                    {% image cs.image width-550%}
+                <div  class="row">
+                    {% for cs in object_list %}
+                    <div class="col-6">
+                        <a style="display:block" target="_blank" rel="nofollow" href="{% url 'cs-view' cs.id %}">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">{{ cs.title }}</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <div class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;">
+                                            {% image cs.image width-550%}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </a>
-                            <p> {{ cs.description |richtext | truncatechars:100}}</p>
-                        </div>
                     </div>
-                
-            {% endfor %}
-        </div>
-        <div class="col-lg-7 mb-4">
-            <!-- Map -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Una Mappa Embed di tutta l'area</h6>
+                    {% endfor %}
                 </div>
-                <div class="card-body">
-                    <div class="text-center">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 70rem;"
-                            src="http://127.0.0.1:8000/media/images/area.original.png" alt="">
-                    </div>
-                    <p>descrizione dell'area di studio ecc  <a
-                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                        constantly updated collection of beautiful svg images that you can use
-                        completely free and without attribution! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo cumque eligendi placeat quam rem consequuntur, voluptates exercitationem id praesentium quas assumenda vitae laudantium architecto necessitatibus repudiandae, perspiciatis quis consectetur debitis Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aut, nesciunt provident quidem maiores dicta doloribus excepturi nulla optio commodi illum! Officia natus amet nam modi voluptatem dolorem cum quidem..</p>
-                    <div class="text-center">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 70rem;"
-                            src="http://127.0.0.1:8000/media/images/area.original.png" alt="">
-                    </div>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Link alla mappa grande &rarr;</a>
-                </div>
-            </div>
+
         </div>
     </div>
+    
 {% endblock %}
