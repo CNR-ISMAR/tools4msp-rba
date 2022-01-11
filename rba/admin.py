@@ -59,7 +59,8 @@ class CSphase2Admin(ModelAdmin):
     InlinePanel("phase2env_objects"),
     #FieldPanel("env_list", widget=forms.CheckboxSelectMultiple),
     FieldPanel("impact_chain"),
-    InlinePanel("path_objects"),
+    InlinePanel("pathup_objects"),
+    InlinePanel("pathpe_objects")
     ]
     
 modeladmin_register(CSphase2Admin)
