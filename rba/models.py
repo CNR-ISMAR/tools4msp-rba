@@ -118,6 +118,7 @@ class Phase2Pressures(Orderable):
     )
     pressure_description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")
+    data_source = models.URLField(max_length=600,blank=True, null=True)
     layer = models.URLField(max_length=600,blank=True, null=True)
    
 
