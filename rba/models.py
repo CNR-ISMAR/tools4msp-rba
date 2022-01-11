@@ -160,8 +160,13 @@ class FutureScenarios(Orderable):
     future_scen_desc = models.TextField ( null=True, blank=True,
         verbose_name= "Scenario Description")
 
-class Path(Orderable):
-    phase_2 = ParentalKey(CSphase2, related_name='path_objects')
+class Path_use_pres(Orderable):
+    phase_2 = ParentalKey(CSphase2, related_name='pathup_objects')
     use_list = models.ForeignKey(Use, on_delete=models.CASCADE)
+    pressure_list = models.ForeignKey(Pressure, on_delete=models.CASCADE)
+    
+
+class Path_pres_env(Orderable):
+    phase_2 = ParentalKey(CSphase2, related_name='pathpe_objects')
     pressure_list = models.ForeignKey(Pressure, on_delete=models.CASCADE)
     env_list = models.ForeignKey(Env, on_delete=models.CASCADE)
