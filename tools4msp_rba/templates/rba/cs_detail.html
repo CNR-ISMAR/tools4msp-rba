@@ -103,7 +103,6 @@ RBA Case Study
     <!-- Content Row -->
 
     <div class="row">
-
         <!-- Map -->
         <div class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4" >
@@ -121,23 +120,8 @@ RBA Case Study
             
 
         </div>
-        
-        <!-- Pilot Site -->
-        <!-- <div class="col-xl-5 col-lg-3">
-
-            <div class="card shadow mb-4">
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Pilot Site</h6>   
-                    </div>
-                    <div class="text-center">
-                        {% image object.image width-580 %}
-                    </div>
-            </div>
-            
-        </div> -->
-        
-
     </div>
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Descrizione Generale del CS</h6>
@@ -163,11 +147,10 @@ RBA Case Study
                 </div>
             </div>
         </div>
-        <!-- left column phase1 -->
-        <div class="col-lg-7 mb-4">
-           
-            <div class="row">
-                 
+
+        <div  class="row justify-content-around">
+            <!-- left column phase1.1 -->
+            <div class="col-lg-6 mb-4">   
                 <div class="col-lg-12 mb-4">
                     <!-- 1.1 -->
                     <div class="card shadow mb-4">
@@ -180,46 +163,57 @@ RBA Case Study
                             <span id="more2">{{ object.study_area |slice:"380:"}}</span>
                             <button id="btn2" onclick="myFunction2()"><i class="fas fa-chevron-right"></i></button>
                         </div>
+                    </div>                
+                </div>
+            </div>
+            <!-- right column phase1.2 -->
+            <div class="col-lg-6 mb-4">
+                <!-- 1.2 -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "policy_objectives" %}</h6>
                     </div>
-                    <!-- 1.2 -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "policy_objectives" %}</h6>
-                        </div>
-                        <div class="card-body"> 
-                            {{ object.policy_objectives  |slice:":380" }}
-                            <span id="dots3">...</span>
-                            <span id="more3">{{ object.policy_objectives |slice:"380:"}}</span>
-                            <button id="btn3" onclick="myFunction3()"><i class="fas fa-chevron-right"></i></button>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="m-0 font-weight-medium text-primary">Policy Objectives</h6>
-                            {% for i in object.polobj_objects.all %}
-                                <ol class="list-group list-group-numbered">
-                                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">
-                                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                                aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
-                                                <i class="fa fa-plus-square"></i>
-                                                <span>{{ i.polobj }}</span>
-                                            </a>
-                                        </div>
-                                        <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                            <div class="bg-black py-2 collapse-inner rounded">
-                                                <p class="collapse-item ">{{ i.polobj_desc }}</p>
-                                                <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
-                                            </div>
+                    <div class="card-body"> 
+                        {{ object.policy_objectives  |slice:":380" }}
+                        <span id="dots3">...</span>
+                        <span id="more3">{{ object.policy_objectives |slice:"380:"}}</span>
+                        <button id="btn3" onclick="myFunction3()"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="m-0 font-weight-medium text-primary">Policy Objectives</h6>
+                        {% for i in object.polobj_objects.all %}
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                                            aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                            <i class="fa fa-plus-square"></i>
+                                            <span>{{ i.polobj }}</span>
+                                        </a>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                        <div class="bg-black py-2 collapse-inner rounded">
+                                            <p class="collapse-item ">{{ i.polobj_desc }}</p>
+                                            <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
                                         </div>
                                     </div>
-                                    <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
-                                    </li>
-                                </ol>
-                            {% endfor %}
-                        </div>
-                        
-                        
+                                </div>
+                                <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
+                                </li>
+                            </ol>
+                        {% endfor %}
                     </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div  class="row justify-content-around">
+            <!-- left column phase1.3 -->
+            <div class="col-lg-6 mb-4">
+                <div class="col-lg-12 mb-4">  
                     <!-- 1.3 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -228,67 +222,52 @@ RBA Case Study
                         <div class="card-body">
                             <p>{{object.ecosystem_services }}</p>
                         </div>
-                    </div> 
-                    <!-- 1.4 -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "future_scenarios" %}</h6>
-                        </div>
-                        <div class="card-body"> 
-                            {{ object.future_scenarios |slice:":380" }}
-                            <span id="dots6">...</span>
-                            <span id="more6">{{ object.future_scenarios |slice:"380:"}}</span>
-                            <button id="btn6" onclick="myFunction6()"><i class="fas fa-chevron-right"></i></button>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="m-0 font-weight-medium text-primary">Future Scenarios</h6>
-                            {% for i in object.futscen_objects.all %}
-                                <ol class="list-group list-group-numbered">
-                                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">
-                                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                                aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
-                                                <i class="fa fa-plus-square"></i>
-                                                <span>{{ i.future_scen }}</span>
-                                            </a>
-                                        </div>
-                                        <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                            <div class="bg-black py-2 collapse-inner rounded">
-                                                <p class="collapse-item ">{{ i.future_scen_desc }}</p>
-                                                <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
-                                            </div>
+                    </div>     
+                </div>
+            </div>
+            <!-- right column phase1.4 -->
+            <div class="col-lg-6 mb-4">
+                <!-- 1.4 -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "future_scenarios" %}</h6>
+                    </div>
+                    <div class="card-body"> 
+                        {{ object.future_scenarios |slice:":380" }}
+                        <span id="dots6">...</span>
+                        <span id="more6">{{ object.future_scenarios |slice:"380:"}}</span>
+                        <button id="btn6" onclick="myFunction6()"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="m-0 font-weight-medium text-primary">Future Scenarios</h6>
+                        {% for i in object.futscen_objects.all %}
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                                            aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                            <i class="fa fa-plus-square"></i>
+                                            <span>{{ i.future_scen }}</span>
+                                        </a>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                        <div class="bg-black py-2 collapse-inner rounded">
+                                            <p class="collapse-item ">{{ i.future_scen_desc }}</p>
+                                            <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
                                         </div>
                                     </div>
-                                    <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
-                                    </li>
-                                </ol>
-                            {% endfor %}
-                        </div>
+                                </div>
+                                <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
+                                </li>
+                            </ol>
+                        {% endfor %}
                     </div>
                 </div>
+
+
             </div>
         </div>
-        <!-- right column phase1 -->
-        <div class="col-lg-5 mb-4">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">EEA classification for Marine Ecosystem Services</h6>
-                </div>
-                <div class="card-body">
-                    {% for i in object.es_type %}
-                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-                            </svg> {{ i }}
-                        </p> <br>
-                    {% endfor %}                
-                </div>
-            </div>
-
-
-        </div>
-
-        
         <!-- Phase2 -->
         <div class="col-lg-12 mb-4">
             <div class="card bg-success text-white shadow">
