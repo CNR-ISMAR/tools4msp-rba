@@ -8,6 +8,12 @@ from wagtail.core.fields import RichTextField
 from multiselectfield import MultiSelectField
 from rba import enumerations
 from tools4msp.models import Pressure, Use, Env
+import numpy as np
+import pandas as pd
+import plotly
+import plotly.express as px
+import plotly.graph_objs as go
+import networkx as nx
 
 #phase2
 class CSphase2(ClusterableModel):
@@ -45,6 +51,161 @@ class CSphase2(ClusterableModel):
     
     def __str__(self):
         return self.title
+
+    def _graph(self):
+        phase = self
+    
+        up_data = [[up.use_list.label, up.pressure_list.label] for up in phase.pathup_objects.all()]
+        pe_data = [[pe.pressure_list.label, pe.env_list.label, pe.env_list.label] for pe in phase.pathpe_objects.all()]
+        data = []
+        for up in  up_data:
+            getted = False
+            for pe in pe_data:
+                if up[1] == pe[0]:
+                    data.append([up[0], up[1], pe[1]])
+                    getted = True
+            if not getted:
+                data.append([up[0], up[1], None])
+                                    
+        df = pd.DataFrame(data, columns=['Sources', 'Pressures', 'Receptors'])
+        fig = px.parallel_categories(df,
+                                     # color=df.index,
+                                     dimensions=['Sources', 'Pressures', 'Receptors'],
+                                     #layout=my_layout
+        )
+        fig.update_layout(showlegend=False)
+
+        plt_div = plotly.offline.plot(fig, output_type='div')
+        return plt_div
+
+    def graph(self):
+        phase = self
+        up_edges = [[up.use_list.code, up.pressure_list.code] for up in phase.pathup_objects.all()]
+        pe_edges = [[pe.pressure_list.code, pe.env_list.code] for pe in phase.pathpe_objects.all()]
+        _u = [(up.use_list.code, up.use_list.label) for up in phase.pathup_objects.all()]
+        _p1 = [(up.pressure_list.code, up.pressure_list.label) for up in phase.pathup_objects.all()]
+        _p2 = [(pe.pressure_list.code, pe.pressure_list.label) for pe in phase.pathpe_objects.all()]
+        _e = [(pe.env_list.code, pe.env_list.label) for pe in phase.pathpe_objects.all()]
+        u_nodes = list(set(_u))
+        p_nodes = list(set(_p1 + _p2))
+        e_nodes = list(set(_e))
+
+        pos = dict()
+        pos.update( (node[0], (1, i)) for i, node in enumerate(u_nodes) ) # put nodes from X at x=1
+        pos.update( (node[0], (2, i)) for i, node in enumerate(p_nodes) ) # put nodes from Y at x=2
+        pos.update( (node[0], (3, i)) for i, node in enumerate(e_nodes) ) # put nodes from X at x=1
+
+        edge_x = []
+        edge_y = []
+        for edge in up_edges + pe_edges:
+            x0, y0 = pos[edge[0]]
+            x1, y1 = pos[edge[1]]
+            edge_x.append(x0)
+            edge_x.append(x1)
+            edge_x.append(None)
+            edge_y.append(y0)
+            edge_y.append(y1)
+            edge_y.append(None)
+
+        edge_trace = go.Scatter(
+            x=edge_x, y=edge_y,
+            line=dict(width=0.5, color='#888'),
+            hoverinfo='none',
+            mode='lines')
+
+        node_x = []
+        node_y = []
+        node_code = []
+        node_label = []
+        for node in u_nodes + p_nodes + e_nodes:
+            x, y = pos[node[0]]
+            node_x.append(x)
+            node_y.append(y)
+            node_code.append(node[0])
+            node_label.append(node[1])
+            
+        node_trace = go.Scatter(
+            x=node_x, y=node_y,
+            text=node_code,
+            customdata=np.expand_dims(node_label, axis=1),
+            hovertemplate='<b>%{customdata[0]}</b>',
+            mode='markers+text',
+            textposition="top center",
+            marker=dict(color='#000'),
+            # hoverinfo='text',
+            # marker=dict(
+            #     # showscale=True,
+            #     # colorscale options
+            #     #'Greys' | 'YlGnBu' | 'Greens' | 'YlOrRd' | 'Bluered' | 'RdBu' |
+            #     #'Reds' | 'Blues' | 'Picnic' | 'Rainbow' | 'Portland' | 'Jet' |
+            #                                 #'Hot' | 'Blackbody' | 'Earth' | 'Electric' | 'Viridis' |
+            #     colorscale='YlGnBu',
+            #     reversescale=True,
+            #     color=[],
+            #     size=10,
+            #     # colorbar=dict(
+            #     #     thickness=15,
+            #     #     title='Node Connections',
+            #     #     xanchor='left',
+            #     #     titleside='right'
+            #     # ),
+            #     line_width=2)
+        )
+
+        # Headers
+        headers_y = max(node_y) + 1
+        header_trace = go.Scatter(
+            x=[1, 2, 3], y=[headers_y, headers_y, headers_y],
+            text=['Sources', 'Pressures', 'Receptors'],
+            # customdata=np.expand_dims(node_label, axis=1),
+            # hovertemplate='<b>%{customdata[0]}</b>',
+            mode='text',
+            textposition="top center",
+            textfont=dict(
+                family="sans serif",
+                size=18,
+                color="crimson"
+            )
+            
+            # marker=dict(color='#000')
+            # hoverinfo='text',
+            # marker=dict(
+            #     # showscale=True,
+            #     # colorscale options
+            #     #'Greys' | 'YlGnBu' | 'Greens' | 'YlOrRd' | 'Bluered' | 'RdBu' |
+            #     #'Reds' | 'Blues' | 'Picnic' | 'Rainbow' | 'Portland' | 'Jet' |
+            #                                 #'Hot' | 'Blackbody' | 'Earth' | 'Electric' | 'Viridis' |
+            #     colorscale='YlGnBu',
+            #     reversescale=True,
+            #     color=[],
+            #     size=10,
+            #     # colorbar=dict(
+            #     #     thickness=15,
+            #     #     title='Node Connections',
+            #     #     xanchor='left',
+            #     #     titleside='right'
+            #     # ),
+            #     line_width=2)
+        )
+
+        config={
+            'modeBarButtonsToRemove': ['zoom', 'pan', 'select', 'zoomIn', 'zoomOut', 'autoScale', 'resetScale', 'lasso2d', ],
+            'displaylogo': False
+        }
+        fig = go.Figure(data=[edge_trace, node_trace, header_trace],
+                        layout=go.Layout(
+                            showlegend=False,
+                            hovermode='closest',
+                            margin=dict(b=20,l=5,r=5,t=40),
+                            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                            paper_bgcolor='rgba(0,0,0,0)',
+                            plot_bgcolor='rgba(0,0,0,0)'
+                        ),
+        )
+        plt_div = plotly.offline.plot(fig, output_type='div', config=config)
+        return plt_div
+        
 
 # case study model and Phase 1
 class CS(ClusterableModel): 
