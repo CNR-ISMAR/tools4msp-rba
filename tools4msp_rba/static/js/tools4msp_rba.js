@@ -126,7 +126,7 @@ function myFunction8() {
     }
 }
 
-function myFunction8() {
+function myFunction9() {
     var dots9 = document.getElementById("dots9");
     var moreText9 = document.getElementById("more9");
     var btnText9 = document.getElementById("btn9");
@@ -139,5 +139,21 @@ function myFunction8() {
         dots9.style.display = "none";
         btnText9.innerHTML = "<i class='fas fa-chevron-left'></i>";
         moreText9.style.display = "inline";
+    }
+}
+
+function myFunction10() {
+    var dots10 = document.getElementById("dots10");
+    var moreText10 = document.getElementById("more10");
+    var btnText10 = document.getElementById("btn10");
+
+    if (dots10.style.display === "none") {
+        dots10.style.display = "inline";
+        btnText10.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText10.style.display = "none";
+    } else {
+        dots10.style.display = "none";
+        btnText10.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText10.style.display = "inline";
     }
 }

@@ -16,7 +16,7 @@ Case Studies List
         <div class="col-12 container ">
             <!-- Case Studies -->
             <div  class="row justify-content-around">
-                {% for cs in object_list %}
+                {% for cs in object_list|dictsort:"title" %}
                     <div class="col-5">
                         <a style="display:block" target="_blank" rel="nofollow" href="{% url 'cs-view' cs.id %}">
                             <div class="card shadow mb-4">

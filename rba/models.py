@@ -21,7 +21,7 @@ class CSphase2(ClusterableModel):
     description = models.TextField( null=True, blank=True)
 
     condition_type = MultiSelectField(
-        choices= enumerations.CONDITION_CHIOICE,
+        choices= enumerations.CONDITION_CHOICE,
         max_choices=1,
         null=True,
         blank=True,
@@ -233,24 +233,8 @@ class CS(ClusterableModel):
     ecosystem_services = models.TextField( null=True, blank=True, 
         verbose_name= "1.3 Define core Ecosystem Services")
 
-    MONITORING_PROGRAM = "Monitoring program"
-    PORTAL = "Portal"
-    MAP = "Map"
-    DATASET = "Dataset"
-    DATASOURCE = "Data Source"
-    OTHER = "Other"
-    
-    ES_TYPE_CHOICES = [
-        (MONITORING_PROGRAM, 'Monitoring program'),
-        (PORTAL, 'Portal'),
-        (MAP, 'Map'), 
-        (DATASET, 'Dataset'),
-        (DATASOURCE, 'Data Source'),
-        (OTHER, 'Other')
-    ]
-    
-    es_type = MultiSelectField(choices= ES_TYPE_CHOICES,
-        max_choices=5,
+    es_type = MultiSelectField(
+        choices= enumerations.ES_TYPE_CHOICE,
         null=True,
         blank=True,
     )

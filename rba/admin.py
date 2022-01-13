@@ -24,7 +24,7 @@ class CSAdmin(ModelAdmin):
     FieldPanel("description"),
     ImageChooserPanel("image"),
     FieldPanel("map_embed_url"),
-    FieldPanel("es_type"),
+    FieldPanel("es_type", widget=forms.CheckboxSelectMultiple),
     FieldPanel("study_area"),
     FieldPanel("policy_objectives"),
     InlinePanel("polobj_objects"),
