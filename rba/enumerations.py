@@ -13,7 +13,12 @@ PRESSURE_TYPE_CHOICE = (
 
 USE_TYPE_CHOICE = (
     ('main', _('Main Use')),
-    ('sec', _('Secondary Use')),
+    ('sec', _('Background Use')),
+)
+
+ENV_TYPE_CHOICE = (
+    ('main', _('Main Environmental Component')),
+    ('sec', _('Background Environmental Component')),
 )
 
 ES_TYPE_CHOICE =(

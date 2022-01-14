@@ -264,6 +264,8 @@ class Phase2Pressures(Orderable):
     pressure_description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")
     data_source = models.URLField(max_length=600,blank=True, null=True)
+    data_description = RichTextField( null=True, blank=True, 
+        verbose_name= "Data Source description")
     layer = models.URLField(max_length=600,blank=True, null=True)
    
 
@@ -282,14 +284,27 @@ class Phase2uses(Orderable):
     )
     use_description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")
+    data_source = models.URLField(max_length=600,blank=True, null=True)
+    data_description = RichTextField( null=True, blank=True, 
+        verbose_name= "Data Source description")
     layer = models.URLField(max_length=600,blank=True, null=True)
 
 
 class Phase2envs(Orderable): 
     phase_2 = ParentalKey(CSphase2, related_name='phase2env_objects')
     env_list = models.ForeignKey(Env, on_delete=models.CASCADE)
+    env_type = MultiSelectField(
+        choices= enumerations.ENV_TYPE_CHOICE,
+        max_choices=1,
+        null=True,
+        blank=True,
+    )
     env_description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")
+    data_source = models.URLField(max_length=600,blank=True, null=True)
+    data_description = RichTextField( null=True, blank=True, 
+        verbose_name= "Data Source description")
+    layer = models.URLField(max_length=600,blank=True, null=True)
 
 class PolicyObjectives(Orderable):
     phase_1 = ParentalKey(CS, related_name='polobj_objects')
