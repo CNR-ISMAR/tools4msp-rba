@@ -15,6 +15,7 @@ import plotly.express as px
 import plotly.graph_objs as go
 import networkx as nx
 
+
 #phase2
 class CSphase2(ClusterableModel):
     title = models.CharField(max_length=400, blank=True, null=False)
@@ -205,7 +206,11 @@ class CSphase2(ClusterableModel):
         )
         plt_div = plotly.offline.plot(fig, output_type='div', config=config)
         return plt_div
-        
+
+    #phase 3
+
+    mana_meas = models.TextField( null=True, blank=True, 
+        verbose_name= "3.2 Define Management Measures")
 
 # case study model and Phase 1
 class CS(ClusterableModel): 
@@ -306,6 +311,13 @@ class Phase2envs(Orderable):
         verbose_name= "Data Source description")
     layer = models.URLField(max_length=600,blank=True, null=True)
 
+class ManagementMeasures(Orderable):
+    phase_2 = ParentalKey(CSphase2, related_name='mana_meas_objects')
+    manameas = models.TextField ( null=True, blank=True,
+        verbose_name= "Management Measures")
+    manameas_desc = models.TextField ( null=True, blank=True,
+        verbose_name= "Management Measure Description")
+
 class PolicyObjectives(Orderable):
     phase_1 = ParentalKey(CS, related_name='polobj_objects')
     polobj = models.TextField ( null=True, blank=True,
@@ -334,3 +346,10 @@ class Path_pres_env(Orderable):
     env_list = models.ForeignKey(Env, on_delete=models.CASCADE)
     description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")
+
+class PolicyObjectives(Orderable):
+    phase_1 = ParentalKey(CS, related_name='polobj_objects')
+    polobj = models.TextField ( null=True, blank=True,
+        verbose_name= "Policy Objective")
+    polobj_desc = models.TextField ( null=True, blank=True,
+        verbose_name= "Policy Objective Description")
