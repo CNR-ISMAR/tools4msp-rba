@@ -65,8 +65,7 @@
                 <div class="sidebar-heading">
                     Case Studies
                 </div>
-
-                {% for cs in object_list %}
+                {% for cs in object_list|dictsort:"title" %}
                     <li class="nav-item ">
                         <a class="nav-link " href="{% url 'cs-view' cs.id %}">
                             <i class="fas fa-fw fa-map-marked-alt"></i>
