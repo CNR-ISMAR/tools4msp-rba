@@ -141,7 +141,7 @@ RBA Case Study
         <!-- Phase 1 panel-->
         <div class="col-lg-12 mb-4">
             <div class="card bg-primary text-white shadow">
-                <div id="phase_1"class="card-body">
+                <div id="phase_1" class="card-body">
                     Context
                     <div class="text-white-50 small">Phase 1</div>
                 </div>
@@ -186,13 +186,13 @@ RBA Case Study
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                     <div class="fw-bold">
-                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                            aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
+                                            aria-expanded="true" aria-controls="collapseTwo2" style="padding-left: 0px; color: #858796;">
                                             <i class="fa fa-plus-square"></i>
                                             <span>{{ i.polobj }}</span>
                                         </a>
                                     </div>
-                                    <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                    <div id="collapseTwo2" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                         <div class="bg-black py-2 collapse-inner rounded">
                                             <p class="collapse-item ">{{ i.polobj_desc }}</p>
                                             <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
@@ -232,13 +232,13 @@ RBA Case Study
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
                                         <div class="fw-bold">
-                                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                                aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo3"
+                                                aria-expanded="true" aria-controls="collapseTwo3" style="padding-left: 0px; color: #858796;">
                                                 <i class="fa fa-plus-square"></i>
                                                 <span>{{ i }}</span>
                                             </a>
                                         </div>
-                                        <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                        <div id="collapseTwo3" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                             <div class="bg-black py-2 collapse-inner rounded">
                                                 <p class="collapse-item ">{{ i.polobj_desc }}</p>
                                                 <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
@@ -273,13 +273,13 @@ RBA Case Study
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                     <div class="fw-bold">
-                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                            aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4"
+                                            aria-expanded="true" aria-controls="collapseTwo4" style="padding-left: 0px; color: #858796;">
                                             <i class="fa fa-plus-square"></i>
                                             <span>{{ i.future_scen }}</span>
                                         </a>
                                     </div>
-                                    <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                    <div id="collapseTwo4" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                         <div class="bg-black py-2 collapse-inner rounded">
                                             <p class="collapse-item ">{{ i.future_scen_desc }}</p>
                                             <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
@@ -344,16 +344,21 @@ RBA Case Study
                                         <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="ms-2 me-auto">
                                             <div class="fw-bold">
-                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                                    aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5"
+                                                    aria-expanded="true" aria-controls="collapseTwo5" style="padding-left: 0px; color: #858796;">
                                                     <i class="fa fa-plus-square"></i>
                                                     <span>{{ t.pressure_list.label }} - {{ t.pressure_list.code }}</span>
                                                 </a>
                                             </div>
-                                            <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                            <div id="collapseTwo5" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                                 <div class="bg-black py-2 collapse-inner rounded">
                                                     <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>
-                                                    <a target="_blank" rel="nofollow" href="{{ t.data_source }}">Link to Source &rarr;</a> <br>
+                                                    <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                        <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                            <i class="fas fa-external-link-alt"></i>
+                                                        </a> 
+                                                    </h6>
+                                                    <p>{{ t.data_description | richtext }}</p>
                                                     <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Layer &rarr;</a>
                                                 </div>
                                             </div>
@@ -363,14 +368,6 @@ RBA Case Study
                                     </ol>
                                 {% endfor %}
                             </div>
-                            <!-- <div class="card-body">
-                                <h6 class="m-0 font-weight-medium text-primary">Pressures Description</h6>
-                                <p>{{ i.pressure_description | richtext }} </p>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="m-0 font-weight-medium text-primary">Layer</h6>
-                                <p>{{ i.layer | richtext }} </p>
-                            </div> -->
                         </div>
                         <!-- 2.4 -->
                         <div class="card shadow mb-4">
@@ -390,15 +387,20 @@ RBA Case Study
                                         <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="ms-2 me-auto">
                                             <div class="fw-bold">
-                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                                    aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6"
+                                                    aria-expanded="true" aria-controls="collapseTwo6" style="padding-left: 0px; color: #858796;">
                                                     <i class="fa fa-plus-square"></i>
                                                     <span>{{ t.use_list.label }}</span>
                                                 </a>
                                             </div>
-                                            <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                            <div id="collapseTwo6" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                                 <div class="bg-black py-2 collapse-inner rounded">
                                                     <p class="collapse-item ">{{ t.use_description | richtext }}</p>
+                                                    <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                        <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                            <i class="fas fa-external-link-alt"></i>
+                                                        </a> 
+                                                    </h6>
                                                     <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
                                                 </div>
                                             </div>
@@ -425,22 +427,26 @@ RBA Case Study
                                 {% for t in i.phase2env_objects.all %}
                                     <ol class="list-group list-group-numbered">
                                         <li class="list-group-item d-flex justify-content-between align-items-start">
-                                        <div class="ms-2 me-auto">
-                                            <div class="fw-bold">
-                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                                    aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
-                                                    <i class="fa fa-plus-square"></i>
-                                                    <span>{{ t.env_list.label }}</span>
-                                                </a>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                <div class="bg-black py-2 collapse-inner rounded">
-                                                    <p class="collapse-item ">{{ t.env_description | richtext }}</p>
-                                                    <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">
+                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7"
+                                                        aria-expanded="true" aria-controls="collapseTwo7" style="padding-left: 0px; color: #858796;">
+                                                        <i class="fa fa-plus-square"></i>
+                                                        <span>{{ t.env_list.label }}</span>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseTwo7" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item ">{{ t.env_description | richtext }}</p>
+                                                        <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                            <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                                <i class="fas fa-external-link-alt"></i>
+                                                            </a> 
+                                                        </h6>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- <span class="badge bg-light">{{ t.use_type }}</span> -->
+                                            <span class="badge bg-light">{{ t.use_type }}</span>
                                         </li>
                                     </ol>
                                 {% endfor %}
@@ -571,7 +577,7 @@ RBA Case Study
                 </div>
             </div>
         </div>
-
+<!-- ############################################################################ -->
         <!-- Phase3 -->
         <div class="col-lg-12 mb-4">
             <div class="card bg-info text-white shadow">
@@ -581,6 +587,63 @@ RBA Case Study
                 </div>
             </div>
         </div>
+        <div class="col-lg-12 mb-4">
+           
+            <div class="row">
+                <!-- left present condition --> 
+                <div class="col-lg-6 mb-4">
+                    {% for i in object.phase2.all %}
+                        {% if "Present Condition" in i.condition_type %}    
+                            <h5 style ="display: inline;"><span class="badge badge-secondary">{{i.condition_type}}</span></h5>
+                            <!-- 3.2 -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">3.2 Define Management Measures</h6>
+                                </div>
+                                <div class="card-body"> 
+                                    {{ i.mana_meas  |slice:":380" }}
+                                    <span id="dots11">...</span>
+                                    <span id="more11">{{ mana_meas |slice:"380:"}}</span>
+                                    <button id="btn11" onclick="myFunction11()"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Management Measures</h6>
+                                    {% for t in i.mana_meas_objects.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">
+                                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemana"
+                                                            aria-expanded="true" aria-controls="collapsemana" style="padding-left: 0px; color: #858796;">
+                                                            <i class="fa fa-plus-square"></i>
+                                                            <span>{{ t.manameas }}</span>
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapsemana" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                        <div class="bg-black py-2 collapse-inner rounded">
+                                                            <p class="collapse-item ">{{ manameas_desc | richtext }}</p>
+                                                            <!-- <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                                <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                                    <i class="fas fa-external-link-alt"></i>
+                                                                </a> 
+                                                            </h6> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <span class="badge bg-light">{{ t.use_type }}</span> -->
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+               
+                <!-- qui ci va il future -->
+            </div>
+        </div>
+
+
         <!-- Phase4 -->
         <div class="col-lg-12 mb-4">
             <div class="card bg-warning text-white shadow">

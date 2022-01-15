@@ -157,3 +157,19 @@ function myFunction10() {
         moreText10.style.display = "inline";
     }
 }
+
+function myFunction11() {
+    var dots11 = document.getElementById("dots11");
+    var moreText11 = document.getElementById("more11");
+    var btnText11 = document.getElementById("btn11");
+
+    if (dots11.style.display === "none") {
+        dots11.style.display = "inline";
+        btnText11.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText11.style.display = "none";
+    } else {
+        dots11.style.display = "none";
+        btnText11.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText11.style.display = "inline";
+    }
+}
