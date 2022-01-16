@@ -173,3 +173,99 @@ function myFunction11() {
         moreText11.style.display = "inline";
     }
 }
+
+function myFunction12() {
+    var dots12 = document.getElementById("dots12");
+    var moreText12 = document.getElementById("more12");
+    var btnText12 = document.getElementById("btn12");
+
+    if (dots12.style.display === "none") {
+        dots12.style.display = "inline";
+        btnText12.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText12.style.display = "none";
+    } else {
+        dots12.style.display = "none";
+        btnText12.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText12.style.display = "inline";
+    }
+}
+
+function myFunction13() {
+    var dots13 = document.getElementById("dots13");
+    var moreText13 = document.getElementById("more13");
+    var btnText13 = document.getElementById("btn13");
+
+    if (dots13.style.display === "none") {
+        dots13.style.display = "inline";
+        btnText13.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText13.style.display = "none";
+    } else {
+        dots13.style.display = "none";
+        btnText13.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText13.style.display = "inline";
+    }
+}
+
+function myFunction14() {
+    var dots14 = document.getElementById("dots14");
+    var moreText14 = document.getElementById("more14");
+    var btnText14= document.getElementById("btn14");
+
+    if (dots14.style.display === "none") {
+        dots14.style.display = "inline";
+        btnText14.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText14.style.display = "none";
+    } else {
+        dots14.style.display = "none";
+        btnText14.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText14.style.display = "inline";
+    }
+}
+
+function myFunction15() {
+    var dots15 = document.getElementById("dots15");
+    var moreText15 = document.getElementById("more15");
+    var btnText15= document.getElementById("btn15");
+
+    if (dots15.style.display === "none") {
+        dots15.style.display = "inline";
+        btnText15.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText15.style.display = "none";
+    } else {
+        dots15.style.display = "none";
+        btnText15.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText15.style.display = "inline";
+    }
+}
+
+function myFunction16() {
+    var dots16 = document.getElementById("dots16");
+    var moreText16 = document.getElementById("more16");
+    var btnText16= document.getElementById("btn16");
+
+    if (dots16.style.display === "none") {
+        dots16.style.display = "inline";
+        btnText16.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText16.style.display = "none";
+    } else {
+        dots16.style.display = "none";
+        btnText16.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText16.style.display = "inline";
+    }
+}
+
+function myFunction17() {
+    var dots17 = document.getElementById("dots17");
+    var moreText17 = document.getElementById("more17");
+    var btnText17= document.getElementById("btn17");
+
+    if (dots17.style.display === "none") {
+        dots17.style.display = "inline";
+        btnText17.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText17.style.display = "none";
+    } else {
+        dots17.style.display = "none";
+        btnText17.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText17.style.display = "inline";
+    }
+}

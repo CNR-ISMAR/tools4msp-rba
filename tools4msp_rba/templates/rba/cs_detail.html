@@ -7,15 +7,13 @@ RBA Case Study
 {% endblock %}
 
 {% block content %}
-
-    <!-- Page Heading -->
+    <!-- Title Page  -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">{{ title }}</h1>
     </div>
 
-    <!-- Content Row -->
+    <!-- Phases Row -->
     <div class="row">
-
         <!-- Phase 1  -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
@@ -35,7 +33,6 @@ RBA Case Study
                 </a>    
             </div>
         </div>
-
         <!-- Phase 2 -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
@@ -54,7 +51,6 @@ RBA Case Study
                 </a>
             </div>
         </div>
-
         <!-- Phase 3 -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
@@ -78,7 +74,6 @@ RBA Case Study
                 </a>    
             </div>
         </div>
-
         <!-- Phase 4 -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
@@ -100,31 +95,26 @@ RBA Case Study
         </div>
     </div>
 
-    <!-- Content Row -->
-
+    <!-- Map Content  -->
     <div class="row">
-        <!-- Map -->
         <div class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4" >
-                <!-- Mappa - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Map of the area</h6>   
                 </div>
-                <!-- Card Body -->
                 <div class="card-body" style="padding: 0rem !important; height: 33rem;">
                     <div class="chart-area">
                         <iframe class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:inherit; height: 33rem; border:0ch; margin: 0rem !important; padding: 0rem !important"  src="{{ object.map_embed_url}}"></iframe>
                     </div>
                 </div>
             </div>
-            
-
         </div>
     </div>
 
+    <!-- CS Description  -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Descrizione Generale del CS</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Case Study Description</h6>
         </div>
         <div class="card-body">
             {{ object.description |slice:":400" }}
@@ -132,13 +122,11 @@ RBA Case Study
             <span id="more">{{ object.description |slice:"400:"}}</span>
             <button id="btn1" onclick="myFunction()"><i class="fas fa-chevron-right"></i></button>
         </div>
-
-
     </div>
-    <!-- Content Row -->
-    
+
+
+    <!-- Phase 1 -->
     <div class="row">
-        <!-- Phase 1 panel-->
         <div class="col-lg-12 mb-4">
             <div class="card bg-primary text-white shadow">
                 <div id="phase_1" class="card-body">
@@ -147,12 +135,10 @@ RBA Case Study
                 </div>
             </div>
         </div>
-
         <div  class="row justify-content-around">
-            <!-- left column phase1.1 -->
+            <!-- left column phase 1.1 -->
             <div class="col-lg-6 mb-4">   
                 <div class="col-lg-12 mb-4">
-                    <!-- 1.1 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "study_area" %}</h6>
@@ -166,9 +152,8 @@ RBA Case Study
                     </div>                
                 </div>
             </div>
-            <!-- right column phase1.2 -->
+            <!-- right column phase 1.2 -->
             <div class="col-lg-6 mb-4">
-                <!-- 1.2 -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "policy_objectives" %}</h6>
@@ -184,28 +169,24 @@ RBA Case Study
                         {% for i in object.polobj_objects.all %}
                             <ol class="list-group list-group-numbered">
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
-                                            aria-expanded="true" aria-controls="collapseTwo2" style="padding-left: 0px; color: #858796;">
-                                            <i class="fa fa-plus-square"></i>
-                                            <span>{{ i.polobj }}</span>
-                                        </a>
-                                    </div>
-                                    <div id="collapseTwo2" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                        <div class="bg-black py-2 collapse-inner rounded">
-                                            <p class="collapse-item ">{{ i.polobj_desc }}</p>
-                                            <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">
+                                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2{{i.id}}"
+                                                aria-expanded="true" aria-controls="collapseTwo2{{i.id}}" style="padding-left: 0px; color: #858796;">
+                                                <i class="fa fa-plus-square"></i>
+                                                <span>{{ i.polobj }}</span>
+                                            </a>
+                                        </div>
+                                        <div id="collapseTwo2{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                            <div class="bg-black py-2 collapse-inner rounded">
+                                                <p class="collapse-item ">{{ i.polobj_desc }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
                                 </li>
                             </ol>
                         {% endfor %}
                     </div>
-                    
-                    
                 </div>
             </div>
         </div>
@@ -214,7 +195,6 @@ RBA Case Study
             <!-- left column phase1.3 -->
             <div class="col-lg-6 mb-4">
                 <div class="col-lg-12 mb-4">  
-                    <!-- 1.3 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "ecosystem_services" %}</h6>
@@ -230,22 +210,20 @@ RBA Case Study
                             {% for i in object.es_type %}
                                 <ol class="list-group list-group-numbered">
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">
-                                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo3"
-                                                aria-expanded="true" aria-controls="collapseTwo3" style="padding-left: 0px; color: #858796;">
-                                                <i class="fa fa-plus-square"></i>
-                                                <span>{{ i }}</span>
-                                            </a>
-                                        </div>
-                                        <div id="collapseTwo3" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                            <div class="bg-black py-2 collapse-inner rounded">
-                                                <p class="collapse-item ">{{ i.polobj_desc }}</p>
-                                                <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
+                                        <div class="ms-2 me-auto">
+                                            <div class="fw-bold">
+                                                <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo3{{i.id}}" -->
+                                                    <!-- aria-expanded="true" aria-controls="collapseTwo3{{i.id}}" style="padding-left: 0px; color: #858796;"> -->
+                                                    <!-- <i class="fa fa-plus-square"></i> -->
+                                                    <span>{{ i }}</span>
+                                                <!-- </a> -->
                                             </div>
+                                            <!-- <div id="collapseTwo3" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                <div class="bg-black py-2 collapse-inner rounded">
+                                                    <p class="collapse-item ">{{ i.polobj_desc }}</p>
+                                                </div>
+                                            </div> -->
                                         </div>
-                                    </div>
-                                    <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
                                     </li>
                                 </ol>
                             {% endfor %}
@@ -273,13 +251,13 @@ RBA Case Study
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                     <div class="fw-bold">
-                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4"
-                                            aria-expanded="true" aria-controls="collapseTwo4" style="padding-left: 0px; color: #858796;">
+                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4{{i.id}}"
+                                            aria-expanded="true" aria-controls="collapseTwo4{{i.id}}" style="padding-left: 0px; color: #858796;">
                                             <i class="fa fa-plus-square"></i>
                                             <span>{{ i.future_scen }}</span>
                                         </a>
                                     </div>
-                                    <div id="collapseTwo4" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                    <div id="collapseTwo4{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                         <div class="bg-black py-2 collapse-inner rounded">
                                             <p class="collapse-item ">{{ i.future_scen_desc }}</p>
                                             <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
@@ -296,6 +274,9 @@ RBA Case Study
 
             </div>
         </div>
+
+<!-- ************************************************************************************************* -->
+
         <!-- Phase2 -->
         <div class="col-lg-12 mb-4">
             <div class="card bg-success text-white shadow">
@@ -305,195 +286,27 @@ RBA Case Study
                 </div>
             </div>
         </div>
-        <!-- present e future -->
+        <!-- 2.1 2.2 present e future -->
+        
         <div class="col-lg-12 mb-4">
-           
             <div class="row">
                 <!-- left present condition --> 
                 <div class="col-lg-6 mb-4">
                     {% for i in object.phase2.all %}
                         {% if "Present Condition" in i.condition_type %}    
                             <h5 style ="display: inline;"><span class="badge badge-secondary">2.1 {{i.condition_type}}</span></h5>
-                           <!-- 2.2 -->
-                           <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Description of th Present Conditions</h6>
-                            </div>
-                            <div class="card-body"> 
-                                {{ i.description  |slice:":380" }}
-                                <span id="dots4">...</span>
-                                <span id="more4">{{ i.description |slice:"380:"}}</span>
-                                <button id="btn4" onclick="myFunction4()"><i class="fas fa-chevron-right"></i></button>
-                            </div>
-                        </div>
-                        <!-- 2.3 -->
+                        <!-- 2.2 Present -->
                         <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">2.3 Define main pressures / effects</h6>
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Description of th Present Conditions</h6>
+                                </div>
+                                <div class="card-body"> 
+                                    {{ i.description  |slice:":380" }}
+                                    <span id="dots4">...</span>
+                                    <span id="more4">{{ i.description |slice:"380:"}}</span>
+                                    <button id="btn4" onclick="myFunction4()"><i class="fas fa-chevron-right"></i></button>
+                                </div>
                             </div>
-                            <div class="card-body"> 
-                                {{ i.main_pressures_effects |slice:":380" }}
-                                <span id="dots5">...</span>
-                                <span id="more5">{{ i.main_pressures_effects |slice:"380:"}}</span>
-                                <button id="btn5" onclick="myFunction5()"><i class="fas fa-chevron-right"></i></button>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="m-0 font-weight-medium text-primary">Pressures</h6>
-                                {% for t in i.phase2pressures_objects.all %}
-                                    <ol class="list-group list-group-numbered">
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                        <div class="ms-2 me-auto">
-                                            <div class="fw-bold">
-                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5"
-                                                    aria-expanded="true" aria-controls="collapseTwo5" style="padding-left: 0px; color: #858796;">
-                                                    <i class="fa fa-plus-square"></i>
-                                                    <span>{{ t.pressure_list.label }} - {{ t.pressure_list.code }}</span>
-                                                </a>
-                                            </div>
-                                            <div id="collapseTwo5" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                <div class="bg-black py-2 collapse-inner rounded">
-                                                    <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>
-                                                    <h6 class="m-0 font-weight-medium text-primary">Data Source description 
-                                                        <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
-                                                            <i class="fas fa-external-link-alt"></i>
-                                                        </a> 
-                                                    </h6>
-                                                    <p>{{ t.data_description | richtext }}</p>
-                                                    <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Layer &rarr;</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="badge bg-light">{{ t.pressure_type }}</span>
-                                        </li>
-                                    </ol>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <!-- 2.4 -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">2.4 Describe main sources of pressures / effects</h6>
-                            </div>
-                            <div class="card-body"> 
-                                {{ i.main_source_effects |slice:":380" }}
-                                <span id="dots7">...</span>
-                                <span id="more7">{{ i.main_source_effects |slice:"380:"}}</span>
-                                <button id="btn7" onclick="myFunction7()"><i class="fas fa-chevron-right"></i></button>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="m-0 font-weight-medium text-primary">Uses</h6>
-                                {% for t in i.phase2uses_objects.all %}
-                                    <ol class="list-group list-group-numbered">
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                        <div class="ms-2 me-auto">
-                                            <div class="fw-bold">
-                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6"
-                                                    aria-expanded="true" aria-controls="collapseTwo6" style="padding-left: 0px; color: #858796;">
-                                                    <i class="fa fa-plus-square"></i>
-                                                    <span>{{ t.use_list.label }}</span>
-                                                </a>
-                                            </div>
-                                            <div id="collapseTwo6" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                <div class="bg-black py-2 collapse-inner rounded">
-                                                    <p class="collapse-item ">{{ t.use_description | richtext }}</p>
-                                                    <h6 class="m-0 font-weight-medium text-primary">Data Source description 
-                                                        <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
-                                                            <i class="fas fa-external-link-alt"></i>
-                                                        </a> 
-                                                    </h6>
-                                                    <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="badge bg-light">{{ t.use_type }}</span>
-                                        </li>
-                                    </ol>
-                                {% endfor %}
-                            </div>
-                        </div> 
-                        <!-- 2.5 -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental responses</h6>
-                            </div>
-                            <div class="card-body"> 
-                                {{ i.main_environmental_responses |slice:":380" }}
-                                <span id="dots8">...</span>
-                                <span id="more8">{{ i.main_environmental_responses |slice:"380:"}}</span>
-                                <button id="btn8" onclick="myFunction8()"><i class="fas fa-chevron-right"></i></button>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
-                                {% for t in i.phase2env_objects.all %}
-                                    <ol class="list-group list-group-numbered">
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">
-                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7"
-                                                        aria-expanded="true" aria-controls="collapseTwo7" style="padding-left: 0px; color: #858796;">
-                                                        <i class="fa fa-plus-square"></i>
-                                                        <span>{{ t.env_list.label }}</span>
-                                                    </a>
-                                                </div>
-                                                <div id="collapseTwo7" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                    <div class="bg-black py-2 collapse-inner rounded">
-                                                        <p class="collapse-item ">{{ t.env_description | richtext }}</p>
-                                                        <h6 class="m-0 font-weight-medium text-primary">Data Source description 
-                                                            <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
-                                                                <i class="fas fa-external-link-alt"></i>
-                                                            </a> 
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="badge bg-light">{{ t.use_type }}</span>
-                                        </li>
-                                    </ol>
-                                {% endfor %}
-                            </div>
-                        </div>
-
-                        <!-- 2.6 -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">2.6 Source / Pressure / Pathway / Receptor Relationships</h6>
-                            </div>
-                            <div class="card-body"> 
-                                {{ i.impact_chain |slice:":380" }}
-                                <span id="dots9">...</span>
-                                <span id="more9">{{ i.impact_chain |slice:"380:"}}</span>
-                                <button id="btn9" onclick="myFunction9()"><i class="fas fa-chevron-right"></i></button>
-				{{ i.graph|safe }}
-                            </div>
-                            <!-- <div class="card-body">
-                                <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
-                                {% for t in i.phase2env_objects.all %}
-                                    <ol class="list-group list-group-numbered">
-                                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                                        <div class="ms-2 me-auto">
-                                            <div class="fw-bold">
-                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                                    aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
-                                                    <i class="fa fa-plus-square"></i>
-                                                    <span>{{ t.env_list.label }}</span>
-                                                </a>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                <div class="bg-black py-2 collapse-inner rounded">
-                                                    <p class="collapse-item ">{{ t.env_description | richtext }}</p>
-                                                    <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="badge bg-light">{{ t.use_type }}</span>
-                                        </li>
-                                    </ol>
-                                {% endfor %}
-                            </div> -->
-                        </div>
-
-
-
                         {% endif %}
                     {% endfor %}       
                 </div>
@@ -501,75 +314,16 @@ RBA Case Study
                     {% for i in object.phase2.all %}
                         {% if "Future Condition" in i.condition_type %}    
                             <h5 style ="display: inline;"><span class="badge badge-secondary">2.2 {{i.condition_type}}</span></h5>
-                            <!-- 2.2 -->
+                            <!-- 2.2 Future -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Description of th Future Conditions or Scenarios</h6>
                                 </div>
-                                <div class="card-body">
-                                    <p>{{ i.description }}</p>
-                                </div>
-                            </div>
-                            <!-- 2.3 -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">2.3 Define main pressures / effects</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>{{ i.main_pressures_effects | richtext }} </p>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="m-0 font-weight-medium text-primary">Main Pressures</h6>
-                                    
-                                    {% for t in i.pressure_list.all %}
-    
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">
-                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                                        aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
-                                                        <i class="fa fa-plus-square"></i>
-                                                        <span>{{ t.label }}</span>
-                                                    </a>
-                                                
-                                                </div>
-                                                <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                    <div class="bg-black py-2 collapse-inner rounded">
-                                                        <p class="collapse-item ">{{ t.description }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="badge bg-light">{{ t.code }}</span>
-                                            </li>
-                                        </ol>
-                                    {% endfor %}
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="m-0 font-weight-medium text-primary">Pressures Description</h6>
-                                    <p>{{ i.pressure_description | richtext }} </p>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="m-0 font-weight-medium text-primary">Layer</h6>
-                                    <p>{{ i.layer | richtext }} </p>
-                                </div>
-                            </div>
-                            <!-- 2.4 -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">2.4 Describe main sources of pressures / effects</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>{{i.main_source_effects | richtext }}</p>
-                                </div>
-                            </div> 
-                            <!-- 2.5 -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental responses</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>{{ i.main_environmental_responses | richtext }} </p>
+                                <div class="card-body"> 
+                                    {{ i.description  |slice:":380" }}
+                                    <span id="dots12">...</span>
+                                    <span id="more12">{{ i.description |slice:"380:"}}</span>
+                                    <button id="btn12" onclick="myFunction12()"><i class="fas fa-chevron-right"></i></button>
                                 </div>
                             </div>
                         {% endif %}
@@ -577,6 +331,417 @@ RBA Case Study
                 </div>
             </div>
         </div>
+        
+
+        <!-- 2.3 present e future -->
+        
+        <div class="col-lg-12 mb-4">
+            <div class="row">
+                <!-- left present condition --> 
+                <div class="col-lg-6 mb-4">
+                    {% for i in object.phase2.all %}
+                        {% if "Present Condition" in i.condition_type %}    
+                            <!-- 2.3 Present -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">2.3 Define main pressures / effects</h6>
+                                </div>
+                                <div class="card-body"> 
+                                    {{ i.main_pressures_effects |slice:":380" }}
+                                    <span id="dots5">...</span>
+                                    <span id="more5">{{ i.main_pressures_effects |slice:"380:"}}</span>
+                                    <button id="btn5" onclick="myFunction5()"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Pressures</h6>
+                                    {% for t in i.phase2pressures_objects.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">
+                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5{{t.id}}"
+                                                        aria-expanded="true" aria-controls="collapseTwo5{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                        <i class="fa fa-plus-square"></i>
+                                                        <span>{{ t.pressure_list.label }} - {{ t.pressure_list.code }}</span>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseTwo5{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>
+                                                        <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                            <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                                <i class="fas fa-external-link-alt"></i>
+                                                            </a> 
+                                                        </h6>
+                                                        <p>{{ t.data_description | richtext }}</p>
+                                                        <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Layer &rarr;</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-light">{{ t.pressure_type }}</span>
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}       
+                </div>
+                <div class="col-lg-6 mb-4">
+                    {% for i in object.phase2.all %}
+                        {% if "Future Condition" in i.condition_type %}    
+                            <!-- 2.3 Future -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">2.3 Define main pressures / effects</h6>
+                                </div>
+                                <div class="card-body"> 
+                                    {{ i.main_pressures_effects |slice:":380" }}
+                                    <span id="dots13">...</span>
+                                    <span id="more13">{{ i.main_pressures_effects |slice:"380:"}}</span>
+                                    <button id="btn13" onclick="myFunction13()"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Pressures</h6>
+                                    {% for t in i.phase2pressures_objects.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">
+                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5f{{t.id}}"
+                                                        aria-expanded="true" aria-controls="collapseTwo5f{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                        <i class="fa fa-plus-square"></i>
+                                                        <span>{{ t.pressure_list.label }} - {{ t.pressure_list.code }}</span>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseTwo5f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>
+                                                        <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                            <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                                <i class="fas fa-external-link-alt"></i>
+                                                            </a> 
+                                                        </h6>
+                                                        <p>{{ t.data_description | richtext }}</p>
+                                                        <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Layer &rarr;</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-light">{{ t.pressure_type }}</span>
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}       
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- 2.4 present e future -->
+
+        <div class="col-lg-12 mb-4">
+            <div class="row">
+                <!-- left present condition --> 
+                <div class="col-lg-6 mb-4">
+                    {% for i in object.phase2.all %}
+                        {% if "Present Condition" in i.condition_type %}    
+                            <!-- 2.4 Present -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">2.4 Describe main sources of pressures / effects</h6>
+                                </div>
+                                <div class="card-body"> 
+                                    {{ i.main_source_effects |slice:":380" }}
+                                    <span id="dots7">...</span>
+                                    <span id="more7">{{ i.main_source_effects |slice:"380:"}}</span>
+                                    <button id="btn7" onclick="myFunction7()"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Uses</h6>
+                                    {% for t in i.phase2uses_objects.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">
+                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6{{t.id}}"
+                                                        aria-expanded="true" aria-controls="collapseTwo6{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                        <i class="fa fa-plus-square"></i>
+                                                        <span>{{ t.use_list.label }}</span>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseTwo6{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item ">{{ t.use_description | richtext }}</p>
+                                                        <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                            <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                                <i class="fas fa-external-link-alt"></i>
+                                                            </a> 
+                                                        </h6>
+                                                        <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-light">{{ t.use_type }}</span>
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
+                                </div>
+                            </div> 
+                        {% endif %}
+                    {% endfor %}       
+                </div>
+                <div class="col-lg-6 mb-4">
+                    {% for i in object.phase2.all %}
+                        {% if "Future Condition" in i.condition_type %}    
+                            <!-- 2.4 Future -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">2.4 Describe main sources of pressures / effects</h6>
+                                </div>
+                                    <div class="card-body"> 
+                                        {{ i.main_source_effects |slice:":380" }}
+                                        <span id="dots14">...</span>
+                                        <span id="more14">{{ i.main_source_effects |slice:"380:"}}</span>
+                                        <button id="btn14" onclick="myFunction14()"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Uses</h6>
+                                    {% for t in i.phase2uses_objects.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">
+                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6f{{t.id}}"
+                                                        aria-expanded="true" aria-controls="collapseTwo6f{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                        <i class="fa fa-plus-square"></i>
+                                                        <span>{{ t.use_list.label }}</span>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseTwo6f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item ">{{ t.use_description | richtext }}</p>
+                                                        <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                            <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                                <i class="fas fa-external-link-alt"></i>
+                                                            </a> 
+                                                        </h6>
+                                                        <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-light">{{ t.use_type }}</span>
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
+                                </div>
+                            </div> 
+                        {% endif %}
+                    {% endfor %}       
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- 2.5 present e future -->
+        <div class="col-lg-12 mb-4">   
+            <div class="row">
+                <!-- left present condition --> 
+                <div class="col-lg-6 mb-4">
+                    {% for i in object.phase2.all %}
+                        {% if "Present Condition" in i.condition_type %}    
+                            <!-- 2.5 Present-->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental responses</h6>
+                                </div>
+                                <div class="card-body"> 
+                                    {{ i.main_environmental_responses |slice:":380" }}
+                                    <span id="dots8">...</span>
+                                    <span id="more8">{{ i.main_environmental_responses |slice:"380:"}}</span>
+                                    <button id="btn8" onclick="myFunction8()"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
+                                    {% for t in i.phase2env_objects.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">
+                                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7{{t.id}}"
+                                                            aria-expanded="true" aria-controls="collapseTwo7{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                            <i class="fa fa-plus-square"></i>
+                                                            <span>{{ t.env_list.label }}</span>
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapseTwo7{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                        <div class="bg-black py-2 collapse-inner rounded">
+                                                            <p class="collapse-item ">{{ t.env_description | richtext }}</p>
+                                                            <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                                <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                                    <i class="fas fa-external-link-alt"></i>
+                                                                </a> 
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <span class="badge bg-light">{{ t.use_type }}</span>
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}       
+                </div>
+                <div class="col-lg-6 mb-4">
+                    {% for i in object.phase2.all %}
+                        {% if "Future Condition" in i.condition_type %}    
+                            <!-- 2.5 future -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental responses</h6>
+                                </div>
+                                <div class="card-body"> 
+                                    {{ i.main_environmental_responses |slice:":380" }}
+                                    <span id="dots15">...</span>
+                                    <span id="more15">{{ i.main_environmental_responses |slice:"380:"}}</span>
+                                    <button id="btn15" onclick="myFunction15()"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
+                                    {% for t in i.phase2env_objects.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">
+                                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7f{{t.id}}"
+                                                            aria-expanded="true" aria-controls="collapseTwo7f{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                            <i class="fa fa-plus-square"></i>
+                                                            <span>{{ t.env_list.label }}</span>
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapseTwo7f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                        <div class="bg-black py-2 collapse-inner rounded">
+                                                            <p class="collapse-item ">{{ t.env_description | richtext }}</p>
+                                                            <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                                <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                                    <i class="fas fa-external-link-alt"></i>
+                                                                </a> 
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <span class="badge bg-light">{{ t.use_type }}</span>
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}       
+                </div>
+            </div>
+        </div>
+        
+        <!-- 2.6 present e future -->
+        <div class="col-lg-12 mb-4">
+           
+            <div class="row">
+                <!-- left present condition --> 
+                <div class="col-lg-6 mb-4">
+                    {% for i in object.phase2.all %}
+                        {% if "Present Condition" in i.condition_type %}    
+                            <!-- 2.6 present-->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">2.6 Source / Pressure / Pathway / Receptor Relationships</h6>
+                                </div>
+                                <div class="card-body"> 
+                                    {{ i.impact_chain |slice:":380" }}
+                                    <span id="dots9">...</span>
+                                    <span id="more9">{{ i.impact_chain |slice:"380:"}}</span>
+                                    <button id="btn9" onclick="myFunction9()"><i class="fas fa-chevron-right"></i></button>
+                    {{ i.graph|safe }}
+                                </div>
+                                <!-- <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
+                                    {% for t in i.phase2env_objects.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">
+                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                                                        aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                                        <i class="fa fa-plus-square"></i>
+                                                        <span>{{ t.env_list.label }}</span>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item ">{{ t.env_description | richtext }}</p>
+                                                        <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-light">{{ t.use_type }}</span>
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
+                                </div> -->
+                            </div>
+                        {% endif %}
+                    {% endfor %}       
+                </div>
+                <div class="col-lg-6 mb-4">
+                    {% for i in object.phase2.all %}
+                        {% if "Future Condition" in i.condition_type %}
+                            <!-- 2.6 Future -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">2.6 Source / Pressure / Pathway / Receptor Relationships</h6>
+                                </div>
+                                <div class="card-body"> 
+                                    {{ i.impact_chain |slice:":380" }}
+                                    <span id="dots16">...</span>
+                                    <span id="more16">{{ i.impact_chain |slice:"380:"}}</span>
+                                    <button id="btn16" onclick="myFunction16()"><i class="fas fa-chevron-right"></i></button>
+                    {{ i.graph|safe }}
+                                </div>
+                                <!-- <div class="card-body">
+                                    <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
+                                    {% for t in i.phase2env_objects.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">
+                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                                                        aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
+                                                        <i class="fa fa-plus-square"></i>
+                                                        <span>{{ t.env_list.label }}</span>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item ">{{ t.env_description | richtext }}</p>
+                                                        <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-light">{{ t.use_type }}</span>
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
+                                </div> -->
+                            </div>
+                        {% endif %}
+                    {% endfor %}       
+                </div>
+            </div>
+        </div>
+        
 <!-- ############################################################################ -->
         <!-- Phase3 -->
         <div class="col-lg-12 mb-4">
@@ -587,24 +752,74 @@ RBA Case Study
                 </div>
             </div>
         </div>
+        
+        <!-- 3.2 present e future -->
         <div class="col-lg-12 mb-4">
-           
             <div class="row">
                 <!-- left present condition --> 
                 <div class="col-lg-6 mb-4">
                     {% for i in object.phase2.all %}
                         {% if "Present Condition" in i.condition_type %}    
                             <h5 style ="display: inline;"><span class="badge badge-secondary">{{i.condition_type}}</span></h5>
-                            <!-- 3.2 -->
+                        <!-- 3.2 Present -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">3.2 Define Management Measures</h6>
+                            </div>
+                            <div class="card-body"> 
+                                {{ i.mana_meas  |slice:":380" }}
+                                <span id="dots11">...</span>
+                                <span id="more11">{{ mana_meas |slice:"380:"}}</span>
+                                <button id="btn11" onclick="myFunction11()"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="m-0 font-weight-medium text-primary">Management Measures</h6>
+                                {% for t in i.mana_meas_objects.all %}
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">
+                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemana{{t.id}}"
+                                                        aria-expanded="true" aria-controls="collapsemana{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                        <i class="fa fa-plus-square"></i>
+                                                        <span>{{ t.manameas }}</span>
+                                                    </a>
+                                                </div>
+                                                <div id="collapsemana{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item ">{{ manameas_desc | richtext }}</p>
+                                                        <!-- <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                            <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                                <i class="fas fa-external-link-alt"></i>
+                                                            </a> 
+                                                        </h6> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <span class="badge bg-light">{{ t.use_type }}</span> -->
+                                        </li>
+                                    </ol>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}       
+                </div>
+                <div class="col-lg-6 mb-4">
+                    {% for i in object.phase2.all %}
+                        {% if "Future Condition" in i.condition_type %}    
+                            <h5 style ="display: inline;"><span class="badge badge-secondary">{{i.condition_type}}</span></h5>
+                            <!-- 3.2 Future -->
                             <div class="card shadow mb-4">
+                                
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">3.2 Define Management Measures</h6>
                                 </div>
                                 <div class="card-body"> 
                                     {{ i.mana_meas  |slice:":380" }}
-                                    <span id="dots11">...</span>
-                                    <span id="more11">{{ mana_meas |slice:"380:"}}</span>
-                                    <button id="btn11" onclick="myFunction11()"><i class="fas fa-chevron-right"></i></button>
+                                    <span id="dots17">...</span>
+                                    <span id="more17">{{ mana_meas |slice:"380:"}}</span>
+                                    <button id="btn17" onclick="myFunction17()"><i class="fas fa-chevron-right"></i></button>
                                 </div>
                                 <div class="card-body">
                                     <h6 class="m-0 font-weight-medium text-primary">Management Measures</h6>
@@ -613,13 +828,13 @@ RBA Case Study
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                                 <div class="ms-2 me-auto">
                                                     <div class="fw-bold">
-                                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemana"
-                                                            aria-expanded="true" aria-controls="collapsemana" style="padding-left: 0px; color: #858796;">
+                                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemanaf{{t.id}}"
+                                                            aria-expanded="true" aria-controls="collapsemanaf{{t.id}}" style="padding-left: 0px; color: #858796;">
                                                             <i class="fa fa-plus-square"></i>
                                                             <span>{{ t.manameas }}</span>
                                                         </a>
                                                     </div>
-                                                    <div id="collapsemana" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div id="collapsemanaf{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                                         <div class="bg-black py-2 collapse-inner rounded">
                                                             <p class="collapse-item ">{{ manameas_desc | richtext }}</p>
                                                             <!-- <h6 class="m-0 font-weight-medium text-primary">Data Source description 
@@ -635,13 +850,14 @@ RBA Case Study
                                         </ol>
                                     {% endfor %}
                                 </div>
+                                
                             </div>
                         {% endif %}
-                    {% endfor %}
-               
-                <!-- qui ci va il future -->
+                    {% endfor %}       
+                </div>
             </div>
         </div>
+        
 
 
         <!-- Phase4 -->
