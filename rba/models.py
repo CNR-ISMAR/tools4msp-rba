@@ -42,7 +42,7 @@ class CSphase2(ClusterableModel):
         verbose_name= "Uses")
     
     main_environmental_responses = models.TextField( null=True, blank=True, 
-        verbose_name= "2.5 Describe main environmental responses")
+        verbose_name= "2.5 Describe main environmental receptors")
     
     env_list = models.ManyToManyField(Env, through='Phase2envs', blank=True,
         verbose_name= "Environmental Components")
