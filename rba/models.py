@@ -238,12 +238,6 @@ class CS(ClusterableModel):
     ecosystem_services = models.TextField( null=True, blank=True, 
         verbose_name= "1.3 Define core Ecosystem Services")
 
-    es_type = MultiSelectField(
-        choices= enumerations.ES_TYPE_CHOICE,
-        null=True,
-        blank=True,
-    )
-
     future_scenarios = models.TextField( null=True, blank=True, 
         verbose_name= "1.4 Define future scenarios")
     
@@ -324,6 +318,22 @@ class PolicyObjectives(Orderable):
         verbose_name= "Policy Objective")
     polobj_desc = models.TextField ( null=True, blank=True,
         verbose_name= "Policy Objective Description")
+
+class EcoService(Orderable):
+    phase_1 = ParentalKey(CS, related_name='eco_objects')
+    es_type = MultiSelectField(
+        choices= enumerations.ES_TYPE_CHOICE,
+        null=True,
+        blank=True,
+    )
+    data_source = models.URLField(max_length=600,blank=True, null=True)
+    data_description = RichTextField( null=True, blank=True, 
+         verbose_name= "Ecosystem Service Description")
+    code = models.TextField ( null=True, blank=True,
+        verbose_name= "Ecosystem Service Code")
+    link = models.URLField(max_length=600,blank=True, null=True)
+
+    
 
 class FutureScenarios(Orderable):
     phase_1 = ParentalKey(CS, related_name='futscen_objects')
