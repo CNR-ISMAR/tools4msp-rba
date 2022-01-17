@@ -373,23 +373,19 @@ RBA Case Study
                                                     </div>
                                                     <div id="collapseTwo5{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                                         <div class="bg-black py-2 collapse-inner rounded">
-                                                            <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>
-                                                            <div class="card" style="padding:1rem">
-                                                                <h6 class="m-0 font-weight-medium text-primary">Pressure Data Source </h6>  
-                                                                <p>{{ t.data_description | richtext }}</p>
-                                                                {% if  t.data_description|default:'' != ''   %}
-                                                                    <div class="card" style="padding:1rem">
-                                                                        <h6 class="m-0 font-weight-medium text-primary">Pressure Data Source </h6>  
-                                                                        <p>{{ t.data_description | richtext }}</p>
-                                                                        {% if  t.data_source|default:'' != ''   %}
-                                                                            <a target="_blank" rel="nofollow" class="text-gray-600" href="{{ t.data_source }}"><i class="fas fa-link"></i> Source Link</a>
-                                                                        {% endif %}
-                                                                        {% if  t.layer|default:'' != ''   %}
-                                                                            <a target="_blank" rel="nofollow" class="text-gray-600" href="{{ t.layer }}"><i class="fas fa-link"></i> Layer Link</a>
-                                                                        {% endif %}
-                                                                    </div>
-                                                                 {% endif %}
-                                                            </div>
+                                                            <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>     
+                                                            {% if  t.data_description|default:'' != ''   %}
+                                                                <div class="card" style="padding:1rem">
+                                                                    <h6 class="m-0 font-weight-medium text-primary">Pressure Data Source </h6>  
+                                                                    <p>{{ t.data_description | richtext }}</p>
+                                                                    {% if  t.data_source|default:'' != ''   %}
+                                                                        <a target="_blank" rel="nofollow" class="text-gray-600" href="{{ t.data_source }}"><i class="fas fa-link"></i> Source Link</a>
+                                                                    {% endif %}
+                                                                    {% if  t.layer|default:'' != ''   %}
+                                                                        <a target="_blank" rel="nofollow" class="text-gray-600" href="{{ t.layer }}"><i class="fas fa-link"></i> Layer Link</a>
+                                                                    {% endif %}
+                                                                </div>
+                                                            {% endif %}
                                                         </div>
                                                     </div>
                                                 </div>
