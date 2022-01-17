@@ -163,9 +163,9 @@ class CSphase2(ClusterableModel):
             mode='text',
             textposition="top center",
             textfont=dict(
-                family="sans serif",
-                size=18,
-                color="crimson"
+                family="nunito",
+                size=17,
+                color="#4e73df",
             )
             
             # marker=dict(color='#000')

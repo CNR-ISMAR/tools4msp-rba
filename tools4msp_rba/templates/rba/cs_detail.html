@@ -737,7 +737,7 @@ RBA Case Study
                                         <button id="btn9" onclick="myFunction9()"><i class="fas fa-chevron-right"></i></button>
                                     </div>
                                 {% endif %}
-                                <div class="card-body"> 
+                                <div class="card-body" style="padding:3rem;"> 
                                     {{ i.graph|safe }}
                                 </div>
                             </div>
@@ -761,7 +761,7 @@ RBA Case Study
                                     </div>
                                 {% endif %}
                                 {% if  i.graph.p_nodes|default:'' != ''   %}
-                                    <div class="card-body"> 
+                                    <div class="card-body" style="padding:3rem;"> 
                                         {{ i.graph|safe }}
                                     </div>
                                 {% endif %}
