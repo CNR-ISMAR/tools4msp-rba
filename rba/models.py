@@ -328,13 +328,13 @@ class EcoService(Orderable):
         null=True,
         blank=True,
     )
-    es_type = MultiSelectField(
+    bio_type = MultiSelectField(
         choices= enumerations.BIO_TYPE_CHOICE,
         null=True,
         blank=True,
     )
     code = models.TextField ( null=True, blank=True,
-        verbose_name= "Ecosystem Service")
+        verbose_name= "Ecosystem Service Code")
     data_source = models.URLField(max_length=600,blank=True, null=True)
     data_description = RichTextField( null=True, blank=True, 
          verbose_name= "Ecosystem Service Description")
