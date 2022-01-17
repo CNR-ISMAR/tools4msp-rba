@@ -290,7 +290,6 @@ RBA Case Study
             </div>
         </div>
         <!-- 2.1 2.2 present e future -->
-        
         <div class="col-lg-12 mb-4">
             <div class="row">
                 <!-- left present condition --> 
@@ -303,12 +302,14 @@ RBA Case Study
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Description of th Present Conditions</h6>
                                 </div>
-                                <div class="card-body"> 
-                                    {{ i.description  |slice:":380" }}
-                                    <span id="dots4">...</span>
-                                    <span id="more4">{{ i.description |slice:"380:"}}</span>
-                                    <button id="btn4" onclick="myFunction4()"><i class="fas fa-chevron-right"></i></button>
-                                </div>
+                                {% if  i.description|default:'' != ''   %}
+                                    <div class="card-body"> 
+                                        {{ i.description  |slice:":380" }}
+                                        <span id="dots4">...</span>
+                                        <span id="more4">{{ i.description |slice:"380:"}}</span>
+                                        <button id="btn4" onclick="myFunction4()"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                {% endif %}
                             </div>
                         {% endif %}
                     {% endfor %}       
@@ -322,12 +323,14 @@ RBA Case Study
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Description of th Future Conditions or Scenarios</h6>
                                 </div>
-                                <div class="card-body"> 
-                                    {{ i.description  |slice:":380" }}
-                                    <span id="dots12">...</span>
-                                    <span id="more12">{{ i.description |slice:"380:"}}</span>
-                                    <button id="btn12" onclick="myFunction12()"><i class="fas fa-chevron-right"></i></button>
-                                </div>
+                                {% if  i.description|default:'' != ''   %}
+                                    <div class="card-body"> 
+                                        {{ i.description  |slice:":380" }}
+                                        <span id="dots12">...</span>
+                                        <span id="more12">{{ i.description |slice:"380:"}}</span>
+                                        <button id="btn12" onclick="myFunction12()"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                {% endif %}
                             </div>
                         {% endif %}
                     {% endfor %}       
@@ -337,7 +340,6 @@ RBA Case Study
         
 
         <!-- 2.3 present e future -->
-        
         <div class="col-lg-12 mb-4">
             <div class="row">
                 <!-- left present condition --> 
@@ -349,14 +351,15 @@ RBA Case Study
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">2.3 Define main pressures / effects</h6>
                                 </div>
-                                <div class="card-body"> 
-                                    {{ i.main_pressures_effects |slice:":380" }}
-                                    <span id="dots5">...</span>
-                                    <span id="more5">{{ i.main_pressures_effects |slice:"380:"}}</span>
-                                    <button id="btn5" onclick="myFunction5()"><i class="fas fa-chevron-right"></i></button>
-                                </div>
+                                {% if  i.main_pressures_effects|default:'' != ''   %}
+                                    <div class="card-body"> 
+                                        {{ i.main_pressures_effects |slice:":380" }}
+                                        <span id="dots5">...</span>
+                                        <span id="more5">{{ i.main_pressures_effects |slice:"380:"}}</span>
+                                        <button id="btn5" onclick="myFunction5()"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                {% endif %}
                                 <div class="card-body">
-                                    <h6 class="m-0 font-weight-medium text-primary">Pressures</h6>
                                     {% for t in i.phase2pressures_objects.all %}
                                         <ol class="list-group list-group-numbered">
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -381,7 +384,11 @@ RBA Case Study
                                                     </div>
                                                 </div>
                                             </div>
-                                            <span class="badge bg-light">{{ t.pressure_type }}</span>
+                                            {% if "main" in t.pressure_type %}
+                                                <span class="badge bg-primary text-white" >{{ t.pressure_type }}</span>
+                                            {% else %}
+                                                <span class="badge bg-light">{{ t.pressure_type }}</span>
+                                            {% endif %}
                                             </li>
                                         </ol>
                                     {% endfor %}
@@ -398,14 +405,15 @@ RBA Case Study
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">2.3 Define main pressures / effects</h6>
                                 </div>
-                                <div class="card-body"> 
-                                    {{ i.main_pressures_effects |slice:":380" }}
-                                    <span id="dots13">...</span>
-                                    <span id="more13">{{ i.main_pressures_effects |slice:"380:"}}</span>
-                                    <button id="btn13" onclick="myFunction13()"><i class="fas fa-chevron-right"></i></button>
-                                </div>
+                                {% if  i.main_pressures_effects|default:'' != ''   %}
+                                    <div class="card-body"> 
+                                        {{ i.main_pressures_effects |slice:":380" }}
+                                        <span id="dots13">...</span>
+                                        <span id="more13">{{ i.main_pressures_effects |slice:"380:"}}</span>
+                                        <button id="btn13" onclick="myFunction13()"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                {% endif %}
                                 <div class="card-body">
-                                    <h6 class="m-0 font-weight-medium text-primary">Pressures</h6>
                                     {% for t in i.phase2pressures_objects.all %}
                                         <ol class="list-group list-group-numbered">
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -430,7 +438,11 @@ RBA Case Study
                                                     </div>
                                                 </div>
                                             </div>
-                                            <span class="badge bg-light">{{ t.pressure_type }}</span>
+                                            {% if "main" in t.pressure_type %}
+                                                <span class="badge bg-primary text-white" >{{ t.pressure_type }}</span>
+                                            {% else %}
+                                                <span class="badge bg-light">{{ t.pressure_type }}</span>
+                                            {% endif %}
                                             </li>
                                         </ol>
                                     {% endfor %}
@@ -456,14 +468,15 @@ RBA Case Study
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">2.4 Describe main sources of pressures / effects</h6>
                                 </div>
-                                <div class="card-body"> 
-                                    {{ i.main_source_effects |slice:":380" }}
-                                    <span id="dots7">...</span>
-                                    <span id="more7">{{ i.main_source_effects |slice:"380:"}}</span>
-                                    <button id="btn7" onclick="myFunction7()"><i class="fas fa-chevron-right"></i></button>
-                                </div>
+                                {% if  i.main_source_effects|default:'' != ''   %}
+                                    <div class="card-body"> 
+                                        {{ i.main_source_effects |slice:":380" }}
+                                        <span id="dots7">...</span>
+                                        <span id="more7">{{ i.main_source_effects |slice:"380:"}}</span>
+                                        <button id="btn7" onclick="myFunction7()"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                {% endif %}
                                 <div class="card-body">
-                                    <h6 class="m-0 font-weight-medium text-primary">Uses</h6>
                                     {% for t in i.phase2uses_objects.all %}
                                         <ol class="list-group list-group-numbered">
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -488,7 +501,11 @@ RBA Case Study
                                                     </div>
                                                 </div>
                                             </div>
-                                            <span class="badge bg-light">{{ t.use_type }}</span>
+                                            {% if "main" in t.use_type %}
+                                                <span class="badge bg-primary text-white" >{{ t.use_type }}</span>
+                                            {% else %}
+                                                <span class="badge bg-light">{{ t.use_type }}</span>
+                                            {% endif %}
                                             </li>
                                         </ol>
                                     {% endfor %}
@@ -505,14 +522,15 @@ RBA Case Study
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">2.4 Describe main sources of pressures / effects</h6>
                                 </div>
+                                {% if  i.main_source_effects|default:'' != ''   %}
                                     <div class="card-body"> 
                                         {{ i.main_source_effects |slice:":380" }}
                                         <span id="dots14">...</span>
                                         <span id="more14">{{ i.main_source_effects |slice:"380:"}}</span>
                                         <button id="btn14" onclick="myFunction14()"><i class="fas fa-chevron-right"></i></button>
                                     </div>
+                                {% endif %}
                                 <div class="card-body">
-                                    <h6 class="m-0 font-weight-medium text-primary">Uses</h6>
                                     {% for t in i.phase2uses_objects.all %}
                                         <ol class="list-group list-group-numbered">
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -537,7 +555,11 @@ RBA Case Study
                                                     </div>
                                                 </div>
                                             </div>
-                                            <span class="badge bg-light">{{ t.use_type }}</span>
+                                            {% if "main" in t.use_type %}
+                                                <span class="badge bg-primary text-white" >{{ t.use_type }}</span>
+                                            {% else %}
+                                                <span class="badge bg-light">{{ t.use_type }}</span>
+                                            {% endif %}
                                             </li>
                                         </ol>
                                     {% endfor %}
@@ -557,50 +579,54 @@ RBA Case Study
                 <div class="col-lg-6 mb-4">
                     {% for i in object.phase2.all %}
                         {% if "Present Condition" in i.condition_type %}
-                            {% if  i.main_environmental_responses|default:'' != ''   %}    
+                               
                             <!-- 2.5 Present-->
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental responses</h6>
-                                    </div>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental responses</h6>
+                                </div>
+                                {% if  i.main_environmental_responses|default:'' != ''   %} 
                                     <div class="card-body"> 
                                         {{ i.main_environmental_responses |slice:":380" }}
                                         <span id="dots8">...</span>
                                         <span id="more8">{{ i.main_environmental_responses |slice:"380:"}}</span>
                                         <button id="btn8" onclick="myFunction8()"><i class="fas fa-chevron-right"></i></button>
                                     </div>
-                                    <div class="card-body">
-                                        <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
-                                        {% for t in i.phase2env_objects.all %}
-                                            <ol class="list-group list-group-numbered">
-                                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                                    <div class="ms-2 me-auto">
-                                                        <div class="fw-bold">
-                                                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7{{t.id}}"
-                                                                aria-expanded="true" aria-controls="collapseTwo7{{t.id}}" style="padding-left: 0px; color: #858796;">
-                                                                <i class="fa fa-plus-square"></i>
-                                                                <span>{{ t.env_list.label }}</span>
-                                                            </a>
-                                                        </div>
-                                                        <div id="collapseTwo7{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                            <div class="bg-black py-2 collapse-inner rounded">
-                                                                <p class="collapse-item ">{{ t.env_description | richtext }}</p>
-                                                                <h6 class="m-0 font-weight-medium text-primary">Data Source description 
-                                                                    <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
-                                                                        <i class="fas fa-external-link-alt"></i>
-                                                                    </a> 
-                                                                </h6>
-                                                                <p>{{ t.data_description | richtext }}</p>
-                                                            </div>
+                                {% endif %}
+                                <div class="card-body">
+                                    {% for t in i.phase2env_objects.all %}
+                                        <ol class="list-group list-group-numbered">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">
+                                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7{{t.id}}"
+                                                            aria-expanded="true" aria-controls="collapseTwo7{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                            <i class="fa fa-plus-square"></i>
+                                                            <span>{{ t.env_list.label }}</span>
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapseTwo7{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                        <div class="bg-black py-2 collapse-inner rounded">
+                                                            <p class="collapse-item ">{{ t.env_description | richtext }}</p>
+                                                            <h6 class="m-0 font-weight-medium text-primary">Data Source description 
+                                                                <a target="_blank" rel="nofollow" href="{{ t.data_source }}">
+                                                                    <i class="fas fa-external-link-alt"></i>
+                                                                </a> 
+                                                            </h6>
+                                                            <p>{{ t.data_description | richtext }}</p>
                                                         </div>
                                                     </div>
-                                                    <span class="badge bg-light">{{ t.use_type }}</span>
-                                                </li>
-                                            </ol>
-                                        {% endfor %}
-                                    </div>
+                                                </div>
+                                                {% if "main" in t.env_type %}
+                                                    <span class="badge bg-primary text-white" >{{ t.env_type }}</span>
+                                                {% else %}
+                                                    <span class="badge bg-light">{{ t.env_type }}</span>
+                                                {% endif %}
+                                            </li>
+                                        </ol>
+                                    {% endfor %}
                                 </div>
-                            {% endif %}
+                            </div>  
                         {% endif %}
                     {% endfor %}       
                 </div>
@@ -612,14 +638,15 @@ RBA Case Study
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental responses</h6>
                                 </div>
-                                <div class="card-body"> 
-                                    {{ i.main_environmental_responses |slice:":380" }}
-                                    <span id="dots15">...</span>
-                                    <span id="more15">{{ i.main_environmental_responses |slice:"380:"}}</span>
-                                    <button id="btn15" onclick="myFunction15()"><i class="fas fa-chevron-right"></i></button>
-                                </div>
+                                {% if  i.main_environmental_responses|default:'' != ''   %}
+                                    <div class="card-body"> 
+                                        {{ i.main_environmental_responses |slice:":380" }}
+                                        <span id="dots15">...</span>
+                                        <span id="more15">{{ i.main_environmental_responses |slice:"380:"}}</span>
+                                        <button id="btn15" onclick="myFunction15()"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                {% endif %}
                                 <div class="card-body">
-                                    <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
                                     {% for t in i.phase2env_objects.all %}
                                         <ol class="list-group list-group-numbered">
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -643,7 +670,11 @@ RBA Case Study
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <span class="badge bg-light">{{ t.use_type }}</span>
+                                                {% if "main" in t.env_type %}
+                                                    <span class="badge bg-primary text-white" >{{ t.env_type }}</span>
+                                                {% else %}
+                                                    <span class="badge bg-light">{{ t.env_type }}</span>
+                                                {% endif %}
                                             </li>
                                         </ol>
                                     {% endfor %}
@@ -668,38 +699,17 @@ RBA Case Study
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">2.6 Source / Pressure / Pathway / Receptor Relationships</h6>
                                 </div>
-                                <div class="card-body"> 
-                                    {{ i.impact_chain |slice:":380" }}
-                                    <span id="dots9">...</span>
-                                    <span id="more9">{{ i.impact_chain |slice:"380:"}}</span>
-                                    <button id="btn9" onclick="myFunction9()"><i class="fas fa-chevron-right"></i></button>
-                    {{ i.graph|safe }}
+                                {% if  i.impact_chain|default:'' != ''   %}
+                                    <div class="card-body"> 
+                                        {{ i.impact_chain |slice:":380" }}
+                                        <span id="dots9">...</span>
+                                        <span id="more9">{{ i.impact_chain |slice:"380:"}}</span>
+                                        <button id="btn9" onclick="myFunction9()"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                {% endif %}
+                                <div class="card-body">
+                                    {{ i.graph|safe }}
                                 </div>
-                                <!-- <div class="card-body">
-                                    <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
-                                    {% for t in i.phase2env_objects.all %}
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">
-                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                                        aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
-                                                        <i class="fa fa-plus-square"></i>
-                                                        <span>{{ t.env_list.label }}</span>
-                                                    </a>
-                                                </div>
-                                                <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                    <div class="bg-black py-2 collapse-inner rounded">
-                                                        <p class="collapse-item ">{{ t.env_description | richtext }}</p>
-                                                        <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="badge bg-light">{{ t.use_type }}</span>
-                                            </li>
-                                        </ol>
-                                    {% endfor %}
-                                </div> -->
                             </div>
                         {% endif %}
                     {% endfor %}       
@@ -712,38 +722,17 @@ RBA Case Study
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">2.6 Source / Pressure / Pathway / Receptor Relationships</h6>
                                 </div>
+                                {% if  i.impact_chain|default:'' != ''   %}
+                                    <div class="card-body"> 
+                                        {{ i.impact_chain |slice:":380" }}
+                                        <span id="dots16">...</span>
+                                        <span id="more16">{{ i.impact_chain |slice:"380:"}}</span>
+                                        <button id="btn16" onclick="myFunction16()"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                {% endif %}
                                 <div class="card-body"> 
-                                    {{ i.impact_chain |slice:":380" }}
-                                    <span id="dots16">...</span>
-                                    <span id="more16">{{ i.impact_chain |slice:"380:"}}</span>
-                                    <button id="btn16" onclick="myFunction16()"><i class="fas fa-chevron-right"></i></button>
-                    {{ i.graph|safe }}
+                                    {{ i.graph|safe }}
                                 </div>
-                                <!-- <div class="card-body">
-                                    <h6 class="m-0 font-weight-medium text-primary">Environmental Components</h6>
-                                    {% for t in i.phase2env_objects.all %}
-                                        <ol class="list-group list-group-numbered">
-                                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">
-                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                                        aria-expanded="true" aria-controls="collapseTwo" style="padding-left: 0px; color: #858796;">
-                                                        <i class="fa fa-plus-square"></i>
-                                                        <span>{{ t.env_list.label }}</span>
-                                                    </a>
-                                                </div>
-                                                <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                    <div class="bg-black py-2 collapse-inner rounded">
-                                                        <p class="collapse-item ">{{ t.env_description | richtext }}</p>
-                                                        <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="badge bg-light">{{ t.use_type }}</span>
-                                            </li>
-                                        </ol>
-                                    {% endfor %}
-                                </div> -->
                             </div>
                         {% endif %}
                     {% endfor %}       
@@ -774,14 +763,15 @@ RBA Case Study
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">3.2 Define Management Measures</h6>
                             </div>
-                            <div class="card-body"> 
-                                {{ i.mana_meas  |slice:":380" }}
-                                <span id="dots11">...</span>
-                                <span id="more11">{{ mana_meas |slice:"380:"}}</span>
-                                <button id="btn11" onclick="myFunction11()"><i class="fas fa-chevron-right"></i></button>
-                            </div>
+                            {% if  i.mana_meas|default:'' != ''   %}
+                                <div class="card-body"> 
+                                    {{ i.mana_meas  |slice:":380" }}
+                                    <span id="dots11">...</span>
+                                    <span id="more11">{{ i.mana_meas |slice:"380:"}}</span>
+                                    <button id="btn11" onclick="myFunction11()"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            {% endif %}
                             <div class="card-body">
-                                <h6 class="m-0 font-weight-medium text-primary">Management Measures</h6>
                                 {% for t in i.mana_meas_objects.all %}
                                     <ol class="list-group list-group-numbered">
                                         <li class="list-group-item d-flex justify-content-between align-items-start">
