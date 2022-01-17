@@ -17,8 +17,8 @@ USE_TYPE_CHOICE = (
 )
 
 ENV_TYPE_CHOICE = (
-    ('main', _('Main Environmental Component')),
-    ('sec', _('Background Environmental Component')),
+    ('main', _('Main Env')),
+    ('sec', _('Background Env')),
 )
 
 ES_TYPE_CHOICE =(
