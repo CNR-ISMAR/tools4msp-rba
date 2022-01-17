@@ -112,18 +112,19 @@ RBA Case Study
     </div>
 
     <!-- CS Description  -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Case Study Description</h6>
+    {% if  object.description|default:'' != ''   %}
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Case Study Description</h6>
+            </div>
+            <div class="card-body">
+                {{ object.description |slice:":400" }}
+                <span id="dots">...</span>
+                <span id="more">{{ object.description |slice:"400:"}}</span>
+                <button id="btn1" onclick="myFunction()"><i class="fas fa-chevron-right"></i></button>
+            </div>
         </div>
-        <div class="card-body">
-            {{ object.description |slice:":400" }}
-            <span id="dots">...</span>
-            <span id="more">{{ object.description |slice:"400:"}}</span>
-            <button id="btn1" onclick="myFunction()"><i class="fas fa-chevron-right"></i></button>
-        </div>
-    </div>
-
+    {% endif %}
 
     <!-- Phase 1 -->
     <div class="row">
@@ -135,8 +136,9 @@ RBA Case Study
                 </div>
             </div>
         </div>
-        <div  class="row justify-content-around">
-            <!-- left column phase 1.1 -->
+        
+        <!-- phase 1.1 -->
+        {% if  object.study_area|default:'' != ''   %}
             <div class="col-lg-6 mb-4">   
                 <div class="col-lg-12 mb-4">
                     <div class="card shadow mb-4">
@@ -152,130 +154,131 @@ RBA Case Study
                     </div>                
                 </div>
             </div>
-            <!-- right column phase 1.2 -->
-            <div class="col-lg-6 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "policy_objectives" %}</h6>
-                    </div>
+        {% endif %}
+        <!-- phase 1.2 -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "policy_objectives" %}</h6>
+                </div>
+                {% if  object.policy_objectives|default:'' != ''   %}
                     <div class="card-body"> 
                         {{ object.policy_objectives  |slice:":380" }}
                         <span id="dots3">...</span>
                         <span id="more3">{{ object.policy_objectives |slice:"380:"}}</span>
                         <button id="btn3" onclick="myFunction3()"><i class="fas fa-chevron-right"></i></button>
                     </div>
-                    <div class="card-body">
-                        <h6 class="m-0 font-weight-medium text-primary">Policy Objectives</h6>
-                        {% for i in object.polobj_objects.all %}
-                            <ol class="list-group list-group-numbered">
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">
-                                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2{{i.id}}"
-                                                aria-expanded="true" aria-controls="collapseTwo2{{i.id}}" style="padding-left: 0px; color: #858796;">
-                                                <i class="fa fa-plus-square"></i>
-                                                <span>{{ i.polobj }}</span>
-                                            </a>
-                                        </div>
-                                        <div id="collapseTwo2{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                            <div class="bg-black py-2 collapse-inner rounded">
-                                                <p class="collapse-item ">{{ i.polobj_desc }}</p>
-                                            </div>
+                {% endif %}
+                <div class="card-body">
+                    {% for i in object.polobj_objects.all %}
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2{{i.id}}"
+                                            aria-expanded="true" aria-controls="collapseTwo2{{i.id}}" style="padding-left: 0px; color: #858796;">
+                                            <i class="fa fa-plus-square"></i>
+                                            <span>{{ i.polobj }}</span>
+                                        </a>
+                                    </div>
+                                    <div id="collapseTwo2{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                        <div class="bg-black py-2 collapse-inner rounded">
+                                            <p class="collapse-item ">{{ i.polobj_desc }}</p>
                                         </div>
                                     </div>
-                                </li>
-                            </ol>
-                        {% endfor %}
-                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-        
-        <div  class="row justify-content-around">
-            <!-- left column phase1.3 -->
-            <div class="col-lg-6 mb-4">
-                <div class="col-lg-12 mb-4">  
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "ecosystem_services" %}</h6>
-                        </div>
+
+        <!-- left column phase1.3 -->
+        <div class="col-lg-6 mb-4">
+            <div class="col-lg-12 mb-4">  
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "ecosystem_services" %}</h6>
+                    </div>
+                    {% if  object.ecosystem_services|default:'' != ''   %}
                         <div class="card-body"> 
                             {{ object.ecosystem_services  |slice:":380" }}
                             <span id="dots10">...</span>
                             <span id="more10">{{ object.ecosystem_services |slice:"380:"}}</span>
                             <button id="btn10" onclick="myFunction10()"><i class="fas fa-chevron-right"></i></button>
                         </div>
-                        <div class="card-body">
-                            <h6 class="m-0 font-weight-medium text-primary">Ecosystem Services</h6>
-                            {% for i in object.es_type %}
-                                <ol class="list-group list-group-numbered">
-                                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                                        <div class="ms-2 me-auto">
-                                            <div class="fw-bold">
-                                                <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo3{{i.id}}" -->
-                                                    <!-- aria-expanded="true" aria-controls="collapseTwo3{{i.id}}" style="padding-left: 0px; color: #858796;"> -->
-                                                    <!-- <i class="fa fa-plus-square"></i> -->
-                                                    <span>{{ i }}</span>
-                                                <!-- </a> -->
-                                            </div>
-                                            <!-- <div id="collapseTwo3" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                <div class="bg-black py-2 collapse-inner rounded">
-                                                    <p class="collapse-item ">{{ i.polobj_desc }}</p>
-                                                </div>
-                                            </div> -->
+                    {% endif %}
+                    <div class="card-body">
+                        {% for i in object.eco_objects.all %} 
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">
+                                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEco{{i.id}}"
+                                                aria-expanded="true" aria-controls="collapseEco{{i.id}}" style="padding-left: 0px; color: #858796;">
+                                                <i class="fa fa-plus-square"></i>
+                                                <span>{{i.es_type}} {{i.bio_type}} - {{ i.Title  }}</span>
+                                            </a>
                                         </div>
-                                    </li>
-                                </ol>
-                            {% endfor %}
-                        </div>
-                    </div>     
-                </div>
-            </div>
-            <!-- right column phase1.4 -->
-            <div class="col-lg-6 mb-4">
-                <!-- 1.4 -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "future_scenarios" %}</h6>
+                                        <div id="collapseEco{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                            <div class="bg-black py-2 collapse-inner rounded">
+                                                <p class="collapse-item ">{{ es_description| richtext }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>  
+                        {% endfor %}
                     </div>
+                </div>     
+            </div>
+        </div>
+
+        <!-- right column phase1.4 -->
+        <div class="col-lg-6 mb-4">
+            <!-- 1.4 -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">{% get_verbose_field_name object "future_scenarios" %}</h6>
+                </div>
+                {% if  object.future_scenarios|default:'' != ''   %}
                     <div class="card-body"> 
                         {{ object.future_scenarios |slice:":380" }}
                         <span id="dots6">...</span>
                         <span id="more6">{{ object.future_scenarios |slice:"380:"}}</span>
                         <button id="btn6" onclick="myFunction6()"><i class="fas fa-chevron-right"></i></button>
                     </div>
-                    <div class="card-body">
-                        <h6 class="m-0 font-weight-medium text-primary">Future Scenarios</h6>
-                        {% for i in object.futscen_objects.all %}
-                            <ol class="list-group list-group-numbered">
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4{{i.id}}"
-                                            aria-expanded="true" aria-controls="collapseTwo4{{i.id}}" style="padding-left: 0px; color: #858796;">
-                                            <i class="fa fa-plus-square"></i>
-                                            <span>{{ i.future_scen }}</span>
-                                        </a>
-                                    </div>
-                                    <div id="collapseTwo4{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                        <div class="bg-black py-2 collapse-inner rounded">
-                                            <p class="collapse-item ">{{ i.future_scen_desc }}</p>
-                                            <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
-                                        </div>
+                {% endif %}
+                <div class="card-body">
+                    {% for i in object.futscen_objects.all %}
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4{{i.id}}"
+                                        aria-expanded="true" aria-controls="collapseTwo4{{i.id}}" style="padding-left: 0px; color: #858796;">
+                                        <i class="fa fa-plus-square"></i>
+                                        <span>{{ i.future_scen }}</span>
+                                    </a>
+                                </div>
+                                <div id="collapseTwo4{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                    <div class="bg-black py-2 collapse-inner rounded">
+                                        <p class="collapse-item ">{{ i.future_scen_desc }}</p>
+                                        <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
                                     </div>
                                 </div>
-                                <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
-                                </li>
-                            </ol>
-                        {% endfor %}
-                    </div>
+                            </div>
+                            <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
+                            </li>
+                        </ol>
+                        
+                    {% endfor %}
                 </div>
-
-
             </div>
-        </div>
 
-<!-- ************************************************************************************************* -->
+
+        </div>
 
         <!-- Phase2 -->
         <div class="col-lg-12 mb-4">
