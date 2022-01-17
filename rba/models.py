@@ -321,24 +321,23 @@ class PolicyObjectives(Orderable):
 
 class EcoService(Orderable):
     phase_1 = ParentalKey(CS, related_name='eco_objects')
-    Title = models.TextField ( null=True, blank=True,
-        verbose_name= "Ecosystem Service")
     es_type = MultiSelectField(
         choices= enumerations.ES_TYPE_CHOICE,
         null=True,
         blank=True,
+        verbose_name= "Section"
     )
     bio_type = MultiSelectField(
         choices= enumerations.BIO_TYPE_CHOICE,
         null=True,
         blank=True,
+        verbose_name= "Section Type"
     )
-    code = models.TextField ( null=True, blank=True,
-        verbose_name= "Ecosystem Service Code")
-    data_source = models.URLField(max_length=600,blank=True, null=True)
-    data_description = RichTextField( null=True, blank=True, 
+    Title = models.TextField ( null=True, blank=True,
+        verbose_name= "Ecosystem Service")
+    
+    es_description = RichTextField( null=True, blank=True, 
          verbose_name= "Ecosystem Service Description")
-    link = models.URLField(max_length=600,blank=True, null=True)
 
     
 
