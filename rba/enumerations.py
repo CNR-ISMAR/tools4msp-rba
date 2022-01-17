@@ -31,3 +31,16 @@ ES_TYPE_CHOICE =(
     ('Recreation and Tourism', _('Recreation and Tourism')),
     ('Climate Regulation', _('Climate Regulation')),
 )
+
+ES_TYPE_CHOICE =(
+    
+    ('Provisioning services', _('Provisioning services')),
+    ('Regulating and Maintenance Services', _('Regulating and Maintenance Services')),
+    ('Cultural Services', _('Cultural Services')),
+)
+
+BIO_TYPE_CHOICE =(
+    
+    ('Biotic', _('Biotic')),
+    ('Abiotic', _('Abiotic')),
+)
