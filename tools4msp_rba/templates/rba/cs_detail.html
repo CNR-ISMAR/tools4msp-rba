@@ -374,8 +374,9 @@ RBA Case Study
                                                     <div id="collapseTwo5{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
                                                         <div class="bg-black py-2 collapse-inner rounded">
                                                             {% if  t.pressure_list.description|default:'' != ''   %}
-                                                                <p class="collapse-item text-gray-550 small"> << {{ t.pressure_list.description| linebreaksbr }} >> </p>
+                                                                <p class="collapse-item text-gray-550 small"> {{ t.pressure_list.description| linebreaksbr }} </p>
                                                             {% endif %}
+                                                            <hr style="height:1pt"/>
                                                             <hr style="height:10pt; visibility:hidden;"/>
                                                             <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>     
                                                             {% if  t.data_description|default:'' != ''   %}
@@ -437,8 +438,9 @@ RBA Case Study
                                                 <div id="collapseTwo5f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;" > <!-- togliere padding top @todo -->
                                                     <div class="bg-black py-2 collapse-inner rounded">
                                                         {% if  t.pressure_list.description|default:'' != ''   %}
-                                                            <p class="collapse-item text-gray-550 small"> << {{ t.pressure_list.description| linebreaksbr }} >> </p>
+                                                            <p class="collapse-item text-gray-550 small">{{ t.pressure_list.description| linebreaksbr }}</p>
                                                         {% endif %}
+                                                        <hr style="height:1pt"/>
                                                         <hr style="height:10pt; visibility:hidden;"/>
                                                         <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>     
                                                         {% if  t.data_description|default:'' != ''   %}
@@ -509,8 +511,9 @@ RBA Case Study
                                                 <div id="collapseTwo6{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;" > <!-- togliere padding top @todo -->
                                                     <div class="bg-black py-2 collapse-inner rounded">
                                                         {% if  t.use_list.description|default:'' != ''   %}
-                                                            <p class="collapse-item text-gray-550 small"> << {{ t.use_list.description| linebreaksbr }} >> </p>
+                                                            <p class="collapse-item text-gray-550 small">{{ t.use_list.description| linebreaksbr }}</p>
                                                         {% endif %}
+                                                        <hr style="height:1pt"/>
                                                         <hr style="height:10pt; visibility:hidden;"/>
                                                         <p class="collapse-item ">{{ t.use_description | richtext }}</p>
                                                         {% if  t.data_description|default:'' != ''   %}
@@ -572,8 +575,9 @@ RBA Case Study
                                                 <div id="collapseTwo6f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
                                                     <div class="bg-black py-2 collapse-inner rounded">
                                                         {% if  t.use_list.description|default:'' != ''   %}
-                                                            <p class="collapse-item text-gray-550 small"> << {{ t.use_list.description| linebreaksbr }} >> </p>
+                                                            <p class="collapse-item text-gray-550 small">{{ t.use_list.description| linebreaksbr }}</p>
                                                         {% endif %}
+                                                        <hr style="height:1pt"/>
                                                         <hr style="height:10pt; visibility:hidden;"/>
                                                         <p class="collapse-item ">{{ t.use_description | richtext }}</p>
                                                         {% if  t.data_description|default:'' != ''   %}
@@ -644,8 +648,9 @@ RBA Case Study
                                                     <div id="collapseTwo7{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
                                                         <div class="bg-black py-2 collapse-inner rounded">
                                                             {% if  t.env_list.description|default:'' != ''   %}
-                                                                <p class="collapse-item text-gray-550 small"> << {{ t.env_list.description| linebreaksbr }} >> </p>
+                                                                <p class="collapse-item text-gray-550 small">{{ t.env_list.description| linebreaksbr }}</p>
                                                             {% endif %}
+                                                            <hr style="height:1pt"/>
                                                             <hr style="height:10pt; visibility:hidden;"/>
                                                             <p class="collapse-item ">{{ t.env_description | richtext }}</p>
                                                             {% if  t.data_description|default:'' != ''   %}
@@ -707,8 +712,9 @@ RBA Case Study
                                                     <div id="collapseTwo7f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
                                                         <div class="bg-black py-2 collapse-inner rounded">
                                                             {% if  t.env_list.description|default:'' != ''   %}
-                                                                <p class="collapse-item text-gray-550 small"> << {{ t.env_list.description| linebreaksbr }} >> </p>
+                                                                <p class="collapse-item text-gray-550 small">{{ t.env_list.description| linebreaksbr }}</p>
                                                             {% endif %}
+                                                            <hr style="height:1pt"/>
                                                             <hr style="height:10pt; visibility:hidden;"/>
                                                             <p class="collapse-item ">{{ t.env_description | richtext }}</p>
                                                             {% if  t.data_description|default:'' != ''   %}
