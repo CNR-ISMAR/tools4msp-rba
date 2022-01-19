@@ -366,13 +366,15 @@ RBA Case Study
                                                 <div class="ms-2 me-auto">
                                                     <div class="fw-bold">
                                                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5{{t.id}}"
-                                                            aria-expanded="true" aria-controls="collapseTwo5{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                            aria-expanded="true" aria-controls="collapseTwo5{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                             <i class="fa fa-plus-square"></i>
                                                             <span>{{ t.pressure_list.label }} - {{ t.pressure_list.code }}</span>
                                                         </a>
                                                     </div>
-                                                    <div id="collapseTwo5{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div id="collapseTwo5{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
                                                         <div class="bg-black py-2 collapse-inner rounded">
+                                                            <p class="collapse-item text-gray-550 small"> << {{ t.pressure_list.description| richtext }} >> </p>
+                                                            <hr style="height:10pt; visibility:hidden;"/>
                                                             <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>     
                                                             {% if  t.data_description|default:'' != ''   %}
                                                                 <div class="card" style="padding:1rem">
@@ -425,25 +427,29 @@ RBA Case Study
                                             <div class="ms-2 me-auto">
                                                 <div class="fw-bold">
                                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5f{{t.id}}"
-                                                        aria-expanded="true" aria-controls="collapseTwo5f{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                        aria-expanded="true" aria-controls="collapseTwo5f{{t.id}}" style="padding-left: 0px;  padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                         <i class="fa fa-plus-square"></i>
                                                         <span>{{ t.pressure_list.label }} - {{ t.pressure_list.code }}</span>
                                                     </a>
                                                 </div>
-                                                <div id="collapseTwo5f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                    <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>
-                                                    {% if  t.data_description|default:'' != ''   %}
-                                                        <div class="card" style="padding:1rem">
-                                                            <h6 class="m-0 font-weight-medium text-primary">Pressure Data Source </h6>  
-                                                            <p>{{ t.data_description | richtext }}</p>
-                                                            {% if  t.data_source|default:'' != ''   %}
-                                                                <a target="_blank" rel="nofollow" class="text-gray-600" href="{{ t.data_source }}"><i class="fas fa-link"></i> Source Link</a>
-                                                            {% endif %}
-                                                            {% if  t.layer|default:'' != ''   %}
-                                                                <a target="_blank" rel="nofollow" class="text-gray-600" href="{{ t.layer }}"><i class="fas fa-link"></i> Layer Link</a>
-                                                            {% endif %}
-                                                        </div>
-                                                    {% endif %}
+                                                <div id="collapseTwo5f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;" > <!-- togliere padding top @todo -->
+                                                    <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item text-gray-550 small"> << {{ t.pressure_list.description| richtext }} >> </p>
+                                                        <hr style="height:10pt; visibility:hidden;"/>
+                                                        <p class="collapse-item ">{{ t.pressure_description | richtext }}</p>     
+                                                        {% if  t.data_description|default:'' != ''   %}
+                                                            <div class="card" style="padding:1rem">
+                                                                <h6 class="m-0 font-weight-medium text-primary">Pressure Data Source </h6>  
+                                                                <p>{{ t.data_description | richtext }}</p>
+                                                                {% if  t.data_source|default:'' != ''   %}
+                                                                    <a target="_blank" rel="nofollow" class="text-gray-600" href="{{ t.data_source }}"><i class="fas fa-link"></i> Source Link</a>
+                                                                {% endif %}
+                                                                {% if  t.layer|default:'' != ''   %}
+                                                                    <a target="_blank" rel="nofollow" class="text-gray-600" href="{{ t.layer }}"><i class="fas fa-link"></i> Layer Link</a>
+                                                                {% endif %}
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
                                                 </div>
                                             </div>
                                             {% if "main" in t.pressure_type %}
@@ -491,13 +497,15 @@ RBA Case Study
                                             <div class="ms-2 me-auto">
                                                 <div class="fw-bold">
                                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6{{t.id}}"
-                                                        aria-expanded="true" aria-controls="collapseTwo6{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                        aria-expanded="true" aria-controls="collapseTwo6{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                         <i class="fa fa-plus-square"></i>
                                                         <span>{{ t.use_list.label }}</span>
                                                     </a>
                                                 </div>
-                                                <div id="collapseTwo6{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                <div id="collapseTwo6{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;" > <!-- togliere padding top @todo -->
                                                     <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item text-gray-550 small"> << {{ t.use_list.description| richtext }} >> </p>
+                                                        <hr style="height:10pt; visibility:hidden;"/>
                                                         <p class="collapse-item ">{{ t.use_description | richtext }}</p>
                                                         {% if  t.data_description|default:'' != ''   %}
                                                             <div class="card" style="padding:1rem">
@@ -550,13 +558,15 @@ RBA Case Study
                                             <div class="ms-2 me-auto">
                                                 <div class="fw-bold">
                                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6f{{t.id}}"
-                                                        aria-expanded="true" aria-controls="collapseTwo6f{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                        aria-expanded="true" aria-controls="collapseTwo6f{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                         <i class="fa fa-plus-square"></i>
                                                         <span>{{ t.use_list.label }}</span>
                                                     </a>
                                                 </div>
-                                                <div id="collapseTwo6f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                <div id="collapseTwo6f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
                                                     <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item text-gray-550 small"> << {{ t.use_list.description| richtext }} >> </p>
+                                                        <hr style="height:10pt; visibility:hidden;"/>
                                                         <p class="collapse-item ">{{ t.use_description | richtext }}</p>
                                                         {% if  t.data_description|default:'' != ''   %}
                                                             <div class="card" style="padding:1rem">
@@ -601,7 +611,7 @@ RBA Case Study
                             <!-- 2.5 Present-->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental responses</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental receptors</h6>
                                 </div>
                                 {% if  i.main_environmental_responses|default:'' != ''   %} 
                                     <div class="card-body"> 
@@ -618,13 +628,15 @@ RBA Case Study
                                                 <div class="ms-2 me-auto">
                                                     <div class="fw-bold">
                                                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7{{t.id}}"
-                                                            aria-expanded="true" aria-controls="collapseTwo7{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                            aria-expanded="true" aria-controls="collapseTwo7{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                             <i class="fa fa-plus-square"></i>
                                                             <span>{{ t.env_list.label }}</span>
                                                         </a>
                                                     </div>
-                                                    <div id="collapseTwo7{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div id="collapseTwo7{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
                                                         <div class="bg-black py-2 collapse-inner rounded">
+                                                            <p class="collapse-item text-gray-550 small"> << {{ t.env_list.description| richtext }} >> </p>
+                                                            <hr style="height:10pt; visibility:hidden;"/>
                                                             <p class="collapse-item ">{{ t.env_description | richtext }}</p>
                                                             {% if  t.data_description|default:'' != ''   %}
                                                                 <div class="card" style="padding:1rem">
@@ -660,7 +672,7 @@ RBA Case Study
                             <!-- 2.5 future -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental responses</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">2.5 Describe main environmental receptors</h6>
                                 </div>
                                 {% if  i.main_environmental_responses|default:'' != ''   %}
                                     <div class="card-body"> 
@@ -677,13 +689,15 @@ RBA Case Study
                                                 <div class="ms-2 me-auto">
                                                     <div class="fw-bold">
                                                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7f{{t.id}}"
-                                                            aria-expanded="true" aria-controls="collapseTwo7f{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                            aria-expanded="true" aria-controls="collapseTwo7f{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                             <i class="fa fa-plus-square"></i>
                                                             <span>{{ t.env_list.label }}</span>
                                                         </a>
                                                     </div>
-                                                    <div id="collapseTwo7f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div id="collapseTwo7f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
                                                         <div class="bg-black py-2 collapse-inner rounded">
+                                                            <p class="collapse-item text-gray-550 small"> << {{ t.env_list.description| richtext }} >> </p>
+                                                            <hr style="height:10pt; visibility:hidden;"/>
                                                             <p class="collapse-item ">{{ t.env_description | richtext }}</p>
                                                             {% if  t.data_description|default:'' != ''   %}
                                                                 <div class="card" style="padding:1rem">
