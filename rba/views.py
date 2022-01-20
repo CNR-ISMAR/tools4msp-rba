@@ -29,7 +29,7 @@ class CSDetailView(DetailView):
     def get(self, request, *args, **kwargs):
         if request.user.is_anonymous:
             return redirect("/login.html")
-        return super(CSDetailView, self).get(*args, **kwargs)
+        return super(CSDetailView, self).get(request, *args, **kwargs)
 
 
 class baseDetailView(DetailView):
