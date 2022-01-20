@@ -201,3 +201,13 @@
     text-decoration: none;
     display: inline-block;
 }
+
+.sidebar {
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+  }
+
+#content-wrapper{
+    padding-left: 14rem;
+}

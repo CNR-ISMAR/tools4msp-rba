@@ -50,36 +50,73 @@
                     </a>
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
-    
-                <!-- Nav Item - Case Studies List -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="/rba/list">
-                        <i class="fas fa-fw fa-list"></i>
-                        <span>Case Studies List</span></a>
-                </li>
-    
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-    
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Case Studies
-                </div>
-                {% for cs in object_list|dictsort:"title" %}
-                    <li class="nav-item ">
-                        <a class="nav-link " href="{% url 'cs-view' cs.id %}">
-                            <i class="fas fa-fw fa-map-marked-alt"></i>
-                            <span>{{ cs.title }}</span></a>
+
+                {% if  object_list|default:'' == ''   %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rba/list">
+                            <i class="fas fa-fw fa-list"></i>
+                            <span>Case Studies List</span></a>
                     </li>
-                {% endfor %}
-    
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-    
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                    <!-- Divider -->
+                    <hr class="sidebar-divider">
+                {% endif %}
+                
+                <!-- Nav Item - Documentation -->
+                <div class="sidebar-heading">
+                    Documentation
                 </div>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/doc">
+                        <i class="fas fa-file-alt"></i>
+                        <span>About Risk Base CEA</span></a>
+                </li>
+                <hr class="sidebar-divider">
+                <!-- Nav Item - Case Studies List -->
+                
+
+                {% if object.study_area|default:'' != '' %}
+                    <div class="sidebar-heading">
+                        Phases
+                    </div>
+                    <li class="nav-item ">
+                        <a class="nav-link" style="display:block" href="#phase_1">
+                            <i class="fas fa-info fa-2x"></i>
+                            <span>Context</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" style="display:block" href="#phase_2">
+                            <i class="fas fa-search fa-2x"></i>
+                            <span>Risk Identification</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" style="display:block" href="#phase_3">
+                            <i class="fas fa-chart-bar fa-2x"></i>
+                            <span>Risk Analysis</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" style="display:block" href="#phase_4">
+                            <i class="fas fa-clipboard-check fa-2x"></i>
+                            <span>Risk Evaluation</span></a>
+                    </li>
+
+                {% endif %}
+                
+                {% if  object_list|default:'' != ''   %}
+                    <!-- Heading -->
+                    <div class="sidebar-heading">
+                        Case Studies
+                    </div>
+                    {% for cs in object_list|dictsort:"title" %}
+                        <li class="nav-item ">
+                            <a class="nav-link " href="{% url 'cs-view' cs.id %}">
+                                <i class="fas fa-fw fa-map-marked-alt"></i>
+                                <span>{{ cs.title }}</span></a>
+                        </li>
+                    {% endfor %}
+
+                    <!-- Divider -->
+                    <hr class="sidebar-divider">
+                {% endif %}
     
             </ul>
             <!-- End of Sidebar -->
