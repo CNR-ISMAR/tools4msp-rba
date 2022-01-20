@@ -6,7 +6,7 @@ from wagtail.contrib.modeladmin.options import (
 from django import forms
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, FieldRowPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from .models import (CS, CSphase2,
+from .models import (CS, CSphase2, DocPage, 
 )
 
 class CSAdmin(ModelAdmin):
@@ -67,4 +67,3 @@ class CSphase2Admin(ModelAdmin):
     ]
     
 modeladmin_register(CSphase2Admin)
-

@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.db.models import ObjectDoesNotExist
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from .models import CS
+from .models import CS, DocPage
 
 
 class CsList(ListView):
@@ -16,8 +16,8 @@ class CsList(ListView):
         context['cs'] =  [(s.title ) for s in CS.objects.all()]
         return context
 
-class CSDetailView(DetailView):
 
+class CSDetailView(DetailView):
     model = CS
     template_name = 'rba/cs_detail.html'
     slug_field = 'id'
@@ -25,6 +25,12 @@ class CSDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = self.object.title
         return context
+    
+    def get(self, request, *args, **kwargs):
+        if request.user.is_anonymous:
+            return redirect("/login.html")
+        return super(CSDetailView, self).get(*args, **kwargs)
+
 
 class baseDetailView(DetailView):
 
@@ -41,6 +47,7 @@ def index(request):
     if request.user.is_anonymous:
         return redirect("/login.html")
     return redirect( "/rba/list")
+
 
 
 def html(request, filename):
@@ -79,3 +86,11 @@ def html(request, filename):
         context["collapse"] = "pages"
 
     return render(request, f"{filename}.html", context=context)
+
+
+class DocListView(ListView):
+    model = DocPage
+    template_name = 'rba/doc.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context

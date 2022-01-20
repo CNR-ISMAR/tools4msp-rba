@@ -15,6 +15,10 @@ import plotly.express as px
 import plotly.graph_objs as go
 import networkx as nx
 
+from wagtail.core.models import Page
+
+
+
 
 #phase2
 class CSphase2(ClusterableModel):
@@ -369,3 +373,16 @@ class PolicyObjectives(Orderable):
         verbose_name= "Policy Objective")
     polobj_desc = models.TextField ( null=True, blank=True,
         verbose_name= "Policy Objective Description")
+
+
+
+# about risk base cea
+class DocPage(Page):
+    template = "rba/doc.html"
+    doctitle = models.CharField(max_length=100, blank=False, null=True)
+    docdesc = RichTextField( null=True, blank=True, 
+        verbose_name= "description")
+    content_panels = Page.content_panels + [
+        FieldPanel("doctitle"),
+        FieldPanel("docdesc"),
+    ]
