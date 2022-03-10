@@ -63,8 +63,6 @@ class CSphase2Admin(ModelAdmin):
     FieldPanel("impact_chain"),
     InlinePanel("pathup_objects"),
     InlinePanel("pathpe_objects"),
-    FieldPanel("mana_meas"),
-    InlinePanel("mana_meas_objects"),
     ]
     
 modeladmin_register(CSphase2Admin)

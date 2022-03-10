@@ -312,11 +312,6 @@ class Phase2envs(Orderable):
         verbose_name= "Data Source description")
     layer = models.URLField(max_length=600,blank=True, null=True)
 
-class ManagementMeasures(Orderable):
-    phase_2 = ParentalKey(CSphase2, related_name='mana_meas_objects')
-    manameas = models.TextField ( null=True, blank=True,
-        verbose_name= "Description Item")
-
 class ManaMeas(Orderable):
     phase_2 = ParentalKey(CSphase2, related_name='manamea_objects')
     manamea = models.TextField ( null=True, blank=True,
