@@ -38,7 +38,7 @@ modeladmin_register(CSAdmin)
 
 class CSphase2Admin(ModelAdmin):
     model = CSphase2
-    menu_label = "Phase 2"
+    menu_label = "Risk Configuration"
     menu_icon = "success"
     menu_order = 800
     add_to_settings_menu = False 
@@ -50,6 +50,7 @@ class CSphase2Admin(ModelAdmin):
     FieldPanel("condition_type"),
     FieldPanel("title"),
     FieldPanel("description"),
+    InlinePanel("manamea_objects"),
     FieldPanel("main_pressures_effects"),
     # FieldPanel("pressure_list", widget=forms.CheckboxSelectMultiple),
     InlinePanel("phase2pressures_objects"),

@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.fields.related import ManyToManyField
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Orderable
+from wagtail.core.models import Page
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from wagtail.core.fields import RichTextField
@@ -15,12 +16,8 @@ import plotly.express as px
 import plotly.graph_objs as go
 import networkx as nx
 
-from wagtail.core.models import Page
 
-
-
-
-#phase2
+#risk configuration
 class CSphase2(ClusterableModel):
     title = models.CharField(max_length=400, blank=True, null=False)
     description = models.TextField( null=True, blank=True)
@@ -33,26 +30,26 @@ class CSphase2(ClusterableModel):
     )
 
     main_pressures_effects = models.TextField( null=True, blank=True, 
-        verbose_name= "2.3 Define main pressures / effects")
+        verbose_name= "Define main pressures / effects")
     
     pressure_list = models.ManyToManyField(Pressure, through='Phase2Pressures', blank=True,
         verbose_name= "Pressures")
     
 
     main_source_effects = models.TextField( null=True, blank=True, 
-        verbose_name= "2.4 Describe main sources of pressures / effects")
+        verbose_name= "Describe main sources of pressures / effects")
     
     use_list = models.ManyToManyField(Use, through='Phase2uses', blank=True,
         verbose_name= "Uses")
     
     main_environmental_responses = models.TextField( null=True, blank=True, 
-        verbose_name= "2.5 Describe main environmental receptors")
+        verbose_name= "Describe main environmental receptors")
     
     env_list = models.ManyToManyField(Env, through='Phase2envs', blank=True,
         verbose_name= "Environmental Components")
 
     impact_chain = models.TextField( null=True, blank=True, 
-        verbose_name= "2.6 Source / Pressure / Pathway / Receptor Relationships")
+        verbose_name= "Source / Pressure / Pathway / Receptor Relationships")
     
     def __str__(self):
         return self.title
@@ -211,10 +208,12 @@ class CSphase2(ClusterableModel):
         plt_div = plotly.offline.plot(fig, output_type='div', config=config)
         return plt_div
 
-    #phase 3
-
     mana_meas = models.TextField( null=True, blank=True, 
         verbose_name= "3.2 Define Management Measures")
+    
+    class Meta:
+        verbose_name = 'Risk Configuration'
+        verbose_name_plural = 'Risk Configurations'
 
 # case study model and Phase 1
 class CS(ClusterableModel): 
@@ -246,6 +245,10 @@ class CS(ClusterableModel):
         verbose_name= "1.4 Define future scenarios")
     
     phase2 = models.ManyToManyField(CSphase2, through='M2MPhase2', blank=True)
+
+    class Meta:
+        verbose_name = 'Case Study'
+        verbose_name_plural = 'Case Studies'
 
 
 #phase3
@@ -312,9 +315,12 @@ class Phase2envs(Orderable):
 class ManagementMeasures(Orderable):
     phase_2 = ParentalKey(CSphase2, related_name='mana_meas_objects')
     manameas = models.TextField ( null=True, blank=True,
-        verbose_name= "Management Measures")
-    manameas_desc = models.TextField ( null=True, blank=True,
-        verbose_name= "Management Measure Description")
+        verbose_name= "Description Item")
+
+class ManaMeas(Orderable):
+    phase_2 = ParentalKey(CSphase2, related_name='manamea_objects')
+    manamea = models.TextField ( null=True, blank=True,
+        verbose_name= "Description Item")
 
 class PolicyObjectives(Orderable):
     phase_1 = ParentalKey(CS, related_name='polobj_objects')
