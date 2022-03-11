@@ -825,9 +825,39 @@ RBA Case Study
                                     {{ i.graph|safe }}
                                 </div>
                             </div>
+
+                            <div class="row justify-content-around" style="text-align: center">
+                                <!-- [LIGHTBOX CONTAINER] -->
+                                <div id="lb-back">
+                                    <div id="lb-img"></div>
+                                </div>
+                        
+                                <!-- [THE IMAGES] -->
+                                {% image i.image_wmatrix width-1000 class="zoomD" %}
+                                
+                            
+                                <!-- [LIGHTBOX CONTAINER] -->
+                                <div id="lb-back">
+                                    <div id="lb-img"></div>
+                                </div>
+                        
+                                <!-- [THE IMAGES] -->
+                                {% image i.image_dmatrix width-1000 class="zoomD" %}
+
+                                <div id="lb-back">
+                                    <div id="lb-img"></div>
+                                </div>
+                        
+                                <!-- [THE IMAGES] -->
+                                {% image i.image_smatrix width-1000 class="zoomD" %}
+                                
+                            </div>
+
+                            
                         {% endif %}
                     {% endfor %}       
                 </div>
+                    
                 <div class="col-lg-6 mb-4">
                     {% for i in object.phase2.all %}
                         {% if "Future Condition" in i.condition_type %}

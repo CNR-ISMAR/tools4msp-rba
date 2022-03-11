@@ -19,6 +19,29 @@ import networkx as nx
 
 #risk configuration
 class CSphase2(ClusterableModel):
+
+    image_wmatrix = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+"
+    )
+    image_dmatrix = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+"
+    )
+    image_smatrix = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+"
+    )
+
     title = models.CharField(max_length=400, blank=True, null=False)
     description = models.TextField( null=True, blank=True)
 
