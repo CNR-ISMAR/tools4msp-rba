@@ -77,32 +77,6 @@ class CSphase2(ClusterableModel):
     def __str__(self):
         return self.title
 
-    def _graph(self):
-        phase = self
-    
-        up_data = [[up.use_list.label, up.pressure_list.label] for up in phase.pathup_objects.all()]
-        pe_data = [[pe.pressure_list.label, pe.env_list.label, pe.env_list.label] for pe in phase.pathpe_objects.all()]
-        data = []
-        for up in  up_data:
-            getted = False
-            for pe in pe_data:
-                if up[1] == pe[0]:
-                    data.append([up[0], up[1], pe[1]])
-                    getted = True
-            if not getted:
-                data.append([up[0], up[1], None])
-                                    
-        df = pd.DataFrame(data, columns=['Sources', 'Pressures', 'Receptors'])
-        fig = px.parallel_categories(df,
-                                     # color=df.index,
-                                     dimensions=['Sources', 'Pressures', 'Receptors'],
-                                     #layout=my_layout
-        )
-        fig.update_layout(showlegend=False)
-
-        plt_div = plotly.offline.plot(fig, output_type='div')
-        return plt_div
-
     def graph(self):
         phase = self
         up_edges = [[up.use_list.code, up.pressure_list.code] for up in phase.pathup_objects.all()]
@@ -122,7 +96,7 @@ class CSphase2(ClusterableModel):
 
         edge_x = []
         edge_y = []
-        for edge in up_edges + pe_edges:
+        for edge in up_edges:
             x0, y0 = pos[edge[0]]
             x1, y1 = pos[edge[1]]
             edge_x.append(x0)
@@ -131,10 +105,28 @@ class CSphase2(ClusterableModel):
             edge_y.append(y0)
             edge_y.append(y1)
             edge_y.append(None)
+        
+        edge_x2 = []
+        edge_y2 = []
+        for edge in pe_edges:
+            x0, y0 = pos[edge[0]]
+            x1, y1 = pos[edge[1]]
+            edge_x2.append(x0)
+            edge_x2.append(x1)
+            edge_x2.append(None)
+            edge_y2.append(y0)
+            edge_y2.append(y1)
+            edge_y2.append(None)
 
         edge_trace = go.Scatter(
             x=edge_x, y=edge_y,
             line=dict(width=0.5, color='#888'),
+            hoverinfo='none',
+            mode='lines')
+        
+        edge_trace2 = go.Scatter(
+            x=edge_x2, y=edge_y2,
+            line=dict(width=0.5, color='#d142f5'),
             hoverinfo='none',
             mode='lines')
 
@@ -217,7 +209,7 @@ class CSphase2(ClusterableModel):
             'modeBarButtonsToRemove': ['zoom', 'pan', 'select', 'zoomIn', 'zoomOut', 'autoScale', 'resetScale', 'lasso2d', ],
             'displaylogo': False
         }
-        fig = go.Figure(data=[edge_trace, node_trace, header_trace],
+        fig = go.Figure(data=[edge_trace, edge_trace2, node_trace, header_trace],
                         layout=go.Layout(
                             showlegend=False,
                             hovermode='closest',
