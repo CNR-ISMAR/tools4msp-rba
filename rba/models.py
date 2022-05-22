@@ -8,7 +8,7 @@ from modelcluster.models import ClusterableModel
 from wagtail.core.fields import RichTextField
 from multiselectfield import MultiSelectField
 from rba import enumerations
-from tools4msp.models import Pressure, Use, Env, Weight
+from tools4msp.models import Pressure, Use, Env, Weight, Sensitivity
 import numpy as np
 import pandas as pd
 import plotly
@@ -80,38 +80,6 @@ class CSphase2(ClusterableModel):
     
     def __str__(self):
         return self.title
-
-    
-    def graph2(self):
-        phase = self
-        up_data = [[up.use_list.label, up.pressure_list.label] for up in phase.pathup_objects.all()]
-        pe_data = [[pe.pressure_list.label, pe.env_list.label, pe.env_list.label] for pe in phase.pathpe_objects.all()] 
-        w_data = [(w.use.label, w.pres.label, w.weight) for w in Weight.objects.all()]
-        data =[]
-        for up in  up_data:
-            getted = False
-            for pe in pe_data:
-                for w in w_data:
-                    if up[1] == pe[0] == w[1] and up[0] == w[0]:
-                        data.append([up[0], up[1], pe[2], w[2]]) 
-                        getted = True
-                    if not getted:
-                        data.append([up[0], up[1], None, None])
-        df = pd.DataFrame(data, columns=['Use', 'Pressures', 'Recep', 'Weight'])
-        df = df.drop_duplicates()
-        #return df
-        
-        fig = px.parallel_categories(df,
-                                    color=df.Weight,
-                                    dimensions=['Use', 'Pressures', 'Recep'],
-                                    #color="Weight", color_continuous_scale=px.colors.sequential.Inferno,
-                                    #layout=my_layout
-        )
-        fig.update_layout(showlegend=False)
-        plt_div = plotly.offline.plot(fig, output_type='div')
-        return plt_div
-
-    
     
     def graph(self):
         phase = self
@@ -122,23 +90,19 @@ class CSphase2(ClusterableModel):
         _p2 = [(pe.pressure_list.code, pe.pressure_list.label) for pe in phase.pathpe_objects.all()]
         _e = [(pe.env_list.code, pe.env_list.label) for pe in phase.pathpe_objects.all()]
         w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.all()]
+        s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.all()]
 
         u_nodes = list(set(_u))
         p_nodes = list(set(_p1 + _p2))
         e_nodes = list(set(_e))
 
-        lista = []
-        for w in w_data:
-            lista = w[2]
-
         pos = dict()
         pos.update( (node[0], (1, i)) for i, node in enumerate(u_nodes) ) # put nodes from X at x=1
         pos.update( (node[0], (2, i)) for i, node in enumerate(p_nodes) ) # put nodes from Y at x=2
         pos.update( (node[0], (3, i)) for i, node in enumerate(e_nodes) ) # put nodes from X at x=3
-
-
+        
         inferno = px.colors.sequential.Inferno
-        colors = ['#ff0000', '#0000ff']
+        viridis = px.colors.sequential.Viridis
 
         weight = []
         edge_traces = []
@@ -166,10 +130,11 @@ class CSphase2(ClusterableModel):
                 hoverinfo='none',
                 mode='lines'))
                 
-
+        sens = []
         edge_traces2 = []
         edge_x2 = []
         edge_y2 = []
+        e = -1
         for edge in pe_edges:
             x0, y0 = pos[edge[0]]
             x1, y1 = pos[edge[1]]
@@ -179,10 +144,15 @@ class CSphase2(ClusterableModel):
             edge_y2.append(y0)
             edge_y2.append(y1)
             edge_y2.append(None)
+            for s in s_data:
+                if edge[0] == s[0] and edge[1] == s[1]:
+                    sens.append(s[2])
+            color2 = px.colors.sample_colorscale(viridis, sens)
 
+            e = e +1
             edge_traces2.append(go.Scatter(
                 x=edge_x2, y=edge_y2,
-                line=dict(width=0.5, ),
+                line=dict(width=0.5, color=color2[e]),
                 hoverinfo='none',
                 mode='lines'))
 
