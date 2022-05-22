@@ -822,7 +822,9 @@ RBA Case Study
                                     </div>
                                 {% endif %}
                                 <div class="card-body" style="padding:3rem;"> 
+                                    
                                     {{ i.graph|safe }}
+                        
                                 </div>
                             </div>
                                 <div class="card shadow mb-4">
@@ -881,6 +883,7 @@ RBA Case Study
                                 {% endif %}
                                 {% if  i.graph.p_nodes|default:'' != ''   %}
                                     <div class="card-body" style="padding:3rem;"> 
+                                       
                                         {{ i.graph|safe }}
                                     </div>
                                 {% endif %}

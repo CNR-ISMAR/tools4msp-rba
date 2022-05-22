@@ -8,7 +8,7 @@ from modelcluster.models import ClusterableModel
 from wagtail.core.fields import RichTextField
 from multiselectfield import MultiSelectField
 from rba import enumerations
-from tools4msp.models import Pressure, Use, Env
+from tools4msp.models import Pressure, Use, Env, Weight
 import numpy as np
 import pandas as pd
 import plotly
@@ -73,10 +73,46 @@ class CSphase2(ClusterableModel):
 
     impact_chain = models.TextField( null=True, blank=True, 
         verbose_name= "Source / Pressure / Pathway / Receptor Relationships")
+
+
+    w_list = models.ManyToManyField(Weight, through='Phase2w', blank=True,
+        verbose_name= "Weights")
     
     def __str__(self):
         return self.title
 
+    
+    def graph2(self):
+        phase = self
+        up_data = [[up.use_list.label, up.pressure_list.label] for up in phase.pathup_objects.all()]
+        pe_data = [[pe.pressure_list.label, pe.env_list.label, pe.env_list.label] for pe in phase.pathpe_objects.all()] 
+        w_data = [(w.use.label, w.pres.label, w.weight) for w in Weight.objects.all()]
+        data =[]
+        for up in  up_data:
+            getted = False
+            for pe in pe_data:
+                for w in w_data:
+                    if up[1] == pe[0] == w[1] and up[0] == w[0]:
+                        data.append([up[0], up[1], pe[2], w[2]]) 
+                        getted = True
+                    if not getted:
+                        data.append([up[0], up[1], None, None])
+        df = pd.DataFrame(data, columns=['Use', 'Pressures', 'Recep', 'Weight'])
+        df = df.drop_duplicates()
+        #return df
+        
+        fig = px.parallel_categories(df,
+                                    color=df.Weight,
+                                    dimensions=['Use', 'Pressures', 'Recep'],
+                                    #color="Weight", color_continuous_scale=px.colors.sequential.Inferno,
+                                    #layout=my_layout
+        )
+        fig.update_layout(showlegend=False)
+        plt_div = plotly.offline.plot(fig, output_type='div')
+        return plt_div
+
+    
+    
     def graph(self):
         phase = self
         up_edges = [[up.use_list.code, up.pressure_list.code] for up in phase.pathup_objects.all()]
@@ -85,17 +121,30 @@ class CSphase2(ClusterableModel):
         _p1 = [(up.pressure_list.code, up.pressure_list.label) for up in phase.pathup_objects.all()]
         _p2 = [(pe.pressure_list.code, pe.pressure_list.label) for pe in phase.pathpe_objects.all()]
         _e = [(pe.env_list.code, pe.env_list.label) for pe in phase.pathpe_objects.all()]
+        w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.all()]
+
         u_nodes = list(set(_u))
         p_nodes = list(set(_p1 + _p2))
         e_nodes = list(set(_e))
 
+        lista = []
+        for w in w_data:
+            lista = w[2]
+
         pos = dict()
         pos.update( (node[0], (1, i)) for i, node in enumerate(u_nodes) ) # put nodes from X at x=1
         pos.update( (node[0], (2, i)) for i, node in enumerate(p_nodes) ) # put nodes from Y at x=2
-        pos.update( (node[0], (3, i)) for i, node in enumerate(e_nodes) ) # put nodes from X at x=1
+        pos.update( (node[0], (3, i)) for i, node in enumerate(e_nodes) ) # put nodes from X at x=3
 
+
+        inferno = px.colors.sequential.Inferno
+        colors = ['#ff0000', '#0000ff']
+
+        weight = []
+        edge_traces = []
         edge_x = []
         edge_y = []
+        c = -1
         for edge in up_edges:
             x0, y0 = pos[edge[0]]
             x1, y1 = pos[edge[1]]
@@ -105,7 +154,20 @@ class CSphase2(ClusterableModel):
             edge_y.append(y0)
             edge_y.append(y1)
             edge_y.append(None)
-        
+            for w in w_data:
+                if edge[0] == w[0] and edge[1] == w[1]:
+                    weight.append(w[2])
+            color = px.colors.sample_colorscale(inferno, weight)
+            
+            c = c + 1
+            edge_traces.append(go.Scatter(
+                x=edge_x, y=edge_y,
+                line=dict(width=0.5, color=color[c] ), 
+                hoverinfo='none',
+                mode='lines'))
+                
+
+        edge_traces2 = []
         edge_x2 = []
         edge_y2 = []
         for edge in pe_edges:
@@ -118,17 +180,11 @@ class CSphase2(ClusterableModel):
             edge_y2.append(y1)
             edge_y2.append(None)
 
-        edge_trace = go.Scatter(
-            x=edge_x, y=edge_y,
-            line=dict(width=0.5, color='#888'),
-            hoverinfo='none',
-            mode='lines')
-        
-        edge_trace2 = go.Scatter(
-            x=edge_x2, y=edge_y2,
-            line=dict(width=0.5, color='#d142f5'),
-            hoverinfo='none',
-            mode='lines')
+            edge_traces2.append(go.Scatter(
+                x=edge_x2, y=edge_y2,
+                line=dict(width=0.5, ),
+                hoverinfo='none',
+                mode='lines'))
 
         node_x = []
         node_y = []
@@ -183,33 +239,14 @@ class CSphase2(ClusterableModel):
                 size=17,
                 color="#4e73df",
             )
-            
-            # marker=dict(color='#000')
-            # hoverinfo='text',
-            # marker=dict(
-            #     # showscale=True,
-            #     # colorscale options
-            #     #'Greys' | 'YlGnBu' | 'Greens' | 'YlOrRd' | 'Bluered' | 'RdBu' |
-            #     #'Reds' | 'Blues' | 'Picnic' | 'Rainbow' | 'Portland' | 'Jet' |
-            #                                 #'Hot' | 'Blackbody' | 'Earth' | 'Electric' | 'Viridis' |
-            #     colorscale='YlGnBu',
-            #     reversescale=True,
-            #     color=[],
-            #     size=10,
-            #     # colorbar=dict(
-            #     #     thickness=15,
-            #     #     title='Node Connections',
-            #     #     xanchor='left',
-            #     #     titleside='right'
-            #     # ),
-            #     line_width=2)
         )
 
         config={
             'modeBarButtonsToRemove': ['zoom', 'pan', 'select', 'zoomIn', 'zoomOut', 'autoScale', 'resetScale', 'lasso2d', ],
             'displaylogo': False
         }
-        fig = go.Figure(data=[edge_trace, edge_trace2, node_trace, header_trace],
+        
+        fig = go.Figure(data=edge_traces + edge_traces2 + [node_trace] + [header_trace],
                         layout=go.Layout(
                             showlegend=False,
                             hovermode='closest',
@@ -220,8 +257,19 @@ class CSphase2(ClusterableModel):
                             plot_bgcolor='rgba(0,0,0,0)'
                         ),
         )
+        
+
         plt_div = plotly.offline.plot(fig, output_type='div', config=config)
         return plt_div
+
+
+
+
+
+
+
+
+
 
     mana_meas = models.TextField( null=True, blank=True, 
         verbose_name= "3.2 Define Management Measures")
@@ -327,6 +375,12 @@ class Phase2envs(Orderable):
         verbose_name= "Data Source description")
     layer = models.URLField(max_length=600,blank=True, null=True)
 
+class Phase2w(Orderable): 
+    phase_2 = ParentalKey(CSphase2, related_name='phase2w_objects')
+    w_list = models.ForeignKey(Weight, on_delete=models.CASCADE)
+
+
+
 class ManaMeas(Orderable):
     phase_2 = ParentalKey(CSphase2, related_name='manamea_objects')
     manamea = models.TextField ( null=True, blank=True,
@@ -382,6 +436,11 @@ class Path_pres_env(Orderable):
     env_list = models.ForeignKey(Env, on_delete=models.CASCADE)
     description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")
+
+class Path_w(Orderable):
+    phase_2 = ParentalKey(CSphase2, related_name='pathw_objects')
+    w_list = models.ForeignKey(Weight, on_delete=models.CASCADE)
+
 
 class PolicyObjectives(Orderable):
     phase_1 = ParentalKey(CS, related_name='polobj_objects')
