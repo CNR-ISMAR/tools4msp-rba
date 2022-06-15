@@ -130,7 +130,7 @@ class CSphase2(ClusterableModel):
             c = c + 1
             edge_traces.append(go.Scatter(
                 x=edge_x, y=edge_y,
-                line=dict(width=1.5, color=color[c] ), 
+                line=dict(width=0.9, color=color[c] ), 
                 hoverinfo='none',
                 mode='lines'))
                 
@@ -156,7 +156,7 @@ class CSphase2(ClusterableModel):
 
             edge_traces2.append(go.Scatter(
                 x=edge_x2, y=edge_y2,
-                line=dict(width=1.5, color=color2[e]),
+                line=dict(width=0.9, color=color2[e]),
                 hoverinfo='none',
                 mode='lines'))
 
