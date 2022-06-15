@@ -89,8 +89,11 @@ class CSphase2(ClusterableModel):
         _p1 = [(up.pressure_list.code, up.pressure_list.label) for up in phase.pathup_objects.all()]
         _p2 = [(pe.pressure_list.code, pe.pressure_list.label) for pe in phase.pathpe_objects.all()]
         _e = [(pe.env_list.code, pe.env_list.label) for pe in phase.pathpe_objects.all()]
-        w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.filter(context=1)]
-        s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.filter(context=1)]
+        w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.all()]
+        s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.all()]
+    
+        # w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.filter(context=1)]
+        # s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.filter(context=1)]
 
         u_nodes = list(set(_u))
         p_nodes = list(set(_p1 + _p2))
@@ -101,7 +104,7 @@ class CSphase2(ClusterableModel):
         pos.update( (node[0], (2, i)) for i, node in enumerate(p_nodes) ) # put nodes from Y at x=2
         pos.update( (node[0], (3, i)) for i, node in enumerate(e_nodes) ) # put nodes from X at x=3
         
-        inferno = px.colors.sequential.Inferno
+        inferno = px.colors.sequential.Turbo
         viridis = px.colors.sequential.Viridis
 
         weight = []
@@ -120,7 +123,8 @@ class CSphase2(ClusterableModel):
             edge_y.append(None)
             for w in w_data:
                 if edge[0] == w[0] and edge[1] == w[1]:
-                    weight.append(w[2])
+                        weight.append(w[2])
+
             color = px.colors.sample_colorscale(inferno, weight)
             
             c = c + 1
@@ -148,8 +152,8 @@ class CSphase2(ClusterableModel):
                 if edge[0] == s[0] and edge[1] == s[1]:
                     sens.append(s[2])
             color2 = px.colors.sample_colorscale(viridis, sens)
-
             e = e +1
+
             edge_traces2.append(go.Scatter(
                 x=edge_x2, y=edge_y2,
                 line=dict(width=0.5, color=color2[e]),
@@ -229,17 +233,8 @@ class CSphase2(ClusterableModel):
         )
         
         #return w_data
-
         plt_div = plotly.offline.plot(fig, output_type='div', config=config)
         return plt_div
-
-
-
-
-
-
-
-
 
 
     mana_meas = models.TextField( null=True, blank=True, 
