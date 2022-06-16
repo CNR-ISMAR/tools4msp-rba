@@ -103,8 +103,8 @@ class CSphase2(ClusterableModel):
         pos.update( (node[0], (2, i)) for i, node in enumerate(p_nodes) ) # put nodes from Y at x=2
         pos.update( (node[0], (3, i)) for i, node in enumerate(e_nodes) ) # put nodes from X at x=3
         
-        inferno = px.colors.sequential.YlGnBu
-        viridis = px.colors.sequential.YlGnBu
+        inferno = px.colors.sequential.Viridis
+        viridis = px.colors.sequential.Viridis
 
         weight = []
         edge_traces = []
