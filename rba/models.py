@@ -91,7 +91,6 @@ class CSphase2(ClusterableModel):
         _e = [(pe.env_list.code, pe.env_list.label) for pe in phase.pathpe_objects.all()]
         # w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.all()]
         # s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.all()]
-    
         w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.filter(context=8)]
         s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.filter(context=8)]
 
@@ -104,8 +103,8 @@ class CSphase2(ClusterableModel):
         pos.update( (node[0], (2, i)) for i, node in enumerate(p_nodes) ) # put nodes from Y at x=2
         pos.update( (node[0], (3, i)) for i, node in enumerate(e_nodes) ) # put nodes from X at x=3
         
-        inferno = px.colors.sequential.Bluered
-        viridis = px.colors.sequential.Bluered
+        inferno = px.colors.sequential.YlGnBu
+        viridis = px.colors.sequential.YlGnBu
 
         weight = []
         edge_traces = []
@@ -179,7 +178,7 @@ class CSphase2(ClusterableModel):
             mode='markers+text',
             textposition="top center",
             marker=dict(color='#000'),
-            # hoverinfo='text',
+            hoverinfo='text',
             # marker=dict(
             #     # showscale=True,
             #     # colorscale options
@@ -190,12 +189,12 @@ class CSphase2(ClusterableModel):
             #     reversescale=True,
             #     color=[],
             #     size=10,
-            #     # colorbar=dict(
-            #     #     thickness=15,
-            #     #     title='Node Connections',
-            #     #     xanchor='left',
-            #     #     titleside='right'
-            #     # ),
+            #     colorbar=dict(
+            #         thickness=10,
+            #         title='weight',
+            #         xanchor='left',
+            #         titleside='right'
+            #     ),
             #     line_width=2)
         )
 
