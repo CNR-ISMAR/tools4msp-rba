@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtail.contrib.modeladmin',
+
     'treebeard',
     'modelcluster',
     'taggit',

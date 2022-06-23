@@ -821,10 +821,17 @@ RBA Case Study
                                         <button id="btn9" onclick="myFunction9()"><i class="fas fa-chevron-right"></i></button>
                                     </div>
                                 {% endif %}
-                                <div class="card-body" style="padding:3rem;"> 
+                                <div class="card-body" style="padding:3rem;">
                                     
-                                    {{ i.graph|safe }}
-                        
+                                    
+                                    <div class="row justify-content-around " style="text-align: center; padding-top: 10px; padding-bottom:10px; "> 
+                                        
+                                        {% image i.image_table width-1000 class="zoomD" %}
+                                        
+                                    </div>
+                                    
+                                    
+
                                 </div>
                             </div>
                                 <div class="card shadow mb-4">
