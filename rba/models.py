@@ -20,6 +20,14 @@ import networkx as nx
 #risk configuration
 class CSphase2(ClusterableModel):
 
+    image_table = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+"
+    )
+
     image_wmatrix = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
@@ -85,14 +93,36 @@ class CSphase2(ClusterableModel):
         phase = self
         up_edges = [[up.use_list.code, up.pressure_list.code] for up in phase.pathup_objects.all()]
         pe_edges = [[pe.pressure_list.code, pe.env_list.code] for pe in phase.pathpe_objects.all()]
+
         _u = [(up.use_list.code, up.use_list.label) for up in phase.pathup_objects.all()]
         _p1 = [(up.pressure_list.code, up.pressure_list.label) for up in phase.pathup_objects.all()]
         _p2 = [(pe.pressure_list.code, pe.pressure_list.label) for pe in phase.pathpe_objects.all()]
         _e = [(pe.env_list.code, pe.env_list.label) for pe in phase.pathpe_objects.all()]
         # w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.all()]
         # s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.all()]
-        w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.filter(context=8)]
-        s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.filter(context=8)]
+        w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.filter(context=1)]
+        s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.filter(context=1)]
+
+        prova = dict ()
+        for up in up_edges:
+            for pe in pe_edges:
+                if up[1] == pe[0]:
+                    k = (up[0], pe[1])
+                    if not k in prova.keys():
+                        prova[k] = []
+                    prova[k] += [up[1]]
+        for up in up_edges:
+            print('uuuuuu', up[1], _p2)
+            if not up[1] in _p2:
+                k = (up[0], 'other')
+                if not k in prova.keys():
+                    prova[k] = []
+                prova[k] += [up[1]]
+        print(prova)
+
+
+
+
 
         u_nodes = list(set(_u))
         p_nodes = list(set(_p1 + _p2))
@@ -231,9 +261,9 @@ class CSphase2(ClusterableModel):
                         ),
         )
         
-        #return w_data
-        plt_div = plotly.offline.plot(fig, output_type='div', config=config)
-        return plt_div
+        return up_edges
+        # plt_div = plotly.offline.plot(fig, output_type='div', config=config)
+        # return plt_div
 
 
     mana_meas = models.TextField( null=True, blank=True, 

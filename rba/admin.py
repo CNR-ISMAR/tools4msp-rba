@@ -63,9 +63,10 @@ class CSphase2Admin(ModelAdmin):
     FieldPanel("impact_chain"),
     InlinePanel("pathup_objects"),
     InlinePanel("pathpe_objects"),
-    ImageChooserPanel("image_wmatrix"),
+    ImageChooserPanel("image_table"),
     ImageChooserPanel("image_dmatrix"),
     ImageChooserPanel("image_smatrix"),
+    ImageChooserPanel("image_smatrix")
     ]
     
 modeladmin_register(CSphase2Admin)
