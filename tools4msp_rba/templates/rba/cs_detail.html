@@ -836,7 +836,7 @@ RBA Case Study
                                               </tr>
                                             </thead>
                                             <tbody>
-                                              {{ i.graph.uep }}
+                                              
                                              
                                                 {% for l in i.graph.e %}
                                                 <tr>
@@ -846,7 +846,6 @@ RBA Case Study
                                                       
                                                        
                                                         {% with coso=j|add:l %} 
-                                                            {{ coso }}
                                                             
                                                             <td> {{ i.graph.uep|get_item:coso  }} </td>
                                                         {%  endwith %}
