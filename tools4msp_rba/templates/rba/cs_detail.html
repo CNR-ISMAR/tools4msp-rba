@@ -824,9 +824,45 @@ RBA Case Study
                                 <div class="card-body" style="padding:3rem;">
                                     
                                     
-                                    <div class="row justify-content-around " style="text-align: center; padding-top: 10px; padding-bottom:10px; "> 
+                                    <div class="row justify-content-around " style="text-align: center; padding-top: 10px; padding-bottom:10px; ">
                                         
-                                        {% image i.image_table width-1000 class="zoomD" %}
+                                        <table class="table table-success table-striped">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col"></th>
+                                                {% for j in i.graph.u %}
+                                                    <th scope="col"> {{ j }} </th>
+                                                {% endfor %}
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              {{ i.graph.uep }}
+                                             
+                                                {% for l in i.graph.e %}
+                                                <tr>
+                                                    <th scope="row">{{ l }}</th>
+
+                                                    {% for j in i.graph.u %}
+                                                      
+                                                       
+                                                        {% with coso=j|add:l %} 
+                                                            {{ coso }}
+                                                            
+                                                            <td> {{ i.graph.uep|get_item:coso  }} </td>
+                                                        {%  endwith %}
+
+                                                    {% endfor %}
+                                                </tr>
+                                                {% endfor %}
+                                                
+                                                
+                                              
+                                            </tbody>
+                                        </table>
+                                        
+                                            
+                                           
+                                        
                                         
                                     </div>
                                     
@@ -888,12 +924,11 @@ RBA Case Study
                                         <button id="btn16" onclick="myFunction16()"><i class="fas fa-chevron-right"></i></button>
                                     </div>
                                 {% endif %}
-                                {% if  i.graph.p_nodes|default:'' != ''   %}
+                            
                                     <div class="card-body" style="padding:3rem;"> 
                                        
-                                        {{ i.graph|safe }}
                                     </div>
-                                {% endif %}
+                                
                             </div>
                         {% endif %}
                     {% endfor %}       

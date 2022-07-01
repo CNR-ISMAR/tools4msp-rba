@@ -15,7 +15,11 @@ import plotly
 import plotly.express as px
 import plotly.graph_objs as go
 import networkx as nx
+from django.template.defaulttags import register
 
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
 
 #risk configuration
 class CSphase2(ClusterableModel):
@@ -94,176 +98,36 @@ class CSphase2(ClusterableModel):
         up_edges = [[up.use_list.code, up.pressure_list.code] for up in phase.pathup_objects.all()]
         pe_edges = [[pe.pressure_list.code, pe.env_list.code] for pe in phase.pathpe_objects.all()]
 
-        _u = [(up.use_list.code, up.use_list.label) for up in phase.pathup_objects.all()]
-        _p1 = [(up.pressure_list.code, up.pressure_list.label) for up in phase.pathup_objects.all()]
-        _p2 = [(pe.pressure_list.code, pe.pressure_list.label) for pe in phase.pathpe_objects.all()]
-        _e = [(pe.env_list.code, pe.env_list.label) for pe in phase.pathpe_objects.all()]
-        # w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.all()]
-        # s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.all()]
+        _u = [(up.use_list.code) for up in phase.pathup_objects.all()]
+        _p1 = [(up.pressure_list.code) for up in phase.pathup_objects.all()]
+        _p2 = [(pe.pressure_list.code) for pe in phase.pathpe_objects.all()]
+        _e = [(pe.env_list.code) for pe in phase.pathpe_objects.all()]
         w_data = [(w.use.code, w.pres.code, w.weight) for w in Weight.objects.filter(context=1)]
         s_data = [(s.pres.code, s.env.code, s.sensitivity) for s in Sensitivity.objects.filter(context=1)]
 
-        prova = dict ()
+        uep = dict ()
         for up in up_edges:
             for pe in pe_edges:
                 if up[1] == pe[0]:
-                    k = (up[0], pe[1])
-                    if not k in prova.keys():
-                        prova[k] = []
-                    prova[k] += [up[1]]
+                    k = (up[0] + pe[1])
+                    if not k in uep.keys():
+                        uep[k] = []
+                    uep[k] += [up[1]]
         for up in up_edges:
             print('uuuuuu', up[1], _p2)
             if not up[1] in _p2:
-                k = (up[0], 'other')
-                if not k in prova.keys():
-                    prova[k] = []
-                prova[k] += [up[1]]
-        print(prova)
-
-
-
-
+                k = (up[0]+'other')
+                if not k in uep.keys():
+                    uep[k] = []
+                uep[k] += [up[1]]
+        print (uep)
 
         u_nodes = list(set(_u))
         p_nodes = list(set(_p1 + _p2))
         e_nodes = list(set(_e))
 
-        pos = dict()
-        pos.update( (node[0], (1, i)) for i, node in enumerate(u_nodes) ) # put nodes from X at x=1
-        pos.update( (node[0], (2, i)) for i, node in enumerate(p_nodes) ) # put nodes from Y at x=2
-        pos.update( (node[0], (3, i)) for i, node in enumerate(e_nodes) ) # put nodes from X at x=3
+        return{ "u" : u_nodes, "e" : e_nodes, "uep" : uep }
         
-        inferno = px.colors.sequential.Viridis
-        viridis = px.colors.sequential.Viridis
-
-        weight = []
-        edge_traces = []
-        edge_x = []
-        edge_y = []
-        c = -1
-        for edge in up_edges:
-            x0, y0 = pos[edge[0]]
-            x1, y1 = pos[edge[1]]
-            edge_x.append(x0)
-            edge_x.append(x1)
-            edge_x.append(None)
-            edge_y.append(y0)
-            edge_y.append(y1)
-            edge_y.append(None)
-            for w in w_data:
-                if edge[0] == w[0] and edge[1] == w[1]:
-                        weight.append(w[2])
-
-            color = px.colors.sample_colorscale(inferno, weight)
-            
-            c = c + 1
-            edge_traces.append(go.Scatter(
-                x=edge_x, y=edge_y,
-                line=dict(width=0.7, color=color[c] ), 
-                hoverinfo='none',
-                mode='lines'))
-                
-        sens = []
-        edge_traces2 = []
-        edge_x2 = []
-        edge_y2 = []
-        e = -1
-        for edge in pe_edges:
-            x0, y0 = pos[edge[0]]
-            x1, y1 = pos[edge[1]]
-            edge_x2.append(x0)
-            edge_x2.append(x1)
-            edge_x2.append(None)
-            edge_y2.append(y0)
-            edge_y2.append(y1)
-            edge_y2.append(None)
-            for s in s_data:
-                if edge[0] == s[0] and edge[1] == s[1]:
-                    sens.append(s[2])
-            color2 = px.colors.sample_colorscale(viridis, sens)
-            e = e +1
-
-            edge_traces2.append(go.Scatter(
-                x=edge_x2, y=edge_y2,
-                line=dict(width=0.7, color=color2[e]),
-                hoverinfo='none',
-                mode='lines'))
-
-        node_x = []
-        node_y = []
-        node_code = []
-        node_label = []
-        for node in u_nodes + p_nodes + e_nodes:
-            x, y = pos[node[0]]
-            node_x.append(x)
-            node_y.append(y)
-            node_code.append(node[0])
-            node_label.append(node[1])
-            
-        node_trace = go.Scatter(
-            x=node_x, y=node_y,
-            text=node_code,
-            customdata=np.expand_dims(node_label, axis=1),
-            hovertemplate='<b>%{customdata[0]}</b>',
-            mode='markers+text',
-            textposition="top center",
-            marker=dict(color='#000'),
-            hoverinfo='text',
-            # marker=dict(
-            #     # showscale=True,
-            #     # colorscale options
-            #     #'Greys' | 'YlGnBu' | 'Greens' | 'YlOrRd' | 'Bluered' | 'RdBu' |
-            #     #'Reds' | 'Blues' | 'Picnic' | 'Rainbow' | 'Portland' | 'Jet' |
-            #                                 #'Hot' | 'Blackbody' | 'Earth' | 'Electric' | 'Viridis' |
-            #     colorscale='YlGnBu',
-            #     reversescale=True,
-            #     color=[],
-            #     size=10,
-            #     colorbar=dict(
-            #         thickness=10,
-            #         title='weight',
-            #         xanchor='left',
-            #         titleside='right'
-            #     ),
-            #     line_width=2)
-        )
-
-        # Headers
-        headers_y = max(node_y) + 1
-        header_trace = go.Scatter(
-            x=[1, 2, 3], y=[headers_y, headers_y, headers_y],
-            text=['Sources', 'Pressures', 'Receptors'],
-            # customdata=np.expand_dims(node_label, axis=1),
-            # hovertemplate='<b>%{customdata[0]}</b>',
-            mode='text',
-            textposition="top center",
-            textfont=dict(
-                family="nunito",
-                size=17,
-                color="#4e73df",
-            )
-        )
-
-        config={
-            'modeBarButtonsToRemove': ['zoom', 'pan', 'select', 'zoomIn', 'zoomOut', 'autoScale', 'resetScale', 'lasso2d', ],
-            'displaylogo': False
-        }
-        
-        fig = go.Figure(data=edge_traces + edge_traces2 + [node_trace] + [header_trace],
-                        layout=go.Layout(
-                            showlegend=False,
-                            hovermode='closest',
-                            margin=dict(b=20,l=5,r=5,t=40),
-                            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                            paper_bgcolor='rgba(0,0,0,0)',
-                            plot_bgcolor='rgba(0,0,0,0)'
-                        ),
-        )
-        
-        return up_edges
-        # plt_div = plotly.offline.plot(fig, output_type='div', config=config)
-        # return plt_div
 
 
     mana_meas = models.TextField( null=True, blank=True, 
