@@ -837,27 +837,23 @@ RBA Case Study
                                                 {% for l in i.graph.e %}
                                                 <tr>
                                                     <th scope="row">{{ l }}</th>
-
-
                                                     {% for j in i.graph.u %}
-                                                      
-                                                        {% for t in i.phase2pressures_objects.all %}
+
+                                                        
                                                             {% with coso=j|add:l %} 
                                                                 
                                                                     {% for c in i.graph.uep|get_item:coso %}
+                                                                        {% for t in i.phase2pressures_objects.all %}
 
-                                                                        {% if t.pressure_list.label == c %}
-                                                                            <td><i class="{{ t.pressure_list.fa_class  }}"></i></td>
-                                                                             
-                                                                        {% endif %}
+                                                                            {% if t.pressure_list.label == c %}
+                                                                                <td><i class="{{ t.pressure_list.fa_class  }}"></i></td>
+                                                                                
+                                                                            {% endif %}
+                                                                        
+                                                                        {% endfor %}
                                                                     {% endfor %}
-
-                                                              
-                                                                
-
                                                             {%  endwith %}
                                                         
-                                                        {% endfor %}
 
                                                     {% endfor %}
                                                 </tr>
