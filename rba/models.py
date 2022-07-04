@@ -114,13 +114,11 @@ class CSphase2(ClusterableModel):
                         uep[k] = []
                     uep[k] += [up[1]]
         for up in up_edges:
-            print('uuuuuu', up[1], _p2)
             if not up[1] in _p2:
                 k = (up[0]+'other')
                 if not k in uep.keys():
                     uep[k] = []
                 uep[k] += [up[1]]
-        print (uep)
 
         u_nodes = list(set(_u))
         p_nodes = list(set(_p1 + _p2))
