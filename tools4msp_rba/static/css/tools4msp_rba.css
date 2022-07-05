@@ -212,6 +212,10 @@
     padding-left: 14rem;
 }
 
+table td:hover{
+    transform: scale(2, 2);
+}
+
 /* [IMAGE] */
 .zoomD {
     width: 230px;
@@ -263,4 +267,5 @@
     padding: 0;
     margin: 0;
   }
+
 

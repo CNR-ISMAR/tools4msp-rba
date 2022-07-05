@@ -824,22 +824,20 @@ RBA Case Study
                                 {% endif %}
                                 <div class="card-body" style="padding:3rem;">
                                     <div class="row justify-content-around " style="text-align: center; padding-top: 10px; padding-bottom:10px; ">
-                                        <table class="table table-success table-striped">
+                                        <table id="table" class="table table-success table-striped">
                                             <thead>
                                               <tr>
                                                 <th scope="col"></th>
                                                 {% for j in i.graph.u %}
-                                                    <th scope="col"> {{ j }} </th>
+                                                    <th title="{{ j.1 }}" scope="col"> {{ j.0 }} </th>
                                                 {% endfor %}
                                               </tr>
                                             </thead>
                                             <tbody>
                                                 {% for l in i.graph.e %}
                                                 <tr>
-                                                    <th scope="row">{{ l }}</th>
+                                                    <th title="{{ l.1 }}"  scope="row">{{ l.0}}</th>
                                                     {% for j in i.graph.u %}
-
-                                                        
                                                             {% with coso=j|add:l %} 
                                                                 <td>
                                                                     {% for c in i.graph.uep|get_item:coso %}
@@ -847,8 +845,6 @@ RBA Case Study
                                                                     {% endfor %}
                                                                 </td>
                                                             {%  endwith %}
-                                                        
-
                                                     {% endfor %}
                                                 </tr>
                                                 {% endfor %}
