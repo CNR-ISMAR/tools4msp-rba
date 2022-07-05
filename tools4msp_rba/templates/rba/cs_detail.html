@@ -838,7 +838,7 @@ RBA Case Study
                                                 <tr>
                                                     <th title="{{ l.1 }}"  scope="row">{{ l.0}}</th>
                                                     {% for j in i.graph.u %}
-                                                            {% with coso=j|add:l %} 
+                                                            {% with coso=j.0|add:l.0 %} 
                                                                 <td>
                                                                     {% for c in i.graph.uep|get_item:coso %}
                                                                         <i class="{{ c  }}"></i>
