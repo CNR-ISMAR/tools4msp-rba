@@ -841,17 +841,11 @@ RBA Case Study
 
                                                         
                                                             {% with coso=j|add:l %} 
-                                                                
+                                                                <td>
                                                                     {% for c in i.graph.uep|get_item:coso %}
-                                                                        {% for t in i.phase2pressures_objects.all %}
-
-                                                                            {% if t.pressure_list.label == c %}
-                                                                                <td><i class="{{ t.pressure_list.fa_class  }}"></i></td>
-                                                                                
-                                                                            {% endif %}
-                                                                        
-                                                                        {% endfor %}
+                                                                        <i class="{{ c  }}"></i>
                                                                     {% endfor %}
+                                                                </td>
                                                             {%  endwith %}
                                                         
 
