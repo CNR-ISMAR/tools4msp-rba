@@ -6,20 +6,12 @@ CONDITION_CHOICE = (
     ('Management Measures',_('Management Measures')),
 )
 
-PRESSURE_TYPE_CHOICE = (
-    ('main', _('Main Pressure')),
-    ('bg', _('Background Pressure')),
+RELEVANCE_TYPE_CHOICE = (
+    ('L', _('Low')),
+    ('M', _('Medium')),
+    ('H', _('High')),
 )
 
-USE_TYPE_CHOICE = (
-    ('main', _('Main Use')),
-    ('sec', _('Background Use')),
-)
-
-ENV_TYPE_CHOICE = (
-    ('main', _('Main Env')),
-    ('sec', _('Background Env')),
-)
 
 ES_TYPE_CHOICE =(
     ('Habitat Maintenance', _('Habitat Maintenance')),

@@ -448,10 +448,12 @@ RBA Case Study
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {% if "main" in t.pressure_type %}
-                                                    <span class="badge bg-primary text-white" >{{ t.pressure_type }}</span>
-                                                {% else %}
-                                                    <span class="badge bg-light">{{ t.pressure_type }}</span>
+                                                {% if "L" in t.relevance %}
+                                                    <span class="badge bg-warning text-white" >{{ t.relevance }}</span>
+                                                {% elif "M" in t.relevance %}   
+                                                    <span class="badge badge-mine text-white" >{{ t.relevance }}</span>
+                                                {% elif "H" in t.relevance %}
+                                                    <span class="badge badge-mine2 text-white" >{{ t.relevance }}</span>
                                                 {% endif %}
                                             </li>
                                         </ol>
@@ -512,11 +514,13 @@ RBA Case Study
                                                     </div>
                                                 </div>
                                             </div>
-                                            {% if "main" in t.pressure_type %}
-                                                <span class="badge bg-primary text-white" >{{ t.pressure_type }}</span>
-                                            {% else %}
-                                                <span class="badge bg-light">{{ t.pressure_type }}</span>
-                                            {% endif %}
+                                                {% if "L" in t.relevance %}
+                                                    <span class="badge bg-warning text-white" >{{ t.relevance }}</span>
+                                                {% elif "M" in t.relevance %}   
+                                                    <span class="badge badge-mine text-white" >{{ t.relevance }}</span>
+                                                {% elif "H" in t.relevance %}
+                                                    <span class="badge badge-mine2 text-white" >{{ t.relevance }}</span>
+                                                {% endif %}
                                             </li>
                                         </ol>
                                     {% endfor %}
@@ -585,10 +589,12 @@ RBA Case Study
                                                     </div>
                                                 </div>
                                             </div>
-                                            {% if "main" in t.use_type %}
-                                                <span class="badge bg-primary text-white" >{{ t.use_type }}</span>
-                                            {% else %}
-                                                <span class="badge bg-light">{{ t.use_type }}</span>
+                                            {% if "L" in t.relevance %}
+                                                <span class="badge bg-warning text-white" >{{ t.relevance }}</span>
+                                            {% elif "M" in t.relevance %}   
+                                                <span class="badge badge-mine text-white" >{{ t.relevance }}</span>
+                                            {% elif "H" in t.relevance %}
+                                                <span class="badge badge-mine2 text-white" >{{ t.relevance }}</span>
                                             {% endif %}
                                             </li>
                                         </ol>
@@ -649,10 +655,12 @@ RBA Case Study
                                                     </div>
                                                 </div>
                                             </div>
-                                            {% if "main" in t.use_type %}
-                                                <span class="badge bg-primary text-white" >{{ t.use_type }}</span>
-                                            {% else %}
-                                                <span class="badge bg-light">{{ t.use_type }}</span>
+                                            {% if "L" in t.relevance %}
+                                                <span class="badge bg-warning text-white" >{{ t.relevance }}</span>
+                                            {% elif "M" in t.relevance %}   
+                                                <span class="badge badge-mine text-white" >{{ t.relevance }}</span>
+                                            {% elif "H" in t.relevance %}
+                                                <span class="badge badge-mine2 text-white" >{{ t.relevance }}</span>
                                             {% endif %}
                                             </li>
                                         </ol>
@@ -722,10 +730,12 @@ RBA Case Study
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {% if "main" in t.env_type %}
-                                                    <span class="badge bg-primary text-white" >{{ t.env_type }}</span>
-                                                {% else %}
-                                                    <span class="badge bg-light">{{ t.env_type }}</span>
+                                                {% if "L" in t.relevance %}
+                                                    <span class="badge bg-warning text-white" >{{ t.relevance }}</span>
+                                                {% elif "M" in t.relevance %}   
+                                                    <span class="badge badge-mine text-white" >{{ t.relevance }}</span>
+                                                {% elif "H" in t.relevance %}
+                                                    <span class="badge badge-mine2 text-white" >{{ t.relevance }}</span>
                                                 {% endif %}
                                             </li>
                                         </ol>
@@ -786,10 +796,12 @@ RBA Case Study
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {% if "main" in t.env_type %}
-                                                    <span class="badge bg-primary text-white" >{{ t.env_type }}</span>
-                                                {% else %}
-                                                    <span class="badge bg-light">{{ t.env_type }}</span>
+                                                {% if "L" in t.relevance %}
+                                                    <span class="badge bg-warning text-white" >{{ t.relevance }}</span>
+                                                {% elif "M" in t.relevance %}   
+                                                    <span class="badge badge-mine text-white" >{{ t.relevance }}</span>
+                                                {% elif "H" in t.relevance %}
+                                                    <span class="badge badge-mine2 text-white" >{{ t.relevance }}</span>
                                                 {% endif %}
                                             </li>
                                         </ol>

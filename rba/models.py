@@ -207,11 +207,12 @@ class M2MPhase2(models.Model):
 class Phase2Pressures(Orderable): 
     phase_2 = ParentalKey(CSphase2, related_name='phase2pressures_objects')
     pressure_list = models.ForeignKey(Pressure, on_delete=models.CASCADE)
-    pressure_type = MultiSelectField(
-        choices= enumerations.PRESSURE_TYPE_CHOICE,
+    relevance = MultiSelectField(
+        choices= enumerations.RELEVANCE_TYPE_CHOICE,
         max_choices=1,
         null=True,
         blank=True,
+        verbose_name= "Overall relevance"
     )
     pressure_description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")
@@ -228,11 +229,12 @@ class Phase2Pressures(Orderable):
 class Phase2uses(Orderable): 
     phase_2 = ParentalKey(CSphase2, related_name='phase2uses_objects')
     use_list = models.ForeignKey(Use, on_delete=models.CASCADE)
-    use_type = MultiSelectField(
-        choices= enumerations.USE_TYPE_CHOICE,
+    relevance = MultiSelectField(
+        choices= enumerations.RELEVANCE_TYPE_CHOICE,
         max_choices=1,
         null=True,
         blank=True,
+        verbose_name= "Overall relevance"
     )
     use_description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")
@@ -244,11 +246,12 @@ class Phase2uses(Orderable):
 class Phase2envs(Orderable): 
     phase_2 = ParentalKey(CSphase2, related_name='phase2env_objects')
     env_list = models.ForeignKey(Env, on_delete=models.CASCADE)
-    env_type = MultiSelectField(
-        choices= enumerations.ENV_TYPE_CHOICE,
+    relevance = MultiSelectField(
+        choices= enumerations.RELEVANCE_TYPE_CHOICE,
         max_choices=1,
         null=True,
         blank=True,
+        verbose_name= "Overall relevance"
     )
     env_description = RichTextField( null=True, blank=True, 
         verbose_name= "Description")

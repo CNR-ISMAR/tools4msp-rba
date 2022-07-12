@@ -268,4 +268,12 @@ table td:hover{
     margin: 0;
   }
 
+.badge-mine {
+    color: white;
+    background-color: #ff6600;
+ }
 
+ .badge-mine2 {
+    color: white;
+    background-color: #b30000;
+ }
