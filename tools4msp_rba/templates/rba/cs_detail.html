@@ -219,14 +219,15 @@ RBA Case Study
                                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEco{{i.id}}"
                                                 aria-expanded="true" aria-controls="collapseEco{{i.id}}" style="padding-left: 0px; color: #858796;">
                                                 <i class="fa fa-plus-square"></i>
-                                                <span>{{i.es_type}} {{i.bio_type}} - {{ i.Title  }}</span>
+                                                <span class="badge bg-primary text-white" >{{ i.es_type }}</span> <span> {{ i.Title  }}</span>
                                             </a>
                                         </div>
                                         <div id="collapseEco{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                             <div class="bg-black py-2 collapse-inner rounded">
-                                                <p class="collapse-item ">{{ i.es_description| richtext }}</p>
+                                                <p class="collapse-item "><b>{{i.bio_type}}</b> <br/> {{ i.es_description| richtext }}</p>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </li>
                             </ol>  
@@ -822,46 +823,19 @@ RBA Case Study
                                         <button id="btn9" onclick="myFunction9()"><i class="fas fa-chevron-right"></i></button>
                                     </div>
                                 {% endif %}
+
                                 <div class="card-body" style="padding:3rem;">
                                     <div class="row justify-content-around " style="text-align: center; padding-top: 10px; padding-bottom:10px; ">
-                                        <table id="table" class="table table-success table-striped">
-                                            <thead>
-                                              <tr>
-                                                <th scope="col"></th>
-                                                {% for j in i.graph.u %}
-                                                    <th title="{{ j.1 }}" scope="col"> {{ j.0 }} </th>
-                                                {% endfor %}
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for l in i.graph.e %}
-                                                <tr>
-                                                    <th title="{{ l.1 }}"  scope="row">{{ l.0}}</th>
-                                                    {% for j in i.graph.u %}
-                                                            {% with coso=j.0|add:l.0 %} 
-                                                                <td>
-                                                                    {% for c in i.graph.uep|get_item:coso %}
-                                                                        <i class="{{ c  }}"></i>
-                                                                    {% endfor %}
-                                                                </td>
-                                                            {%  endwith %}
-                                                    {% endfor %}
-                                                </tr>
-                                                {% endfor %}
-                                                
-                                                
-                                              
-                                            </tbody>
-                                        </table>
-                                        
-                                            
-                                           
-                                        
-                                        
+                                        {% with table=i.table %}
+                                            {% include "rba/table.html" %}
+                                        {% endwith %}
+                                    </div>
+                                    <div class="row justify-content-around " style="text-align: center; padding-top: 10px; padding-bottom:10px; ">
+                                        {% with table=i.table2 %}
+                                            {% include "rba/table.html" %}
+                                        {% endwith %}
                                     </div>
                                     
-                                    
-
                                 </div>
                             </div>
                                 <div class="card shadow mb-4">

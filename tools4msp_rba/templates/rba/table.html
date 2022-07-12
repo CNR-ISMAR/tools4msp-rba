@@ -1,0 +1,26 @@
+<table id="table" class="table table-success table-striped">
+    <thead>
+      <tr>
+            <th scope="col"></th>
+            {% for j in table.col %}
+                <th title="{{ j.1 }}" scope="col"> {{ j.0 }} </th>
+            {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+        {% for l in table.row %}
+        <tr>
+            <th title="{{ l.1 }}"  scope="row">{{ l.0}}</th>
+            {% for j in table.col %}
+                {% with coso=j.0|add:l.0 %} 
+                    <td>
+                        {% for c in table.boxdict|get_item:coso %}
+                            <i class="{{ c  }}"></i>
+                        {% endfor %}
+                    </td>
+                {%  endwith %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
