@@ -130,26 +130,20 @@ class CSphase2(ClusterableModel):
 
         _u = [(up.use_list.code, up.use_list.label) for up in phase.pathup_objects.all()]
         _p1 = [(up.pressure_list.code) for up in phase.pathup_objects.all()]
-        _p2 = [(pe.pressure_list.code) for pe in phase.pathpe_objects.all()]
+        _p2 = [(up.pressure_list.code) for up in phase.pathup_objects.all()]
+        _p = [(up.pressure_list.code, up.pressure_list.label) for up in phase.pathup_objects.all()]
         _e = [(pe.env_list.code, pe.env_list.label) for pe in phase.pathpe_objects.all()]
 
         uep = dict ()
         for up in up_edges:
-            for pe in pe_edges:
-                if up[1] == pe[0]:
-                    k = (pe[1] + up[0])
+            
+                    k = (up[0] + up[1])
                     if not k in uep.keys():
                         uep[k] = []
                     uep[k] += [up[2]]
-        for up in up_edges:
-            if not up[1] in _p2:
-                k = ('other' + up[0])
-                if not k in uep.keys():
-                    uep[k] = []
-                uep[k] += [up[2]]
 
-        row = list(set(_u))
-        col = list(set(_e))
+        col = list(set(_u))
+        row = list(set(_p))
 
         return{ "col" : col, "row" : row, "boxdict" : uep }    
 
