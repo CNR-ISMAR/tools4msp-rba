@@ -847,7 +847,25 @@ RBA Case Study
                                             {% include "rba/table.html" %}
                                         {% endwith %}
                                     </div>
-                                    
+                                    <div id="parameter" >
+                                        <h6  class="m-0 font-weight-bold text-secondary">Pressure Legend</h6>
+                                        <hr style="height:3pt; visibility:hidden;"/>
+                                        <div id="parameter-list" class="row">
+                                            {% for t in i.phase2pressures_objects.all %}
+                                                <div id="singleparameter" class="col-6">
+                                                    <div class="row">
+                                                        <div class="col-2" style="text-align: center">
+                                                            <span> <i class="{{ t.pressure_list.fa_class }} "></i></span>
+                                                        </div>
+                                                        <div class="col-10">
+                                                            {{ t.pressure_list.label }} 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                
                                 </div>
                             </div>
                                 <div class="card shadow mb-4">
