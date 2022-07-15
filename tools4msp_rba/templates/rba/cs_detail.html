@@ -261,6 +261,8 @@ RBA Case Study
                 {% endif %}
                 <div class="card-body">
                     {% for i in object.futscen_objects.all %}
+                        
+                        <hr style="height:5pt; visibility:hidden;"/>
                         <ol class="list-group list-group-numbered">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
@@ -268,7 +270,7 @@ RBA Case Study
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4{{i.id}}"
                                         aria-expanded="true" aria-controls="collapseTwo4{{i.id}}" style="padding-left: 0px; color: #858796;">
                                         <i class="fa fa-plus-square"></i>
-                                        <span>{{ i.future_scen }}</span>
+                                        <span class="badge bg-primary text-white" >{{ i.driven }}</span> <span>{{ i.future_scen }}</span>
                                     </a>
                                 </div>
                                 <div id="collapseTwo4{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -287,7 +289,7 @@ RBA Case Study
                             {% endif %}
                             </li>
                         </ol>
-                        
+                          
                     {% endfor %}
                 </div>
             </div>

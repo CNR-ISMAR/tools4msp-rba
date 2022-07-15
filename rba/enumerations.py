@@ -6,6 +6,11 @@ CONDITION_CHOICE = (
     ('Management Measures',_('Management Measures')),
 )
 
+FS_TYPE_CHOICE = (
+    ('BG', ('Blue Growth driven')),
+    ('CC', _('Climate Change or Conservation driven')),
+)
+
 RELEVANCE_TYPE_CHOICE = (
     ('L', _('Low')),
     ('M', _('Medium')),
