@@ -947,15 +947,10 @@ RBA Case Study
         
         <!-- 3.2 present e future -->
         <div class="col-lg-12 mb-4">
-           
-               
-
-
-
-
                 {% for i in object.phase2.all %}
-                        {% if "Management Measures" in i.condition_type %}    
-                            <h5 style ="display: inline;"><span class="badge badge-secondary">{{i.condition_type}}</span></h5>
+                        {% if "Management Measures" in i.condition_type %}
+                            <h1 style ="display: inline;"> <span class="badge badge-danger">!!! Future Work - still in dvelopment</span></h1>  
+                            <h5 style ="display: inline;"> <span class="badge badge-secondary">{{i.condition_type}}</span></h5>
                         <!-- 2.2 Present -->
                         
                             <div class="card shadow mb-4">
@@ -999,10 +994,6 @@ RBA Case Study
 
                         {% endif %}
                     {% endfor %}
-
-
-
-
             
         </div>
         
