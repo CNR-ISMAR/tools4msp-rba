@@ -289,6 +289,14 @@ class EcoService(Orderable):
     Title = models.TextField ( null=True, blank=True,
         verbose_name= "Ecosystem Service")
     
+    relevance = MultiSelectField(
+        choices= enumerations.RELEVANCE_TYPE_CHOICE,
+        max_choices=1,
+        null=True,
+        blank=True,
+        verbose_name= "Overall relevance"
+    )
+    
     es_description = RichTextField( null=True, blank=True, 
          verbose_name= "Ecosystem Service Description")
 

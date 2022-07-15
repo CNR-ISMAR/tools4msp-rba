@@ -229,6 +229,13 @@ RBA Case Study
                                         </div>
                                         
                                     </div>
+                                    {% if "L" in i.relevance %}
+                                        <span class="badge bg-warning text-white" >{{ i.relevance }}</span>
+                                    {% elif "M" in i.relevance %}   
+                                        <span class="badge badge-mine text-white" >{{ i.relevance }}</span>
+                                    {% elif "H" in i.relevance %}
+                                        <span class="badge badge-mine2 text-white" >{{ i.relevance }}</span>
+                                    {% endif %}
                                 </li>
                             </ol>  
                         {% endfor %}
