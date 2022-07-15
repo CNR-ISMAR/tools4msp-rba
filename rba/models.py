@@ -308,6 +308,13 @@ class FutureScenarios(Orderable):
         verbose_name= "Future Scenarios")
     future_scen_desc = models.TextField ( null=True, blank=True,
         verbose_name= "Scenario Description")
+    relevance = MultiSelectField(
+        choices= enumerations.RELEVANCE_TYPE_CHOICE,
+        max_choices=1,
+        null=True,
+        blank=True,
+        verbose_name= "Overall relevance"
+    )
 
 class Path_use_pres(Orderable):
     phase_2 = ParentalKey(CSphase2, related_name='pathup_objects')
