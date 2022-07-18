@@ -9,23 +9,26 @@
             {% endfor %}
       </tr>
     </thead>
-    <tbody>
+    <tbody style="text-align: left;">
         {% for l in table.row %}
         <tr> 
             {% if "H" in l.2 %}
-            <th title="{{ l.1 }}"  scope="row" style="color:#b30000">{{ l.0}}</th>
+                
+                <th title="{{ l.1 }}"  scope="row"><span class="badge badge-mine2 text-white" >{{ l.2 }}</span> {{ l.0}}</th>
             
             {% elif "M" in l.2 %}
-                <th title="{{ l.1 }}"  scope="row" style="color:#ff6600">{{ l.0}}</th>
+                
+                <th title="{{ l.1 }}"  scope="row"><span class="badge badge-mine text-white" >{{ l.2 }}</span> {{ l.0}}</th>
            
             {% elif "L" in l.2 %}
-                <th title="{{ l.1 }}"  scope="row" style="color:#ffcc00">{{ l.0}}</th>
+                
+
+                <th title="{{ l.1 }}"  scope="row"> <span class="badge bg-warning text-white" >{{ l.2}}</span> {{ l.0}}</th>
             {% else  %}
                 <th title="{{ l.1 }}"  scope="row" >{{ l.0}}</th>
             {% endif %}
             {% for j in table.col %}
                 {% with coso=j.0|add:l.0 %} 
-
                    
                     <td>
                         {% for c in table.boxdict|get_item:coso %}
