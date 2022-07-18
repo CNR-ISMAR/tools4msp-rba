@@ -98,10 +98,10 @@ class CSphase2(ClusterableModel):
         up_edges = [[up.use_list.code, up.pressure_list.code, up.pressure_list.fa_class] for up in phase.pathup_objects.all()]
         pe_edges = [[pe.pressure_list.code, pe.env_list.code] for pe in phase.pathpe_objects.all()]
 
-        _u = [(up.use_list.code, up.use_list.label) for up in phase.pathup_objects.all()]
+        _u = [(up.use_list.code, up.use_list.label, up.relevance) for up in phase.phase2uses_objects.all()]
         _p1 = [(up.pressure_list.code) for up in phase.pathup_objects.all()]
         _p2 = [(pe.pressure_list.code) for pe in phase.pathpe_objects.all()]
-        _e = [(pe.env_list.code, pe.env_list.label) for pe in phase.pathpe_objects.all()]
+        _e = [(pe.env_list.code, pe.env_list.label, pe.relevance) for pe in phase.phase2env_objects.all()]
 
         uep = dict ()
         for up in up_edges:
@@ -118,8 +118,8 @@ class CSphase2(ClusterableModel):
                     uep[k] = []
                 uep[k] += [up[2]]
 
-        col = list(set(_u))
-        row = list(set(_e))
+        col = _u
+        row = _e
 
         return{ "col" : col, "row" : row, "boxdict" : uep }
 
@@ -316,7 +316,7 @@ class FutureScenarios(Orderable):
         verbose_name= "Driven By"
     )
     future_scen_desc = RichTextField( null=True, blank=True, 
-        verbose_name= "Description")
+        verbose_name= " Description")
     relevance = MultiSelectField(
         choices= enumerations.RELEVANCE_TYPE_CHOICE,
         max_choices=1,
