@@ -315,8 +315,8 @@ class FutureScenarios(Orderable):
         blank=True,
         verbose_name= "Driven By"
     )
-    future_scen_desc = models.TextField ( null=True, blank=True,
-        verbose_name= "Scenario Description")
+    future_scen_desc = RichTextField( null=True, blank=True, 
+        verbose_name= "Description")
     relevance = MultiSelectField(
         choices= enumerations.RELEVANCE_TYPE_CHOICE,
         max_choices=1,
