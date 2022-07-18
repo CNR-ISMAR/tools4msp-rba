@@ -1,4 +1,4 @@
-<table id="table" class="table table-light table-striped">
+<table id="table" style="font-size: small ;" class="table table-light table-striped">
     <thead>
       <tr>
           
@@ -9,35 +9,35 @@
             {% endfor %}
       </tr>
     </thead>
-    <tbody style="text-align: left;">
+    <tbody >
         {% for l in table.row %}
-        <tr> 
-            {% if "H" in l.2 %}
-                
-                <th title="{{ l.1 }}"  scope="row"><span class="badge badge-mine2 text-white" >{{ l.2 }}</span> {{ l.0}}</th>
             
-            {% elif "M" in l.2 %}
+            <tr> 
+                {% if "H" in l.2 %}
+                    
+                    <th style="text-align: left;"title="{{ l.1 }}"  scope="row"><span class="badge badge-mine2 text-white" >{{ l.2 }}</span> {{ l.0}}</th>
                 
-                <th title="{{ l.1 }}"  scope="row"><span class="badge badge-mine text-white" >{{ l.2 }}</span> {{ l.0}}</th>
-           
-            {% elif "L" in l.2 %}
-                
-
-                <th title="{{ l.1 }}"  scope="row"> <span class="badge bg-warning text-white" >{{ l.2}}</span> {{ l.0}}</th>
-            {% else  %}
-                <th title="{{ l.1 }}"  scope="row" >{{ l.0}}</th>
-            {% endif %}
-            {% for j in table.col %}
-                {% with coso=j.0|add:l.0 %} 
-                   
-                    <td>
-                        {% for c in table.boxdict|get_item:coso %}
-                            <i class="{{ c  }}"></i>
-                        {% endfor %}
-                    </td>
-                {%  endwith %}
-            {% endfor %}
-        </tr>
+                {% elif "M" in l.2 %}
+                    
+                    <th style="text-align: left;" title="{{ l.1 }}"  scope="row"><span class="badge badge-mine text-white" >{{ l.2 }}</span> {{ l.0}}</th>
+            
+                {% elif "L" in l.2 %}
+                    
+                    <th style="text-align: left;" title="{{ l.1 }}"  scope="row"> <span class="badge bg-warning text-white" >{{ l.2}}</span> {{ l.0}}</th>
+                {% else  %}
+                    <th style="text-align: left;" title="{{ l.1 }}"  scope="row" >{{ l.0}}</th>
+                {% endif %}
+                {% for j in table.col %}
+                    {% with coso=j.0|add:l.0 %} 
+                    
+                        <td>
+                            {% for c in table.boxdict|get_item:coso %}
+                                <i class="{{ c  }}"></i>
+                            {% endfor %}
+                        </td>
+                    {%  endwith %}
+                {% endfor %}
+            </tr>
         {% endfor %}
     </tbody>
 </table>
