@@ -245,15 +245,11 @@ RBA Case Study
                                                 {% endif %}
                                         {% endfor %}   
                                     </ol>
-                                </li>
-                            </ul>
+                                            </li>
+                                </ul>
                             {% endfor %}
                         </ul>
                     </div>
-
-
-
-
 
                 </div>     
             </div>
@@ -308,8 +304,8 @@ RBA Case Study
                                             {% endif %}
                                     {% endfor %}   
                                 </ol>
-                            </li>
-                        </ul>
+                                        </li>
+                            </ul>
                         {% endfor %}
                     </ul>
                 </div>
@@ -352,25 +348,24 @@ RBA Case Study
                                     {% for t in i.manamea_objects.all %}
                                         <ol class="list-group list-group-numbered">
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">
-                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwomanamea{{t.id}}"
-                                                        aria-expanded="true" aria-controls="collapseTwomanamea{{t.id}}" style="padding-left: 0px; color: #858796;">
-                                                        <i class="fa fa-plus-square"></i>
-                                                        <span>{{ t.manamea }}</span>
-                                                    </a>
-                                                </div>
-                                                <div id="collapseTwomanamea{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                    <div class="bg-black py-2 collapse-inner rounded">
-                                                        <p class="collapse-item ">{{ t.manamea_desc }}</p>
-                                                        <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">
+                                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwomanamea{{t.id}}"
+                                                            aria-expanded="true" aria-controls="collapseTwomanamea{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                            <i class="fa fa-plus-square"></i>
+                                                            <span>{{ t.manamea }}</span>
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapseTwomanamea{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                        <div class="bg-black py-2 collapse-inner rounded">
+                                                            <p class="collapse-item ">{{ t.manamea_desc }}</p>
+                                                            <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
+                                            
                                             </li>
                                         </ol>
-                                        
                                     {% endfor %}
                                 </div>
                             </div>
@@ -882,7 +877,7 @@ RBA Case Study
                                             {% include "rba/table.html" %}
                                         {% endwith %}
                                     </div>
-                                    <div id="parameter" >
+                                    <div>
                                         <h6  class="m-0 font-weight-bold text-secondary">Pressure Legend</h6>
                                         <hr style="height:3pt; visibility:hidden;"/>
                                         <div id="parameter-list" class="row">
