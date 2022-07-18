@@ -128,7 +128,7 @@ class CSphase2(ClusterableModel):
         up_edges = [[up.use_list.code, up.pressure_list.code, up.pressure_list.fa_class] for up in phase.pathup_objects.all()]
         pe_edges = [[pe.pressure_list.code, pe.env_list.code] for pe in phase.pathpe_objects.all()]
 
-        _u = [(up.use_list.code, up.use_list.label) for up in phase.pathup_objects.all()]
+        _u = [(up.use_list.code, up.use_list.label, up.relevance) for up in phase.phase2uses_objects.all()]
         _p1 = [(up.pressure_list.code) for up in phase.pathup_objects.all()]
         _p2 = [(up.pressure_list.code) for up in phase.pathup_objects.all()]
         _p = [(up.pressure_list.code, up.pressure_list.label) for up in phase.pathup_objects.all()]
@@ -143,7 +143,7 @@ class CSphase2(ClusterableModel):
                         uep[k] = []
                     uep[k] += [up[2]]
 
-        col = list(set(_u))
+        col = _u
         #row = list(set(_p))
         row = p
 
