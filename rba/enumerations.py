@@ -12,9 +12,9 @@ FS_TYPE_CHOICE = (
 )
 
 RELEVANCE_TYPE_CHOICE = (
-    ('L', _('Low')),
-    ('M', _('Medium')),
-    ('H', _('High')),
+    ('L', _('L ')),
+    ('M', _('M')),
+    ('H', _('H')),
 )
 
 

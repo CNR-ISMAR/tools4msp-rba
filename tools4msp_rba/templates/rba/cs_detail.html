@@ -259,42 +259,47 @@ RBA Case Study
                         <button id="btn6" onclick="myFunction6()"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 {% endif %}
-                <div class="card-body">
-                    {% for i in object.futscen_objects.all %}
-                        
-                        <hr style="height:5pt; visibility:hidden;"/>
-                        <ol class="list-group list-group-numbered">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4{{i.id}}"
-                                        aria-expanded="true" aria-controls="collapseTwo4{{i.id}}" style="padding-left: 0px; color: #858796;">
-                                        <i class="fa fa-plus-square"></i>
-                                        <span class="badge bg-primary text-white" >{{ i.driven }}</span> <span>{{ i.future_scen }}</span>
-                                    </a>
-                                </div>
-                                <div id="collapseTwo4{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                    <div class="bg-black py-2 collapse-inner rounded">
-                                        <p class="collapse-item ">{{ i.future_scen_desc }}</p>
-                                        <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                            {% if "L" in i.relevance %}
-                                <span class="badge bg-warning text-white" >{{ i.relevance }}</span>
-                            {% elif "M" in i.relevance %}   
-                                <span class="badge badge-mine text-white" >{{ i.relevance }}</span>
-                            {% elif "H" in i.relevance %}
-                                <span class="badge badge-mine2 text-white" >{{ i.relevance }}</span>
-                            {% endif %}
+                <div class="card-body">  
+                    {% regroup object.futscen_objects.all by driven as fs_list %}
+                    <ul class="list-group list-group-numbered">
+                        {% for fs in fs_list %}
+                            <hr style="height:3pt; visibility:hidden;"/>
+                            <ul><h6 class="m-0 font-weight-bold text-secondary">{{ fs.grouper }}</h6>
+                                <hr style="height:3pt; visibility:hidden;"/>
+                                <ol class="list-group list-group-numbered">
+                                    {% for i in fs.list %}
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            <div class="fw-bold">
+                                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4{{i.id}}"
+                                                    aria-expanded="true" aria-controls="collapseTwo4{{i.id}}" style="padding-left: 0px; color: #858796;">
+                                                    <i class="fa fa-plus-square"></i>
+                                                    <span>{{ i.future_scen }}</span>
+                                                </a>
+                                            </div>
+                                            <div id="collapseTwo4{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                <div class="bg-black py-2 collapse-inner rounded">
+                                                    <p class="collapse-item ">{{ i.future_scen_desc }}</p>
+                                                    <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                            {% if "L" in i.relevance %}
+                                                <span class="badge bg-warning text-white" >{{ i.relevance }}</span>
+                                            {% elif "M" in i.relevance %}   
+                                                <span class="badge badge-mine text-white" >{{ i.relevance }}</span>
+                                            {% elif "H" in i.relevance %}
+                                                <span class="badge badge-mine2 text-white" >{{ i.relevance }}</span>
+                                            {% endif %}
+                                    {% endfor %}   
+                                </ol>
                             </li>
-                        </ol>
-                          
-                    {% endfor %}
+                        </ul>
+                        {% endfor %}
+                    </ul>
                 </div>
+                
             </div>
-
-
         </div>
 
         <!-- Phase2 -->
@@ -964,8 +969,10 @@ RBA Case Study
         <div class="col-lg-12 mb-4">
                 {% for i in object.phase2.all %}
                         {% if "Management Measures" in i.condition_type %}
-                            <h1 style ="display: inline;"> <span class="badge badge-danger">!!! Future Work - still in dvelopment</span></h1>  
-                            <h5 style ="display: inline;"> <span class="badge badge-secondary">{{i.condition_type}}</span></h5>
+                             
+                            
+                        <h5 style ="display: inline;"> <span class="badge badge-secondary">{{i.condition_type}}</span></h5>
+                        <h2 style ="display: inline;"> <span class="badge badge-danger">!!! Provisional - It will be specified at the next phase</span></h2> 
                         <!-- 2.2 Present -->
                         
                             <div class="card shadow mb-4">
