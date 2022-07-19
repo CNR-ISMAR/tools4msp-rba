@@ -271,7 +271,7 @@ class PolicyObjectives(Orderable):
     phase_1 = ParentalKey(CS, related_name='polobj_objects')
     polobj = models.TextField ( null=True, blank=True,
         verbose_name= "Policy Objective")
-    polobj_desc = models.TextField ( null=True, blank=True,
+    polobj_desc = RichTextField ( null=True, blank=True,
         verbose_name= "Policy Objective Description")
 
 class EcoService(Orderable):
@@ -346,12 +346,6 @@ class Path_w(Orderable):
     w_list = models.ForeignKey(Weight, on_delete=models.CASCADE)
 
 
-class PolicyObjectives(Orderable):
-    phase_1 = ParentalKey(CS, related_name='polobj_objects')
-    polobj = models.TextField ( null=True, blank=True,
-        verbose_name= "Policy Objective")
-    polobj_desc = models.TextField ( null=True, blank=True,
-        verbose_name= "Policy Objective Description")
 
 
 
