@@ -290,3 +290,7 @@
     padding-top: 3px;
 
 }
+
+.card-body{
+    text-align: justify;
+}
