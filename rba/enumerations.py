@@ -7,7 +7,7 @@ CONDITION_CHOICE = (
 )
 
 FS_TYPE_CHOICE = (
-    ('BG', ('Blue Growth driven')),
+    ('BG', ('Blue Economy driven')),
     ('CC', _('Climate Change or Conservation driven')),
 )
 
