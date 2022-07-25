@@ -452,7 +452,7 @@ RBA Case Study
                                                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5{{t.id}}"
                                                             aria-expanded="true" aria-controls="collapseTwo5{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                             <i class="fa fa-plus-square"></i>
-                                                            <span>{{ t.pressure_list.label }} - {{ t.pressure_list.code }}</span>
+                                                            <span>{{ t.pressure_list.code }} - {{ t.pressure_list.label }}</span>
                                                         </a>
                                                     </div>
                                                     <div id="collapseTwo5{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
@@ -593,7 +593,7 @@ RBA Case Study
                                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6{{t.id}}"
                                                         aria-expanded="true" aria-controls="collapseTwo6{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                         <i class="fa fa-plus-square"></i>
-                                                        <span>{{ t.use_list.label }}</span>
+                                                        <span>{{ t.use_list.code }} - {{ t.use_list.label }}</span>
                                                     </a>
                                                 </div>
                                                 <div id="collapseTwo6{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;" > <!-- togliere padding top @todo -->
@@ -659,7 +659,7 @@ RBA Case Study
                                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6f{{t.id}}"
                                                         aria-expanded="true" aria-controls="collapseTwo6f{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                         <i class="fa fa-plus-square"></i>
-                                                        <span>{{ t.use_list.label }}</span>
+                                                        <span>{{ t.use_list.code }} - {{ t.use_list.label }}</span>
                                                     </a>
                                                 </div>
                                                 <div id="collapseTwo6f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
@@ -734,7 +734,7 @@ RBA Case Study
                                                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7{{t.id}}"
                                                             aria-expanded="true" aria-controls="collapseTwo7{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                             <i class="fa fa-plus-square"></i>
-                                                            <span>{{ t.env_list.label }}</span>
+                                                            <span>{{ t.env_list.code }} - {{ t.env_list.label }}</span>
                                                         </a>
                                                     </div>
                                                     <div id="collapseTwo7{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
@@ -747,7 +747,7 @@ RBA Case Study
                                                             <p class="collapse-item ">{{ t.env_description | richtext }}</p>
                                                             {% if  t.data_description|default:'' != ''   %}
                                                                 <div class="card" style="padding:1rem">
-                                                                    <h6 class="m-0 font-weight-medium text-primary">EnvironmentalComponent Data Source </h6>  
+                                                                    <h6 class="m-0 font-weight-bold text-secondary">Environmental Component Data Source </h6>  
                                                                     <p>{{ t.data_description | richtext }}</p>
                                                                     {% if  t.data_source|default:'' != ''   %}
                                                                         <a target="_blank" rel="nofollow" class="text-gray-600" href="{{ t.data_source }}"><i class="fas fa-link"></i> Source Link</a>
@@ -800,7 +800,7 @@ RBA Case Study
                                                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7f{{t.id}}"
                                                             aria-expanded="true" aria-controls="collapseTwo7f{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                             <i class="fa fa-plus-square"></i>
-                                                            <span>{{ t.env_list.label }}</span>
+                                                            <span>{{ t.env_list.code }} - {{ t.env_list.label }}</span>
                                                         </a>
                                                     </div>
                                                     <div id="collapseTwo7f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
