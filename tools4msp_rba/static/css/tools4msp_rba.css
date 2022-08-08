@@ -46,6 +46,18 @@
     display: inline-block;
 }
 
+#more4fut {
+    display: none;
+}
+#btn4fut {
+    background-color: white;
+    border: none;
+    color: #4e73df ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
 #more5 {
     display: none;
 }
@@ -290,3 +302,13 @@
     padding-top: 3px;
 
 }
+
+#tabletest .zoomed {
+    transform: scale(1.5);
+    z-index: 2;
+  }
+
+#tabletest2 .zoomed {
+    transform: scale(1.5);
+    z-index: 2;
+  }

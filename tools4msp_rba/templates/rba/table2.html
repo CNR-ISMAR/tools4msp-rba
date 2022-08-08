@@ -1,0 +1,53 @@
+<table id="table2" style="font-size: x-small ;" class="table table-light table-striped">
+    <thead>
+      <tr>
+          
+            <th scope="col"></th>
+            {% for j in table2.col %}
+                {% if "H" in j.2 %}
+                    <th title="{{ j.1 }}" scope="col"> <span class="badge badge-mine2 text-white" >{{ j.2 }}</span> {{ j.0 }} </th>
+                {% elif "M" in j.2 %}
+                    
+                    <th  title="{{ j.1 }}"  scope="col"><span class="badge badge-mine text-white" >{{ j.2 }}</span> {{ j.0}}</th>
+            
+                {% elif "L" in j.2 %}
+                    
+                    <th  title="{{ j.1 }}"  scope="col"> <span class="badge bg-warning text-white" >{{ j.2}}</span> {{ j.0}}</th>
+                {% else  %}
+                    <th  title="{{ j.1 }}"  scope="col" >{{ j.0}}</th>
+                {% endif %}
+            {% endfor %}
+      </tr>
+    </thead>
+    <tbody >
+        {% for l in table2.row %}
+            
+            <tr> 
+                {% if "H" in l.2 %}
+                    
+                    <th style="text-align: left;"title="{{ l.1 }}"  scope="row"><span class="badge badge-mine2 text-white" >{{ l.2 }}</span> {{ l.0}}</th>
+                
+                {% elif "M" in l.2 %}
+                    
+                    <th style="text-align: left;" title="{{ l.1 }}"  scope="row"><span class="badge badge-mine text-white" >{{ l.2 }}</span> {{ l.0}}</th>
+            
+                {% elif "L" in l.2 %}
+                    
+                    <th style="text-align: left;" title="{{ l.1 }}"  scope="row"> <span class="badge bg-warning text-white" >{{ l.2}}</span> {{ l.0}}</th>
+                {% else  %}
+                    <th style="text-align: left;" title="{{ l.1 }}"  scope="row" >{{ l.0}}</th>
+                {% endif %}
+                {% for j in table2.col %}
+                    {% with coso=j.0|add:l.0 %} 
+                    
+                        <td>
+                            {% for c in table2.boxdict|get_item:coso %}
+                                <i class="{{ c  }}"></i>
+                            {% endfor %}
+                        </td>
+                    {%  endwith %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

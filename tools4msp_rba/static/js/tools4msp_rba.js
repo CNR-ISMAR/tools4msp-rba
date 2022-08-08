@@ -62,6 +62,22 @@ function myFunction4() {
     }
 }
 
+function myFunction4fut() {
+    var dots4fut = document.getElementById("dots4fut");
+    var moreText4fut = document.getElementById("more4fut");
+    var btnText4fut = document.getElementById("btn4fut");
+
+    if (dots4fut.style.display === "none") {
+        dots4fut.style.display = "inline";
+        btnText4fut.innerHTML = "<i class='fas fa-chevron-right'></i>";
+        moreText4fut.style.display = "none";
+    } else {
+        dots4fut.style.display = "none";
+        btnText4fut.innerHTML = "<i class='fas fa-chevron-left'></i>";
+        moreText4fut.style.display = "inline";
+    }
+}
+
 function myFunction5() {
     var dots5 = document.getElementById("dots5");
     var moreText5 = document.getElementById("more5");
@@ -300,3 +316,16 @@ var zoomImg = function () {
       this.classList.remove("show");
     })
   });
+
+  document.getElementById('tabletest').addEventListener('click', function(e) {
+    const tgt = document.getElementById('table')
+    table = e.target;
+    tgt.classList.toggle('zoomed')
+  })
+
+  document.getElementById('tabletest2').addEventListener('click', function(e) {
+    const tgt = document.getElementById('table2')
+    table2 = e.target;
+    tgt.classList.toggle('zoomed')
+  })
+
