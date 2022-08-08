@@ -390,9 +390,9 @@ RBA Case Study
                                 {% if  i.description|default:'' != ''   %}
                                     <div class="card-body"> 
                                         {{ i.description  |slice:":380" }}
-                                        <span id="dots4">...</span>
-                                        <span id="more4">{{ i.description |slice:"380:"}}</span>
-                                        <button id="btn4" onclick="myFunction4()"><i class="fas fa-chevron-right"></i></button>
+                                        <span id="dots4fut">...</span>
+                                        <span id="more4fut">{{ i.description |slice:"380:"}}</span>
+                                        <button id="btn4fut" onclick="myFunction4fut()"><i class="fas fa-chevron-right"></i></button>
                                     </div>
                                 {% endif %}
                                 <div class="card-body">
@@ -872,16 +872,27 @@ RBA Case Study
                                 {% endif %}
 
                                 <div class="card-body" style="padding:3rem;">
-                                    <div class="row justify-content-around " style="text-align: center; padding-top: 10px; padding-bottom:10px; ">
-                                        {% with table=i.table2 %}
-                                            {% include "rba/table.html" %}
-                                        {% endwith %}
+
+
+                                    <div id="tabletest2">
+                                        <div class="row justify-content-around " style="text-align: center; padding-top: 10px; padding-bottom:10px;" >
+                                            {% with table2=i.table2 %}
+                                                {% include "rba/table2.html" %}
+                                            {% endwith %}
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-around " style="text-align: center; padding-top: 10px; padding-bottom:10px; ">
-                                        {% with table=i.table %}
-                                            {% include "rba/table.html" %}
-                                        {% endwith %}
+                                    <div id="tabletest">
+                                        <div class="row justify-content-around " style="text-align: center; padding-top: 10px; padding-bottom:10px;" >
+                                            {% with table=i.table %}
+                                                {% include "rba/table.html" %}
+                                            {% endwith %}
+                                        </div>
                                     </div>
+                                    
+                                
+
+                                   
+                                    
                                     <div id="parameter" >
                                         <h6  class="m-0 font-weight-bold text-secondary">Pressure Legend</h6>
                                         <hr style="height:3pt; visibility:hidden;"/>
