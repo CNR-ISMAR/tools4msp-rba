@@ -286,7 +286,7 @@
     background-color: #b30000;
  }
 
- #parameter{
+#parameter{
     font-size: 14px;
     line-height: 0;
     width: 100%;
@@ -302,7 +302,6 @@
     padding-top: 3px;
 
 }
-
 #tabletest .zoomed {
     transform: scale(1.5);
     z-index: 2;
@@ -312,3 +311,7 @@
     transform: scale(1.5);
     z-index: 2;
   }
+
+  .card-body{
+    text-align: justify;
+}
