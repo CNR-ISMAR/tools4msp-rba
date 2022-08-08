@@ -184,7 +184,7 @@ RBA Case Study
                                     </div>
                                     <div id="collapseTwo2{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                         <div class="bg-black py-2 collapse-inner rounded">
-                                            <p class="collapse-item ">{{ i.polobj_desc|richtext }}</p>
+                                            <p class="collapse-item ">{{ i.polobj_desc }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +216,7 @@ RBA Case Study
                         <ul class="list-group list-group-numbered">
                             {% for es in es_list %}
                                 <hr style="height:3pt; visibility:hidden;"/>
-                                <ul style="padding-left: 0 !important"><h6 class="m-0 font-weight-bold text-primary">{{ es.grouper }}</h6>
+                                <ul><h6 class="m-0 font-weight-bold text-primary">{{ es.grouper }}</h6>
                                     <hr style="height:3pt; visibility:hidden;"/>
                                     <ol class="list-group list-group-numbered">
                                         {% for i in es.list %}
@@ -245,11 +245,15 @@ RBA Case Study
                                                 {% endif %}
                                         {% endfor %}   
                                     </ol>
-                                            </li>
-                                </ul>
+                                </li>
+                            </ul>
                             {% endfor %}
                         </ul>
                     </div>
+
+
+
+
 
                 </div>     
             </div>
@@ -275,7 +279,7 @@ RBA Case Study
                     <ul class="list-group list-group-numbered">
                         {% for fs in fs_list %}
                             <hr style="height:3pt; visibility:hidden;"/>
-                            <ul style="padding-left: 0 !important"><h6 class="m-0 font-weight-bold text-primary">{{ fs.grouper }}</h6>
+                            <ul><h6 class="m-0 font-weight-bold text-primary">{{ fs.grouper }}</h6>
                                 <hr style="height:3pt; visibility:hidden;"/>
                                 <ol class="list-group list-group-numbered">
                                     {% for i in fs.list %}
@@ -304,8 +308,8 @@ RBA Case Study
                                             {% endif %}
                                     {% endfor %}   
                                 </ol>
-                                        </li>
-                            </ul>
+                            </li>
+                        </ul>
                         {% endfor %}
                     </ul>
                 </div>
@@ -348,24 +352,25 @@ RBA Case Study
                                     {% for t in i.manamea_objects.all %}
                                         <ol class="list-group list-group-numbered">
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
-                                                <div class="ms-2 me-auto">
-                                                    <div class="fw-bold">
-                                                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwomanamea{{t.id}}"
-                                                            aria-expanded="true" aria-controls="collapseTwomanamea{{t.id}}" style="padding-left: 0px; color: #858796;">
-                                                            <i class="fa fa-plus-square"></i>
-                                                            <span>{{ t.manamea }}</span>
-                                                        </a>
-                                                    </div>
-                                                    <div id="collapseTwomanamea{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                                        <div class="bg-black py-2 collapse-inner rounded">
-                                                            <p class="collapse-item ">{{ t.manamea_desc }}</p>
-                                                            <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
-                                                        </div>
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">
+                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwomanamea{{t.id}}"
+                                                        aria-expanded="true" aria-controls="collapseTwomanamea{{t.id}}" style="padding-left: 0px; color: #858796;">
+                                                        <i class="fa fa-plus-square"></i>
+                                                        <span>{{ t.manamea }}</span>
+                                                    </a>
+                                                </div>
+                                                <div id="collapseTwomanamea{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                                    <div class="bg-black py-2 collapse-inner rounded">
+                                                        <p class="collapse-item ">{{ t.manamea_desc }}</p>
+                                                        <!-- <a target="_blank" rel="nofollow" href="{{ t.layer }}">Link to Source &rarr;</a> -->
                                                     </div>
                                                 </div>
-                                            
+                                            </div>
+                                            <!-- <span class="badge bg-light">{{ t.pressure_type }}</span> -->
                                             </li>
                                         </ol>
+                                        
                                     {% endfor %}
                                 </div>
                             </div>
@@ -452,7 +457,7 @@ RBA Case Study
                                                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5{{t.id}}"
                                                             aria-expanded="true" aria-controls="collapseTwo5{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                             <i class="fa fa-plus-square"></i>
-                                                            <span>{{ t.pressure_list.code }} - {{ t.pressure_list.label }}</span>
+                                                            <span>{{ t.pressure_list.label }} - {{ t.pressure_list.code }}</span>
                                                         </a>
                                                     </div>
                                                     <div id="collapseTwo5{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
@@ -593,7 +598,7 @@ RBA Case Study
                                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6{{t.id}}"
                                                         aria-expanded="true" aria-controls="collapseTwo6{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                         <i class="fa fa-plus-square"></i>
-                                                        <span>{{ t.use_list.code }} - {{ t.use_list.label }}</span>
+                                                        <span>{{ t.use_list.label }}</span>
                                                     </a>
                                                 </div>
                                                 <div id="collapseTwo6{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;" > <!-- togliere padding top @todo -->
@@ -659,7 +664,7 @@ RBA Case Study
                                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6f{{t.id}}"
                                                         aria-expanded="true" aria-controls="collapseTwo6f{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                         <i class="fa fa-plus-square"></i>
-                                                        <span>{{ t.use_list.code }} - {{ t.use_list.label }}</span>
+                                                        <span>{{ t.use_list.label }}</span>
                                                     </a>
                                                 </div>
                                                 <div id="collapseTwo6f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
@@ -734,7 +739,7 @@ RBA Case Study
                                                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7{{t.id}}"
                                                             aria-expanded="true" aria-controls="collapseTwo7{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                             <i class="fa fa-plus-square"></i>
-                                                            <span>{{ t.env_list.code }} - {{ t.env_list.label }}</span>
+                                                            <span>{{ t.env_list.label }}</span>
                                                         </a>
                                                     </div>
                                                     <div id="collapseTwo7{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
@@ -747,7 +752,7 @@ RBA Case Study
                                                             <p class="collapse-item ">{{ t.env_description | richtext }}</p>
                                                             {% if  t.data_description|default:'' != ''   %}
                                                                 <div class="card" style="padding:1rem">
-                                                                    <h6 class="m-0 font-weight-bold text-secondary">Environmental Component Data Source </h6>  
+                                                                    <h6 class="m-0 font-weight-medium text-primary">EnvironmentalComponent Data Source </h6>  
                                                                     <p>{{ t.data_description | richtext }}</p>
                                                                     {% if  t.data_source|default:'' != ''   %}
                                                                         <a target="_blank" rel="nofollow" class="text-gray-600" href="{{ t.data_source }}"><i class="fas fa-link"></i> Source Link</a>
@@ -800,7 +805,7 @@ RBA Case Study
                                                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7f{{t.id}}"
                                                             aria-expanded="true" aria-controls="collapseTwo7f{{t.id}}" style="padding-left: 0px; padding-bottom: 0px; color: #858796;"> <!-- togliere padding bottom @todo -->
                                                             <i class="fa fa-plus-square"></i>
-                                                            <span>{{ t.env_list.code }} - {{ t.env_list.label }}</span>
+                                                            <span>{{ t.env_list.label }}</span>
                                                         </a>
                                                     </div>
                                                     <div id="collapseTwo7f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
@@ -883,16 +888,12 @@ RBA Case Study
                                             {% endwith %}
                                         </div>
                                     </div>
-<<<<<<< HEAD
                                     
                                 
 
                                    
                                     
                                     <div id="parameter" >
-=======
-                                    <div>
->>>>>>> refs/remotes/origin/main
                                         <h6  class="m-0 font-weight-bold text-secondary">Pressure Legend</h6>
                                         <hr style="height:3pt; visibility:hidden;"/>
                                         <div id="parameter-list" class="row">
