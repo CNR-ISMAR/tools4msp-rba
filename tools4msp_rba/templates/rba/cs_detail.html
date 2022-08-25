@@ -888,10 +888,7 @@ RBA Case Study
                                             {% endwith %}
                                         </div>
                                     </div>
-                                    
-                                
-
-                                   
+                                      
                                     
                                     <div id="parameter" >
                                         <h6  class="m-0 font-weight-bold text-secondary">Pressure Legend</h6>
@@ -904,15 +901,16 @@ RBA Case Study
                                                             <span> <i class="{{ t.pressure_list.fa_class }} "></i></span>
                                                         </div>
                                                         <div class="col-10">
-                                                            {{ t.pressure_list.label }} 
+                                                           <p>{{ t.pressure_list.label }}</p>  
                                                         </div>
                                                     </div>
                                                 </div>
                                             {% endfor %}
                                         </div>
                                     </div>
-                                
                                 </div>
+                                
+                               
                             </div>
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
@@ -1059,7 +1057,7 @@ RBA Case Study
         </div>
 
     </div>
-</div>
 
+</div>
 {% endblock %}
 
