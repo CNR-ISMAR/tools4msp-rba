@@ -184,7 +184,7 @@ RBA Case Study
                                     </div>
                                     <div id="collapseTwo2{{i.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                         <div class="bg-black py-2 collapse-inner rounded">
-                                            <p class="collapse-item ">{{ i.polobj_desc }}</p>
+                                            <p class="collapse-item ">{{ i.polobj_desc|richtext }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -807,6 +807,7 @@ RBA Case Study
                                                             <i class="fa fa-plus-square"></i>
                                                             <span>{{ t.env_list.label }}</span>
                                                         </a>
+
                                                     </div>
                                                     <div id="collapseTwo7f{{t.id}}" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="padding-top: 0px;"> <!-- togliere padding top @todo -->
                                                         <div class="bg-black py-2 collapse-inner rounded">
